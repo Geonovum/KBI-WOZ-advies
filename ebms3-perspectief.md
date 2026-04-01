@@ -133,29 +133,18 @@ standaard. Moderne ontwikkelaars zijn niet opgeleid in MSH-protocollen; zij werk
 JSON en lichtgewicht frameworks. De transitie naar ebMS3/AS4 vereist omscholing of inhuur van
 specialisten. Dit is hetzelfde probleem als bij ebMS2, zij het met een iets grotere talentenpool.
 
-### De intermediair-problematiek
+### De MSH als gescheiden component
 
-De analyse in het hoofdstuk [Knelpunten](#knelpunten) beschrijft hoe niet-transparante intermediairs
-de voordelen van ebMS2 ondermijnen: fragmentatie van betrouwbaarheidsgaranties, doorbroken
-cryptografische binding, en verminderde onweerlegbaarheid. Deze problematiek is niet specifiek voor
-ebMS2 maar voor de _constructie_ waarbij een intermediair als eindpunt fungeert.
-
-ebMS3/AS4 kent wel een gestandaardiseerd multi-hop model met _I-Clouds_ (Intermediary Clouds), maar
-dit is bedoeld voor transparante routering, niet voor de niet-transparante
-transformatie-intermediairs die in de WOZ-keten gangbaar zijn. Als bronhouders ook bij ebMS3/AS4 de
-implementatie uitbesteden aan niet-transparante intermediairs, blijven dezelfde problemen bestaan.
+De analyse in het hoofdstuk [Knelpunten](#knelpunten) beschrijft hoe de scheiding tussen de
+WOZ-applicaties en de MSH leidt tot verlies van end-to-end zicht op afleveringsstatus en verwerking.
+Deze problematiek is niet specifiek voor ebMS2 maar voor de MSH-architectuur als zodanig, ongeacht
+of de MSH intern of extern wordt beheerd. Bij ebMS3/AS4 blijft de MSH-architectuur bestaan en
+daarmee ook dit knelpunt.
 
 ### StUF en berichtsemantiek
 
 ebMS3/AS4 is een _transportprotocol_. Het vervangt ebMS2 als transportlaag, maar zegt niets over de
-inhoud van berichten. De StUF-problematiek (de complexiteit van het berichtformaat, de bitemporele
-semantiek, de correctie-mutatiesoorten) staat los van het transportprotocol.
-
-Een transitie naar ebMS3/AS4 lost niet op:
-
-- De complexiteit van StUF-WOZ als berichtenstandaard
-- Het ontbreken van moderne alternatieven voor bitemporele aanlevering
-- De vereenvoudigingen die intermediairs doorvoeren in de berichtinhoud
+inhoud van berichten. Het al dan niet gebruik van StUF staat los van het transportprotocol.
 
 ### Volgordeproblemen
 
@@ -246,18 +235,16 @@ reliable messaging-functionaliteit blijft behouden.
 Tegelijkertijd adresseert ebMS3/AS4 niet de fundamentele uitdagingen van ketens die op ebMS2/StUF
 zijn gebaseerd:
 
-- De **complexiteit van MSH-implementatie** blijft bestaan, waardoor de druk richting intermediairs
-  niet vermindert
-- De **StUF-problematiek** staat los van het transportprotocol
-- De **intermediair-constructies** die de betrouwbaarheidsvoordelen ondermijnen, zullen
-  waarschijnlijk ook bij ebMS3/AS4 blijven bestaan
+- De **MSH-architectuur** blijft bestaan, inclusief de scheiding tussen applicatie en MSH en het
+  daarmee gepaard gaande verlies van end-to-end zicht
+- Het al dan niet gebruik van **StUF** staat los van het transportprotocol
 - De **competentieschaarste** verschuift maar verdwijnt niet
 
-De transitie naar ebMS3/AS4 is daarmee primair een _onderhoudstransitie_: het vervangt een verouderd
-protocol door een actueel equivalent, zonder de architecturale vraagstukken fundamenteel te
-veranderen. Voor organisaties die investeren in MSH-infrastructuur is het een noodzakelijke stap.
-Voor de bredere vraag hoe ketens als de WOZ eenvoudiger, toegankelijker en robuuster kunnen worden
-ingericht, biedt het geen antwoord.
+De transitie naar ebMS3/AS4 is daarmee primair een _onderhoudstransitie_: het vervangt een niet
+langer onderhouden protocol door een actueel equivalent, zonder de architecturale vraagstukken
+fundamenteel te veranderen. Voor organisaties die investeren in MSH-infrastructuur is het een
+noodzakelijke stap. Voor de bredere vraag hoe ketens als de WOZ eenvoudiger, toegankelijker en
+robuuster kunnen worden ingericht, biedt het geen antwoord.
 
 Dit plaatst registraties die op ebMS2 zijn gebaseerd voor een strategische keuze: investeren in de
 MSH-route (ebMS3/AS4) met behoud van de huidige ketenstructuur, of investeren in een REST-gebaseerde

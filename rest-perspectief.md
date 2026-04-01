@@ -3,8 +3,9 @@
 De voorgaande hoofdstukken behandelen de berichtenstandaard (StUF) en de MSH-gebaseerde
 transportprotocollen (ebMS2, ebMS3/AS4). Dit hoofdstuk analyseert het REST-alternatief. Het
 Digikoppeling REST API profiel biedt een modern alternatief, maar kent fundamenteel andere
-uitgangspunten en mogelijkheden. Een grondige vergelijking is noodzakelijk om de
-transitie-uitdagingen te begrijpen.
+uitgangspunten en mogelijkheden. Een grondige vergelijking is noodzakelijk om te beoordelen of met
+dit REST-alternatief voldaan kan worden aan de functionele eisen die de WOZ-keten stelt (zie
+[Functionele kaders](#functionele-kaders)).
 
 ## Het Digikoppeling REST API profiel
 
@@ -28,7 +29,8 @@ Het REST API profiel schrijft voor:
 
 Het profiel richt zich op gesloten diensten tussen overheidspartijen waar tweezijdige authenticatie
 noodzakelijk is. Het is primair ontworpen voor synchrone request-response patronen waarbij snelheid
-belangrijker is dan gegarandeerde aflevering.
+belangrijker is dan gegarandeerde aflevering. Dit sluit niet in eerste instantie aan op de
+functionele behoeften in de WOZ-keten.
 
 ## Vergelijking met MSH-gebaseerde protocollen
 
@@ -111,7 +113,7 @@ De fundamentele verschillen tussen het REST API profiel en ebMS2/StUF betreffen 
 technische onmogelijkheden, maar het ontbreken van standaardisatie. REST en HTTP bieden de
 technische bouwstenen om vergelijkbare functionaliteit te realiseren, maar de generieke standaarden
 schrijven niet voor _hoe_ dit moet gebeuren. Dit leidt tot een situatie waarin elke implementatie
-eigen keuzes maakt, wat de interoperabiliteit ondermijnt.
+eigen keuzes maakt, wat de interoperabiliteit beperkt.
 
 ### Betrouwbare aflevering
 
@@ -215,9 +217,9 @@ kiest eigen mechanismen, wat de interoperabiliteit beperkt.
 
 ### Correctie-semantiek en bitemporele historie
 
-StUF definieert expliciete [mutatiesoorten](#def-mutatiesoort) (T, V, W, F) die aangeven of een
-wijziging een reguliere update is of een correctie van eerder geregistreerde gegevens. In combinatie
-met de [bitemporele elementen](#def-bitemporeel) (`beginGeldigheid`, `eindGeldigheid`,
+StUF definieert expliciete mutatiesoorten (T, V, W, F) die aangeven of een wijziging een reguliere
+update is of een correctie van eerder geregistreerde gegevens. In combinatie met de
+[bitemporele elementen](#def-bitemporeel) (`beginGeldigheid`, `eindGeldigheid`,
 `tijdstipRegistratie`) maakt dit de opbouw van volledige historie mogelijk. De details van deze
 StUF-functionaliteit worden behandeld in het hoofdstuk [Knelpunten](#knelpunten).
 
@@ -290,8 +292,9 @@ StUF-functionaliteit verloren:
 
 ### Wat moet worden gestandaardiseerd
 
-Om de functionaliteit van StUF te behouden in een REST-gebaseerde architectuur, moet het volgende
-worden gestandaardiseerd:
+De functionele eisen uit [Functionele kaders](#functionele-kaders) worden in de huidige inrichting
+ingevuld door de combinatie van ebMS2 en StUF. Om aan deze eisen te blijven voldoen in een
+REST-gebaseerde architectuur, moet het volgende worden gestandaardiseerd:
 
 1. **Een mutatiemodel**: Hoe worden toevoegingen, wijzigingen en correcties onderscheiden in een
    REST API?
@@ -304,20 +307,20 @@ worden gestandaardiseerd:
 Dit is geen technisch probleem, want REST _kan_ dit allemaal ondersteunen. Het is een
 standaardisatie-opgave die tijd, governance en adoptie vereist.
 
-### De rol van intermediairs bij REST
+### Uitbesteding bij REST
 
-De transitie naar REST API's elimineert niet automatisch de behoefte aan intermediairs. De
-verwachting is dat intermediairs ook bij een REST-architectuur een rol blijven spelen, omdat
-bronhouders op diverse vlakken ontzorgd willen worden. De complexiteitsdrempel verschuift (REST
-API's zijn toegankelijker dan ebMS/StUF), maar de organisatorische behoefte aan uitbesteding blijft.
+Bij een REST-architectuur vervalt de noodzaak van een MSH als apart component. De WOZ-applicatie
+communiceert rechtstreeks via HTTP met de LV-WOZ (of via lichtgewicht tussenliggende componenten).
+Daarmee verdwijnt de architecturele scheiding die in het hoofdstuk [Knelpunten](#knelpunten) is
+beschreven als bron van verlies van end-to-end zicht.
 
-Dit betekent dat de intermediair-problematiek die in het hoofdstuk [Knelpunten](#knelpunten) is
-beschreven (verlies van end-to-end ketenbeheersing, foutmeldingen die niet op de juiste plek
-terechtkomen) niet vanzelf verdwijnt bij een protocolwissel. Het koppelvlak moet zo worden ontworpen
-dat intermediairs de kwaliteit en transparantie niet ondermijnen. Synchrone communicatie biedt hier
-voordelen: wanneer de bronhouder direct een response ontvangt (ook via een intermediair), is de
-verwerkingsstatus onmiddellijk duidelijk. Bij asynchrone patronen blijft het risico bestaan dat
-terugkoppeling verloren gaat in de keten.
+De organisatorische behoefte aan uitbesteding blijft wel bestaan: bronhouders willen op diverse
+vlakken ontzorgd worden. De complexiteitsdrempel verschuift (REST API's zijn toegankelijker dan
+ebMS/StUF), maar uitbesteding van hosting, beheer of connectiviteit blijft een gangbaar patroon. Het
+koppelvlak moet zo worden ontworpen dat de kwaliteit en transparantie van de keten behouden blijven,
+ongeacht of de bronhouder de technische implementatie zelf beheert of uitbesteedt. Synchrone
+communicatie biedt hier voordelen: wanneer de bronhouder direct een response ontvangt, is de
+verwerkingsstatus onmiddellijk duidelijk.
 
 ## Samenvattend
 
@@ -335,11 +338,13 @@ Het Digikoppeling REST API profiel met FSC biedt een solide basis voor:
 - Service discovery via de Directory
 
 Wat overblijft is een domeinspecifieke standaardisatie-opgave per registratie. Voor de WOZ-keten
-betreft dit:
+betreft dit de functionele eisen uit [Functionele kaders](#functionele-kaders) waarvoor bij REST nog
+geen standaard bestaat:
 
-- Een gestandaardiseerd model voor bitemporele aanlevering (zie [Knelpunten](#knelpunten) voor de
-  huidige StUF-functionaliteit)
-- Uniforme correctie-semantiek
-- Afspraken over betrouwbaarheid en idempotency
-- Capaciteitsbeheersing en backpressure-mechanismen voor piekbelasting
+- [Bitemporele historie](#bitemporele-historie): een gestandaardiseerd model voor bitemporele
+  aanlevering
+- [Correctiesemantiek](#correctiesemantiek): uniforme correctie-semantiek
+- [Betrouwbare aflevering](#betrouwbare-aflevering): afspraken over betrouwbaarheid en idempotentie
+- [Verwerking bij piekbelasting](#verwerking-bij-piekbelasting): capaciteitsbeheersing en
+  backpressure-mechanismen
 - Eventueel een patroon voor asynchrone verwerking

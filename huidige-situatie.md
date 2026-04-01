@@ -58,85 +58,102 @@ onderlinge relaties. StUF ondersteunt:
 
 - **Mutatieberichten**: Voor het doorgeven van wijzigingen aan registraties
 - **Correctieberichten**: Voor het corrigeren van eerder geregistreerde gegevens
+- **Vraag-/antwoordberichten**: Voor het formuleren en beantwoorden van bevragingen
+- **Synchronisatieberichten**: Voor het synchroniseren van actuele en historische gegevens tussen
+  applicaties
 - **Bitemporele historie**: De combinatie van materiële historie (wanneer iets in de werkelijkheid
   geldig was) en formele historie (wanneer iets in de registratie is vastgelegd)
 
-De aanlevering aan de LV-WOZ verloopt via [dienstberichten](#def-dienstbericht): StUF-berichten die
-fungeren als container voor één of meer kennisgevingen. Er zijn 21 dienstberichten gedefinieerd, elk
-gekoppeld aan een WOZ-gebeurtenis uit de Catalogus WOZ-gegevens (zoals "WOZ-object ontstaan",
-"Waarde vastgesteld" of "Bezwaar afgehandeld"). Het dienstbericht vervult twee functies: het
-definieert de transactiescope (welke kennisgevingen atomair verwerkt moeten worden) en het geeft de
-aanleiding voor de datamutaties mee. Het dienstbericht is de eenheid die de LV-WOZ accepteert; losse
-kennisgevingsberichten worden niet aangeboden.
+De aanlevering aan de LV-WOZ verloopt primair via dienstberichten: StUF-berichten die één op één
+overeenkomen met de functioneel gedefinieerde gebeurtenissen en die exact afbakenen welke gegevens
+relevant zijn voor het communiceren van een gebeurtenis. Daarmee fungeren deze dienstberichten als
+container voor één of meer samenhangende kennisgevingen. Er zijn 25 dienstberichten gedefinieerd,
+elk gekoppeld aan een WOZ-gebeurtenis uit de Catalogus WOZ-gegevens (zoals "Ontstaan WOZ-object",
+"Nemen van een WOZ-beschikking" of "Doen van uitspraak bezwaar en beroep"). Het dienstbericht
+vervult twee functies: het definieert de transactiescope (welke kennisgevingen atomair verwerkt
+moeten worden) en het geeft de aanleiding voor de datamutaties mee. Het dienstbericht is de eenheid
+die de LV-WOZ accepteert; losse kennisgevingsberichten worden niet aangeboden.
+
+Naast de gebeurtenisgebaseerde dienstberichten verwerkt de LV-WOZ ook synchronisatieberichten
+(inclusief historie). Synchronisatieberichten zijn noodzakelijk voor historische correcties die in
+de WOZ-keten van grote juridische betekenis kunnen zijn.
 
 ### Schaal en seizoenspatroon
 
 De WOZ-keten kent een sterk seizoensgebonden karakter. Na 1 januari ontvangen circa 10 miljoen
 huishoudens en rechtspersonen een WOZ-beschikking. Van elk van deze beschikkingen wordt een digitaal
 afschrift aangeleverd aan de LV-WOZ, zodat afnemers zoals de Belastingdienst, waterschappen en het
-CBS deze gegevens kunnen gebruiken. De wettelijke termijn voor aanlevering is 8 weken na 1 januari.
+CBS deze gegevens kunnen gebruiken. De wettelijke termijn voor het nemen van de WOZ-beschikking is 8
+weken na 1 januari.
 
 Dit betekent dat in januari en februari het berichtenvolume een veelvoud is van de rest van het
 jaar. De huidige architectuur wordt in deze piekperiode dan ook zwaar belast. De keuze voor
 asynchrone verwerking is mede ingegeven door deze volumepieken: synchrone verwerking zou vereisen
 dat zowel de LV-WOZ als alle bronhouders de piekbelasting real-time kunnen verwerken.
 
-### De rol van intermediairs
+### De ketenarchitectuur
 
-De complexiteit van ebMS2 en StUF leidt ertoe dat een substantieel deel van de bronhouders de
-implementatie uitbesteedt aan intermediairs. De LV-WOZ onderhoudt momenteel circa 340
-ebMS-verbindingen met gemeenten en samenwerkingsverbanden. In veel gevallen communiceert de
-bronhouder via een eenvoudiger koppelvlak (doorgaans een REST-API) met de intermediair, die
-vervolgens de vertaling naar ebMS/StUF verzorgt.
+De applicaties voor het beheer van de WOZ-administratie bij de bronhouder zijn verantwoordelijk voor
+het vormen van de StUF-berichten; dit is de enige plek waar de functionele context beschikbaar is om
+betekenisvolle gebeurtenisberichten samen te stellen. In de praktijk is het WOZ-informatiecomponent
+bij de LV zeer beperkt ten opzichte van wat er bij de gemeente leeft. Het taxatieproces is veel
+omvangrijker; de basisregistratie is daarvan een marginaal onderdeel dat bestaat omdat het
+vervolgens naar de afnemers moet. Er is doorgaans geen apart systeem waarvan een extract wordt
+gemaakt voor de LV; de werkprocessystemen sturen gegevens naar de LV wanneer dat nodig is. Wat de
+bronhouder aanlevert is een selectie uit een veel groter geheel, niet een extract uit een apart
+ingericht basisregistratiesysteem.
 
-De Digikoppeling-architectuur onderscheidt twee typen intermediairs:
-
-- **Transparante intermediairs**: Routeren berichten zonder ze te bewerken. Het bericht blijft
-  intact en de communicatie loopt end-to-end tussen de oorspronkelijke verzender en ontvanger.
-- **Niet-transparante intermediairs**: Bewerken berichten en zijn daarmee een eindpunt in de
-  Digikoppeling-keten. Dit is het gangbare model bij uitbesteding.
+Een substantieel deel van de bronhouders heeft het beheer van de Digikoppelingsadapter (MSH)
+uitbesteed aan een externe partij. Deze uitbesteding kan een afzonderlijke uitbesteding zijn, maar
+kan ook onderdeel zijn van de volledige outsourcing van de ICT-voorzieningen die de bronhouder
+gebruikt voor het beheer van de WOZ-administratie en de communicatie met de LV-WOZ. De LV-WOZ
+onderhoudt momenteel circa 340 ebMS-verbindingen met gemeenten en samenwerkingsverbanden.
 
 Een bijzondere variant is het belastingsamenwerkingsverband: een organisatie die namens meerdere
-gemeenten de WOZ-taken uitvoert. In deze constructie kan de gemeente zelf geen directe inzage hebben
-in wat er wordt aangeleverd aan de LV-WOZ, wat de verantwoordingsrelatie compliceert.
+gemeenten de WOZ-taken uitvoert. In deze constructie levert de samenwerking alle gegevens namens de
+bronhouder aan. De gemeente zelf kan geen gegevens aanleveren, maar kan wel inzage hebben in welke
+gegevens in de LV-WOZ zijn geregistreerd.
 
-## Verdiensten van de huidige inrichting
+## Kenmerken van de huidige inrichting
 
-Voordat de knelpunten worden besproken, is het relevant om vast te stellen dat de huidige inrichting
-gedurende vele jaren heeft gefunctioneerd en bepaalde doelen heeft bereikt.
+De huidige inrichting is ontworpen om te voldoen aan de functionele eisen die in
+[Functionele kaders](#functionele-kaders) worden beschreven. Hieronder worden de specifieke
+kenmerken van de huidige implementatie benoemd.
 
 ### Betrouwbare basisfunctionaliteit
 
 De LV-WOZ verwerkt jaarlijks miljoenen berichten van honderden bronhouders. De combinatie van ebMS2
-en StUF heeft een niveau van betrouwbaarheid geboden dat de basisfunctionaliteit waarborgt. Afnemers
-zoals de Belastingdienst, waterschappen en het CBS kunnen de WOZ-gegevens gebruiken voor hun
-wettelijke taken. De Waarderingskamer constateert in de Staat van de WOZ 2025 [[STAAT-WOZ-2025]] dat
-de verwerking van berichten in de LV-WOZ in het algemeen met minder fouten verliep dan voorheen, wat
+en StUF biedt een niveau van betrouwbaarheid dat de basisfunctionaliteit waarborgt. Afnemers zoals
+de Belastingdienst, waterschappen en het CBS kunnen de WOZ-gegevens gebruiken voor hun wettelijke
+taken. De Waarderingskamer constateert in de Staat van de WOZ 2025 [[STAAT-WOZ-2025]] dat de
+verwerking van berichten in de LV-WOZ in het algemeen met minder fouten verliep dan voorheen, wat
 wijst op een volwassen wordende keten.
 
 ### Gestandaardiseerde semantiek
 
 StUF-WOZ biedt een gedetailleerd en gestandaardiseerd objectmodel voor WOZ-gegevens. Dit model
-definieert eenduidig hoe WOZ-objecten, belanghebbenden, waarden en hun onderlinge relaties worden
-gerepresenteerd. Deze semantische standaardisatie heeft bijgedragen aan interoperabiliteit binnen de
-keten, ook al is de implementatie complex.
+definieert eenduidig hoe WOZ-objecten, belanghebbenden, waarden etc. samenhangen en hoe hun
+onderlinge relaties in berichten worden gerepresenteerd. Deze semantische standaardisatie draagt bij
+aan interoperabiliteit binnen de keten, ook al is de structuur van de gegevens en de samenhang met
+andere registraties complex.
 
 ### Bitemporele historie
 
-De ondersteuning voor bitemporele historie in StUF is functioneel waardevol voor een registratie als
-de WOZ, waarin zowel de materiële werkelijkheid als de registratiegeschiedenis relevant zijn voor
-bezwaar, beroep en verantwoording.
+StUF biedt ondersteuning voor [bitemporele historie](#bitemporele-historie): de combinatie van
+materiële en formele historie die nodig is voor bezwaar, beroep en verantwoording.
 
 ### Bewezen governance
 
-Het stelsel van Digikoppeling, CPA-beheer en conformiteitstoetsen heeft een governance-structuur
-gecreëerd die partijen dwingt tot interoperabiliteit. Ondanks de complexiteit biedt deze structuur
-zekerheid over de technische compatibiliteit tussen aangesloten partijen.
+Het stelsel van Digikoppeling, CPA-beheer en conformiteitstoetsen vormt een governance-structuur die
+partijen dwingt tot interoperabiliteit. Ondanks de complexiteit biedt deze structuur zekerheid over
+de technische compatibiliteit tussen aangesloten partijen. De correcte werking van de keten is
+essentieel gezien de grote financiële belangen die samenhangen met het gebruik van WOZ-waarden voor
+belastingheffing.
 
-De vraag die voorligt is niet of de huidige inrichting volledig faalt, maar of de balans tussen
-baten en lasten nog houdbaar is gegeven de ontwikkelingen in de markt, de beschikbaarheid van
-alternatieven, en de eisen die de moderne digitale overheid stelt aan wendbaarheid en
-toegankelijkheid.
+De standaarden waarop de huidige inrichting is gebaseerd worden niet langer doorontwikkeld. De
+beschikbaarheid van marktkennis en tooling voor ebMS2 en StUF neemt af, wat de onderhoudbaarheid op
+termijn onder druk zet. De vraag is hoe de functionele eisen geborgd blijven wanneer de
+onderliggende standaarden worden vervangen door moderne alternatieven.
 
 ## Status van de standaarden
 
@@ -148,11 +165,14 @@ van hun levenscyclus:
   potentie wel en niet oplost voor de WOZ-keten wordt behandeld in het hoofdstuk
   [Het ebMS3/AS4-perspectief](#het-ebms3as4-perspectief).
 
-- **StUF** is eveneens in onderhoudsmodus; VNG Realisatie heeft de doorontwikkeling stopgezet. Forum
-  Standaardisatie heeft in evaluaties vastgesteld dat de huidige scope niet langer passend is
-  [[FORUM-STUF-EVAL]]. De knelpunten die voortvloeien uit StUF worden geanalyseerd in het hoofdstuk
-  [Knelpunten](#knelpunten).
+- **StUF** wordt niet doorontwikkeld, maar wel onderhouden: wetswijzigingen en gevonden fouten
+  worden verwerkt, maar er is geen doorontwikkelingsagenda. Forum Standaardisatie heeft in
+  evaluaties vastgesteld dat de huidige scope niet langer passend is [[FORUM-STUF-EVAL]].
 
-De dubbele transitie, van ebMS2 naar ebMS3/AS4 én van StUF naar API's, speelt niet alleen bij de WOZ
-maar bij elke registratie die op deze standaarden is gebaseerd. Het is een gelegenheid om aan te
-sluiten bij de modernisering van de gehele overheidsbrede gegevensinfrastructuur.
+- **Digilevering**, de dienst van Logius waarop de huidige doorlevering aan afnemers is gebaseerd,
+  wordt in de toekomst gestaakt. Forum Standaardisatie heeft CloudEvents als verplichte standaard
+  vastgesteld voor notificatiediensten. Dit betekent dat de doorlevering aan afnemers hoe dan ook
+  opnieuw moet worden ingericht.
+
+Het onderzoeken van mogelijke alternatieven voor ebMS2 en voor StUF speelt niet alleen bij de WOZ
+maar bij elke registratie die op deze standaarden is gebaseerd.

@@ -264,6 +264,18 @@ let respecConfig = {
       publisher: "Waarderingskamer",
       date: "2025",
     },
+    "WET-WOZ": {
+      id: "WET-WOZ",
+      title: "Wet waardering onroerende zaken",
+      href: "https://wetten.overheid.nl/BWBR0007119/",
+      publisher: "Rijksoverheid",
+    },
+    "CATALOGUS-WOZ": {
+      id: "CATALOGUS-WOZ",
+      title: "Catalogus Basisregistratie WOZ",
+      href: "https://www.waarderingskamer.nl/basisregistratie-woz-lv-woz/catalogus-basisregistratie-woz/",
+      publisher: "Waarderingskamer",
+    },
     "SMART-ENDPOINTS": {
       id: "SMART-ENDPOINTS",
       title: "Microservices - Smart endpoints and dumb pipes",

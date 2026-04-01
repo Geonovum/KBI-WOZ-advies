@@ -42,6 +42,29 @@ synchronisatie-praktijk.
 Het WOZ-domein is expliciet een van de toepassingsgebieden waarin het project inzichten beproeft.
 Dit maakt de bevindingen direct relevant voor de modernisering van de LV-WOZ.
 
+De huidige StUF-kennisgevingen laten zich in dit kader positioneren ten opzichte van twee bekende
+architectuurpatronen. Bij _event sourcing_ worden alle wijzigingen vastgelegd als een
+onveranderlijke reeks van domeingebeurtenissen; de huidige toestand wordt gereconstrueerd door alle
+events af te spelen. StUF-kennisgevingen lijken op events, maar beschrijven toestandsovergangen in
+plaats van domeingebeurtenissen, zijn niet onveranderlijk, en zijn niet idempotent bij replay.
+StUF-kennisgevingen lijken daarmee meer op _Change Data Capture_ (CDC): het vastleggen van
+toestandswijzigingen ("rij X werd Y") in plaats van domeingebeurtenissen. Beide patronen zijn
+volgorde-afhankelijk en niet idempotent. Het verschil met event sourcing is niet dat het geen
+"events" zijn, maar dat ze een ander abstractieniveau beschrijven: wijzigingen in de registratie in
+plaats van gebeurtenissen in de werkelijkheid.
+
+De spanning tussen deze twee modellen is zichtbaar in de huidige WOZ-keten:
+
+| Aspect                    | Event-driven model                              | Synchronisatie-model                |
+| ------------------------- | ----------------------------------------------- | ----------------------------------- |
+| **Wat wordt aangeleverd** | Gebeurtenissen (feiten)                         | Toestandswijzigingen met historie   |
+| **Verantwoordelijkheid**  | Bronhouder levert events, LV bepaalt verwerking | Bronhouder dicteert exacte toestand |
+| **Historiemodel**         | LV bouwt eigen formele historie                 | LV neemt bronhouder-historie over   |
+| **Herstelscenario**       | Events opnieuw afspelen                         | Volledige toestand synchroniseren   |
+| **Complexiteit**          | Bij de LV (interpretatie)                       | Bij bronhouder (reconstructie)      |
+
+De huidige implementatie combineert elementen van beide modellen.
+
 ## Common Ground
 
 [Common Ground](#def-common-ground) is een door de VNG geïnitieerde beweging om de
@@ -95,9 +118,9 @@ bij de endpoints, niet in de pipe.
 
 Het principe is geformuleerd in de context van microservices, maar de onderliggende observatie is
 breder toepasbaar. De in het hoofdstuk [Knelpunten](#knelpunten) beschreven problematiek, waarin de
-complexiteit van de transportlaag leidt tot afhankelijkheid van intermediairs die vervolgens de
-beoogde end-to-end garanties doorbreken, laat zich herkennen als een geval van te veel intelligentie
-in de pipe.
+complexiteit van de transportlaag leidt tot een gescheiden MSH-component dat het end-to-end zicht op
+afleveringsstatus en verwerking doorbreekt, laat zich herkennen als een geval van te veel
+intelligentie in de pipe.
 
 Samen met de principes van Uit Betrouwbare Bron en de Common Ground-beweging wijst dit principe in
 dezelfde richting: intelligentie hoort bij de applicatie, niet in de transportlaag.
@@ -127,7 +150,9 @@ toegepast bij het ontwerp van nieuwe koppelvlakken.
 De Waarderingskamer beheert de inhoudelijke beschrijving van de WOZ-administratie. Het huidige kader
 bestaat uit de Catalogus Basisregistratie WOZ, de Catalogus WOZ-gegevens voor afnemers en het
 Gegevenswoordenboek WOZ. Een eerder initiatief om deze te integreren in een nieuw informatiemodel
-(IMWOZ) is in 2022 gestopt vanwege conceptuele problemen.
+(IMWOZ) is in 2022 gestopt, omdat het besluit tot vaststellen van dit IMWOZ model toen met een jaar
+is uitgesteld om in die tijd meer duidelijkheid te krijgen van de gevolgen van de Common Ground
+principes voor het WOZ-domein.
 
 Inmiddels is er nieuwe voortgang. De huidige situatie is gemodelleerd conform MIM voor de volledige
 gemeentelijke WOZ-administratie. Het resulterende document heeft echter nog geen bestuurlijke
@@ -154,13 +179,26 @@ Belangrijke beperkingen:
 - De API is alleen voor **bevragingen**, niet voor aanlevering van mutaties
 - Maximum 10.000 bevragingen per dag, 35 per minuut
 - Geen massale bevragingen mogelijk
-- Doorontwikkeling is gepauzeerd in afwachting van de bredere WOZ-transitie
+- Doorontwikkeling is gepauzeerd in afwachting van toepassingen waarvoor gemeenten ook geautoriseerd
+  zijn om gegevens uit de LV WOZ te gebruiken en men voordeel ervaart van gebruik van een dergelijke
+  API boven de breder gebruikte StUF bevragingsmogelijkheden of de standaard voorzieningen binnen
+  MijnKadaster.
 
-## Binnengemeentelijke WOZ-bevragingen
+Naast de Haal Centraal API voor de WOZ is er ook een API waarmee de WOZ-gegevens uit de LV WOZ
+worden opgevraagd voor het tonen op MijnOverheid. Deze API bevraagt de LV WOZ in combinatie met de
+BRK. Ook de koppeling tussen de LV WOZ en het WOZ-waardeloket is gebaseerd op API's.
 
-VNG Realisatie ontwikkelt binnengemeentelijke WOZ-bevragingen [[IMWOZ-BEVRAGINGEN]]: REST API's voor
-het bevragen van WOZ-gegevens binnen de gemeente. Deze API's zijn bedoeld naast StUF-WOZ, niet als
-vervanging.
+Een toenemend patroon is dat gemeenten ook afnemer worden van de LV. Waar een gemeente de WOZ-taken
+uitbesteedt aan een belastingsamenwerkingsverband, kan de gemeente soms haar eigen data niet meer
+rechtstreeks inzien. In die gevallen wordt de data via de Haal Centraal API opgehaald bij de LV. Dit
+patroon groeit naarmate er meer grondslagen komen waarmee gemeenten WOZ-data mogen gebruiken, onder
+meer voor de Omgevingswet.
 
-De huidige status (december 2024): "Deze API's zijn in ontwikkeling! Op dit ogenblik zijn de API's
-nog niet volwassen genoeg om ingebouwd te worden in productie-software."
+## Binnengemeentelijke WOZ-API's
+
+VNG Realisatie heeft binnengemeentelijke WOZ-bevragingen [[IMWOZ-BEVRAGINGEN]] in ontwikkeling: REST
+API's voor het bevragen van WOZ-gegevens binnen de gemeente. Deze API's zijn bedoeld naast StUF-WOZ,
+niet als vervanging. De huidige status (december 2024): "Deze API's zijn in ontwikkeling! Op dit
+ogenblik zijn de API's nog niet volwassen genoeg om ingebouwd te worden in productie-software." De
+ontwikkeling heeft tot nu toe geen concrete resultaten opgeleverd en kent beperkt draagvlak bij de
+betrokken partijen.

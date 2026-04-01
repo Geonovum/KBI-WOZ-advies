@@ -31,41 +31,22 @@ dienstverleners gebruiken voor hun digitale dienstverlening aan burgers en onder
 
 De Landelijke Voorziening WOZ (LV-WOZ) [[LV-WOZ-KV]] is de centrale voorziening waarin bronhouders
 (gemeenten) hun WOZ-gegevens aanleveren, zodat deze gegevens centraal beschikbaar zijn voor
-afnemers.
+afnemers. De LV-WOZ bevat een kopie van de gegevens die gemeenten bijhouden in de decentrale
+Basisregistratie WOZ, aangevuld met enkele gegevens die voor de afnemers ook van belang zijn.
 
 <dfn id="def-stuf">StUF</dfn>
 
 Het [Standaard Uitwisseling Formaat (StUF)](https://standaarden.vng.nl/StUF-standaarden) is een
 berichtenstandaard en bevat afspraken over de basisprincipes voor het uitwisselen van gegevens
 tussen applicaties in het gemeentelijke veld. StUF bevat zelf geen berichten maar wel bouwstenen en
-richtlijnen waarmee berichtenstandaarden kunnen worden samengesteld. De doorontwikkeling van StUF is
-stopgezet door VNG Realisatie.
+richtlijnen waarmee berichtenstandaarden kunnen worden samengesteld. StUF wordt wel onderhouden maar
+niet doorontwikkeld door VNG Realisatie.
 
 <dfn id="def-stuf-woz">StUF-WOZ</dfn>
 
 StUF-WOZ is het verticale sectormodel binnen de StUF-familie dat specifiek is voor WOZ-gegevens. Het
 definieert de berichtstructuren voor de uitwisseling van WOZ-objecten, belanghebbenden, waarden en
 beschikkingen. De huidige versie is StUF-WOZ 03.12.
-
-<dfn id="def-mutatiesoort">Mutatiesoort</dfn>
-
-Een parameter in StUF-kennisgevingsberichten die de aard van de mutatie classificeert. De vier
-mutatiesoorten zijn: T (toevoeging), V (verwijdering), W (wijziging) en F (correctie). Zie het
-hoofdstuk [Knelpunten](#knelpunten) voor een analyse van de semantiek en de praktische problemen.
-
-<dfn id="def-kennisgeving">Kennisgeving</dfn>
-
-Een kennisgevingsbericht (Lk-bericht) in StUF is een bericht waarmee wijzigingen worden doorgegeven.
-Een kennisgeving bevat zowel de oude als de nieuwe situatie van een object, waardoor de ontvanger
-kan bepalen wat er precies is gewijzigd. Dit patroon ondersteunt incrementele verwerking en
-validatie.
-
-<dfn id="def-dienstbericht">Dienstbericht</dfn>
-
-Een dienstbericht is in StUF-WOZ de uitwisselingseenheid op het koppelvlak met de LV-WOZ: een
-container voor één of meer kennisgevingsberichten, gekoppeld aan een WOZ-gebeurtenis. Er zijn 21
-dienstberichten gedefinieerd. Zie het hoofdstuk [Huidige situatie](#huidige-situatie) voor een
-uitgebreide beschrijving.
 
 <dfn id="def-cpa">CPA</dfn>
 
@@ -87,10 +68,9 @@ PKIoverheid-certificaten en wordt gebruikt in CPA's en berichtheaders.
 
 <dfn id="def-intermediair">Intermediair</dfn>
 
-Een intermediair is een organisatie die berichten verzendt of ontvangt namens andere organisaties.
-Binnen Digikoppeling wordt onderscheid gemaakt tussen transparante intermediairs (die berichten
-ongewijzigd doorsturen) en niet-transparante intermediairs (die berichten bewerken en daarmee een
-eindpunt vormen in de communicatieketen).
+Een intermediair is een organisatie die namens andere organisaties de Digikoppelingsverbinding
+beheert. In de WOZ-keten betreft dit doorgaans het beheer van de MSH-component (de
+Digikoppelingsadapter).
 
 <dfn id="def-bitemporeel">Bitemporele historie</dfn>
 
