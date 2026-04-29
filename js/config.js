@@ -132,12 +132,6 @@ let respecConfig = {
       href: "https://gitdocumentatie.logius.nl/publicatie/dk/roadmap/2024-2025/",
       publisher: "Logius",
     },
-    "HAAL-CENTRAAL-WOZ": {
-      id: "HAAL-CENTRAAL-WOZ",
-      title: "Haal Centraal WOZ Bevragen API",
-      href: "https://github.com/kadaster/WOZ-bevragen",
-      publisher: "Kadaster / VNG Realisatie",
-    },
     "EBXML-MSG": {
       id: "EBXML-MSG",
       title: "ebXML Messaging Service Specification v2.0",
@@ -249,13 +243,6 @@ let respecConfig = {
       title: "StUF WOZ 03.12 - Technische specificaties LV WOZ",
       href: "https://www.waarderingskamer.nl/basisregistratie-woz-lv-woz/stuf-woz-0312/",
       publisher: "Waarderingskamer",
-    },
-    NEN3610: {
-      id: "NEN3610",
-      title: "NEN 3610:2022 - Basismodel geo-informatie",
-      href: "https://www.nen.nl/nen-3610-2022-nl-296137",
-      publisher: "NEN",
-      date: "2022",
     },
     "STAAT-WOZ-2025": {
       id: "STAAT-WOZ-2025",

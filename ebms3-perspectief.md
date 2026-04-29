@@ -78,8 +78,7 @@ verbetert de aansluiting op dit Europese stelsel.
 
 ### Flexibeler configuratiemodel
 
-Een van de operationele lasten bij ebMS2 is het CPA-beheer (zie [Knelpunten](#knelpunten)).
-ebMS3/AS4 gebruikt een ander model:
+Een van de operationele lasten bij ebMS2 is het CPA-beheer. ebMS3/AS4 gebruikt een ander model:
 
 | Aspect               | ebMS2                                  | ebMS3/AS4                                     |
 | -------------------- | -------------------------------------- | --------------------------------------------- |
@@ -133,13 +132,13 @@ standaard. Moderne ontwikkelaars zijn niet opgeleid in MSH-protocollen; zij werk
 JSON en lichtgewicht frameworks. De transitie naar ebMS3/AS4 vereist omscholing of inhuur van
 specialisten. Dit is hetzelfde probleem als bij ebMS2, zij het met een iets grotere talentenpool.
 
-### De MSH als gescheiden component
+### MSH-scheiding blijft bestaan
 
-De analyse in het hoofdstuk [Knelpunten](#knelpunten) beschrijft hoe de scheiding tussen de
-WOZ-applicaties en de MSH leidt tot verlies van end-to-end zicht op afleveringsstatus en verwerking.
-Deze problematiek is niet specifiek voor ebMS2 maar voor de MSH-architectuur als zodanig, ongeacht
-of de MSH intern of extern wordt beheerd. Bij ebMS3/AS4 blijft de MSH-architectuur bestaan en
-daarmee ook dit knelpunt.
+De analyse in [De MSH als gescheiden component](#de-msh-als-gescheiden-component) beschrijft hoe de
+scheiding tussen de WOZ-applicaties en de MSH leidt tot verlies van end-to-end zicht op
+afleveringsstatus en verwerking. Deze problematiek is niet specifiek voor ebMS2 maar voor de
+MSH-architectuur als zodanig, ongeacht of de MSH intern of extern wordt beheerd. Bij ebMS3/AS4
+blijft de MSH-architectuur bestaan en daarmee ook dit knelpunt.
 
 ### StUF en berichtsemantiek
 
@@ -158,9 +157,9 @@ bestaan.
 
 Bij voortzetting van de asynchrone profielkeuze blijft de huidige foutafhandelingsproblematiek
 bestaan. Foutmeldingen komen asynchroon terug, en bij een intermediair-constructie is het nog steeds
-de vraag of deze meldingen de juiste medewerker bij de bronhouder bereiken. De in het hoofdstuk
-[Knelpunten](#knelpunten) beschreven foutmeldingen verdwijnen niet door een ander transportprotocol,
-tenzij zou worden gekozen voor de synchrone variant.
+de vraag of deze meldingen de juiste medewerker bij de bronhouder bereiken. Deze problematiek
+verdwijnt niet door een ander transportprotocol, tenzij zou worden gekozen voor de synchrone
+variant.
 
 ### SyncReply: synchrone acknowledgements
 
@@ -226,7 +225,7 @@ Voor een keten met circa 340 ebMS-verbindingen en honderden bronhouders is dit e
 operatie. De Digikoppeling-roadmap voorziet ondersteuning bij het migratieproces, maar de
 daadwerkelijke migratie moet door elke organisatie zelf worden uitgevoerd.
 
-## Samenvattend
+## Samenvatting ebMS3/AS4
 
 ebMS3/AS4 is een logische opvolger van ebMS2 en lost een aantal concrete problemen op: het gebrek
 aan doorontwikkeling, de krimpende leveranciersmarkt, en de aansluiting bij Europese standaarden. De

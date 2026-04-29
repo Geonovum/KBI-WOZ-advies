@@ -36,8 +36,8 @@ Kernprincipes uit dit onderzoek zijn breed relevant:
 Het onderzoek maakt een expliciet onderscheid tussen de intentie van een handeling en de registratie
 ervan. Een bron die alleen toestandsgegevens vastlegt zonder de context van de handelingen die tot
 die toestand hebben geleid, kan niet volledig verantwoording afleggen. Dit inzicht sluit aan bij de
-in het hoofdstuk [Knelpunten](#knelpunten) beschreven spanning tussen event-driven intentie en
-synchronisatie-praktijk.
+spanning tussen event-driven intentie en synchronisatie-praktijk die zichtbaar wordt in
+[Synchronisatieberichten als herstelmechanisme](#synchronisatieberichten-als-herstelmechanisme).
 
 Het WOZ-domein is expliciet een van de toepassingsgebieden waarin het project inzichten beproeft.
 Dit maakt de bevindingen direct relevant voor de modernisering van de LV-WOZ.
@@ -90,10 +90,10 @@ registratie definitief wordt. Dit maakt het mogelijk om bedrijfsregels vooraf te
 twijfel de discretionaire bevoegdheid van de behandelaar te benutten, in plaats van achteraf
 foutmeldingen te verwerken.
 
-De beweging naar functionele APIs raakt direct aan de in het hoofdstuk [Knelpunten](#knelpunten)
-beschreven spanning tussen event-driven intentie en synchronisatie-praktijk: het dienstbericht in de
-huidige WOZ-keten bevat al een gebeurtenislaag, maar de kennisgevingen daarbinnen zijn
-data-gedreven. Een functionele API zou deze twee lagen integreren.
+De beweging naar functionele APIs raakt direct aan dezelfde spanning tussen event-driven intentie en
+synchronisatie-praktijk: het dienstbericht in de huidige WOZ-keten bevat al een gebeurtenislaag,
+maar de kennisgevingen daarbinnen zijn data-gedreven. Een functionele API zou deze twee lagen
+integreren.
 
 ## Smart Endpoints, Dumb Pipes
 
@@ -117,15 +117,15 @@ of simpele message brokers die berichten routeren zonder ze te interpreteren. De
 bij de endpoints, niet in de pipe.
 
 Het principe is geformuleerd in de context van microservices, maar de onderliggende observatie is
-breder toepasbaar. De in het hoofdstuk [Knelpunten](#knelpunten) beschreven problematiek, waarin de
-complexiteit van de transportlaag leidt tot een gescheiden MSH-component dat het end-to-end zicht op
-afleveringsstatus en verwerking doorbreekt, laat zich herkennen als een geval van te veel
-intelligentie in de pipe.
+breder toepasbaar. De problematiek beschreven in
+[De MSH als gescheiden component](#de-msh-als-gescheiden-component), waarin de complexiteit van de
+transportlaag leidt tot een gescheiden MSH-component dat het end-to-end zicht op afleveringsstatus
+en verwerking doorbreekt, laat zich herkennen als een geval van te veel intelligentie in de pipe.
 
 Samen met de principes van Uit Betrouwbare Bron en de Common Ground-beweging wijst dit principe in
 dezelfde richting: intelligentie hoort bij de applicatie, niet in de transportlaag.
 
-## Werkgroep Historie en Tijdreizen
+## Werkgroep Historie
 
 Binnen het Kennisplatform APIs wordt een werkgroep opgezet die zich richt op de vraag hoe
 basisregistraties historie moeten ontsluiten en bijhouden via REST API's. De werkgroep richt zich op

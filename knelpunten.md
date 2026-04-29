@@ -1,20 +1,14 @@
 # Knelpunten
 
-Het hoofdstuk [Functionele kaders](#functionele-kaders) beschrijft de functionele eisen waaraan de
-WOZ-keten moet voldoen. De huidige inrichting is ontworpen om aan deze eisen te voldoen en
-realiseert dit voor het merendeel. Op onderdelen, zoals herhaalbaarheid en de formele historie van
-de LV, worden de eisen in de praktijk niet volledig door de LV-WOZ zelf ingevuld maar door
-workarounds elders in de keten. De functionele eisen zelf brengen inherente complexiteit met zich
-mee; bitemporele historie, correctiesemantiek en consistentievalidatie zijn in elke implementatie
-complex.
-
-Dit hoofdstuk analyseert de spanning tussen die eisen en de wijze waarop ze in de huidige
-standaarden zijn geïmplementeerd. De beschreven knelpunten zijn geïdentificeerd op basis van
-gesprekken met stakeholders (Kadaster, VNG, Waarderingskamer, afnemers) en analyse van de bestaande
-specificaties en evaluaties. Niet alle stakeholders waarderen elke observatie op dezelfde manier:
-wat voor de ene partij een knelpunt is, kan voor een andere partij een aanvaardbaar gevolg zijn van
-het voldoen aan functionele eisen. Het hoofdstuk beschrijft de spanningen zo feitelijk mogelijk,
-zodat ze kunnen worden meegewogen bij het beoordelen van alternatieven.
+De [functionele eisen](#functionele-kaders) waaraan de WOZ-keten moet voldoen, worden in de
+[huidige inrichting](#huidige-situatie) op basis van StUF en ebMS2 voor het merendeel ingevuld. Dit
+hoofdstuk analyseert de spanning tussen die eisen en de wijze waarop ze in de huidige standaarden
+zijn geïmplementeerd. De beschreven knelpunten zijn geïdentificeerd op basis van gesprekken met
+stakeholders (Kadaster, VNG, Waarderingskamer, afnemers) en analyse van de bestaande specificaties
+en evaluaties. Niet alle stakeholders waarderen elke observatie op dezelfde manier: wat voor de ene
+partij een knelpunt is, kan voor een andere partij een aanvaardbaar gevolg zijn van het voldoen aan
+functionele eisen. Het hoofdstuk beschrijft de spanningen zo feitelijk mogelijk, zodat ze kunnen
+worden meegewogen bij het beoordelen van alternatieven.
 
 ## De standaarden
 
@@ -309,7 +303,7 @@ controle over de volgorde, en beperkte mogelijkheden om terug te communiceren. Z
 zijn dan de zwakste schakel: wanneer een bronhouder geen formele historie aanlevert, kan de LV die
 niet fabriceren.
 
-### Consistentievalidatie
+### Validatie versus divergentie
 
 [Consistentievalidatie](#consistentievalidatie) is een functionele eis: gegevens die de LV-WOZ
 doorlevert moeten intern consistent zijn. Tegelijkertijd is elke validatie die de LV doet potentieel

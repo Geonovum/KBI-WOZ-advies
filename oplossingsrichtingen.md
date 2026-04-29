@@ -57,9 +57,9 @@ De praktijk laat zien dat de informatiebehoefte per afnemer sterk verschilt en d
 uiteenlopende strategieën hanteren. De Belastingdienst verwerkt de informatie uit de informatierijke
 notificaties (gebeurtenissen), maar haalt in aanvulling daarop de data via bevraging op in een
 gestandaardiseerd formaat; minstens eenmaal per jaar halen zij de volledige dataset op ter controle.
-Waterschappen hebben daarentegen behoefte aan specifieke gegevens die niet uit een
-standaardbevraging komen, zoals het adres waarnaar de gemeente de beschikking heeft gestuurd, zodat
-de waterschapsaanslag naar hetzelfde adres kan.
+Waterschappen hebben daarentegen behoefte aan gegevens die specifiek voor hen relevant zijn, zoals
+de aanduiding gebouwd/ongebouwd en sluimerende WOZ-objecten, die in de huidige levering per
+afnemertype worden gefilterd.
 
 Dit wijst erop dat de vraag niet zozeer "informatierijk of informatiearm" is, maar welk patroon bij
 welke afnemer past. De keuze heeft directe gevolgen voor het ontwerp van de notificatiedienst en

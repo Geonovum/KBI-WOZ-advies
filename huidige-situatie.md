@@ -52,7 +52,7 @@ beide kanten worden ingeladen.
 
 ### StUF als berichtenstandaard
 
-StUF-WOZ is de sectorspecifieke invulling van de StUF-standaard voor WOZ-gegevens. De standaard
+[[STUF-WOZ]] is de sectorspecifieke invulling van de StUF-standaard voor WOZ-gegevens. De standaard
 definieert een gedetailleerd objectmodel voor WOZ-objecten, belanghebbenden, waarden en hun
 onderlinge relaties. StUF ondersteunt:
 
@@ -81,10 +81,10 @@ de WOZ-keten van grote juridische betekenis kunnen zijn.
 ### Schaal en seizoenspatroon
 
 De WOZ-keten kent een sterk seizoensgebonden karakter. Na 1 januari ontvangen circa 10 miljoen
-huishoudens en rechtspersonen een WOZ-beschikking. Van elk van deze beschikkingen wordt een digitaal
-afschrift aangeleverd aan de LV-WOZ, zodat afnemers zoals de Belastingdienst, waterschappen en het
-CBS deze gegevens kunnen gebruiken. De wettelijke termijn voor het nemen van de WOZ-beschikking is 8
-weken na 1 januari.
+huishoudens en rechtspersonen een WOZ-beschikking. Van elke beschikking worden de relevante gegevens
+(waarde, peildatum, status en metagegevens) als gebeurtenis aan de LV-WOZ aangeleverd, zodat
+afnemers zoals de Belastingdienst, waterschappen en het CBS deze gegevens kunnen gebruiken. De
+wettelijke termijn voor het nemen van de WOZ-beschikking is 8 weken na 1 januari.
 
 Dit betekent dat in januari en februari het berichtenvolume een veelvoud is van de rest van het
 jaar. De huidige architectuur wordt in deze piekperiode dan ook zwaar belast. De keuze voor
@@ -137,10 +137,10 @@ onderlinge relaties in berichten worden gerepresenteerd. Deze semantische standa
 aan interoperabiliteit binnen de keten, ook al is de structuur van de gegevens en de samenhang met
 andere registraties complex.
 
-### Bitemporele historie
+### Ondersteuning voor bitemporele historie
 
-StUF biedt ondersteuning voor [bitemporele historie](#bitemporele-historie): de combinatie van
-materiële en formele historie die nodig is voor bezwaar, beroep en verantwoording.
+StUF biedt ondersteuning voor bitemporele historie: de combinatie van materiële en formele historie
+die nodig is voor bezwaar, beroep en verantwoording.
 
 ### Bewezen governance
 
@@ -163,7 +163,7 @@ van hun levenscyclus:
 - **ebMS2** wordt niet langer doorontwikkeld. Logius bereidt een transitie voor naar
   [ebMS3/AS4](#def-ebms3) [[DK-ROADMAP]]. De analyse van dit moderniseringspad en wat het in
   potentie wel en niet oplost voor de WOZ-keten wordt behandeld in het hoofdstuk
-  [Het ebMS3/AS4-perspectief](#het-ebms3as4-perspectief).
+  [Het ebMS3/AS4-perspectief](#het-ebms3-as4-perspectief).
 
 - **StUF** wordt niet doorontwikkeld, maar wel onderhouden: wetswijzigingen en gevonden fouten
   worden verwerkt, maar er is geen doorontwikkelingsagenda. Forum Standaardisatie heeft in

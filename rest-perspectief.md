@@ -115,7 +115,7 @@ technische bouwstenen om vergelijkbare functionaliteit te realiseren, maar de ge
 schrijven niet voor _hoe_ dit moet gebeuren. Dit leidt tot een situatie waarin elke implementatie
 eigen keuzes maakt, wat de interoperabiliteit beperkt.
 
-### Betrouwbare aflevering
+### Betrouwbaarheid
 
 Het REST API profiel is een _best-effort_ standaard. De Digikoppeling architectuur [[DK-ARCH]] is
 hier expliciet over: "Is betrouwbaarheid belangrijker, kies dan voor een koppelvlakstandaard dat
@@ -221,7 +221,8 @@ StUF definieert expliciete mutatiesoorten (T, V, W, F) die aangeven of een wijzi
 update is of een correctie van eerder geregistreerde gegevens. In combinatie met de
 [bitemporele elementen](#def-bitemporeel) (`beginGeldigheid`, `eindGeldigheid`,
 `tijdstipRegistratie`) maakt dit de opbouw van volledige historie mogelijk. De details van deze
-StUF-functionaliteit worden behandeld in het hoofdstuk [Knelpunten](#knelpunten).
+StUF-functionaliteit komen aan bod in
+[Toestandsoverdracht en volgorde-afhankelijkheid](#toestandsoverdracht-en-volgorde-afhankelijkheid).
 
 REST API's kunnen vergelijkbare functionaliteit bieden, bijvoorbeeld via:
 
@@ -257,9 +258,8 @@ FSC biedt:
 
 Met deze functionaliteit adresseert FSC een vergelijkbare behoefte als de CPA's in ebMS2: het
 formaliseren van afspraken tussen organisaties over wie welke diensten mag afnemen. Het beheermodel
-is echter fundamenteel anders: waar CPA's bilaterale coördinatie vereisen (zie
-[Knelpunten](#knelpunten)), werkt FSC met een gedistribueerd model waarin de Directory als centraal
-register fungeert.
+is echter fundamenteel anders: waar CPA's bilaterale coördinatie vereisen, werkt FSC met een
+gedistribueerd model waarin de Directory als centraal register fungeert.
 
 ### Scope-afbakening
 
@@ -311,8 +311,9 @@ standaardisatie-opgave die tijd, governance en adoptie vereist.
 
 Bij een REST-architectuur vervalt de noodzaak van een MSH als apart component. De WOZ-applicatie
 communiceert rechtstreeks via HTTP met de LV-WOZ (of via lichtgewicht tussenliggende componenten).
-Daarmee verdwijnt de architecturele scheiding die in het hoofdstuk [Knelpunten](#knelpunten) is
-beschreven als bron van verlies van end-to-end zicht.
+Daarmee verdwijnt de architecturele scheiding die in
+[De MSH als gescheiden component](#de-msh-als-gescheiden-component) is beschreven als bron van
+verlies van end-to-end zicht.
 
 De organisatorische behoefte aan uitbesteding blijft wel bestaan: bronhouders willen op diverse
 vlakken ontzorgd worden. De complexiteitsdrempel verschuift (REST API's zijn toegankelijker dan
@@ -322,7 +323,7 @@ ongeacht of de bronhouder de technische implementatie zelf beheert of uitbesteed
 communicatie biedt hier voordelen: wanneer de bronhouder direct een response ontvangt, is de
 verwerkingsstatus onmiddellijk duidelijk.
 
-## Samenvattend
+## Samenvatting REST
 
 De transitie van ebMS2/StUF naar REST API's is niet triviaal, maar niet omdat REST technisch
 ontoereikend zou zijn. Het verschil zit in de mate van standaardisatie. ebMS2 en StUF bieden een

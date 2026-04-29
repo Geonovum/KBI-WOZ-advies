@@ -5,9 +5,8 @@ onafhankelijk van de gekozen technologie of standaarden. De eisen zijn afgeleid 
 [[WET-WOZ]], de Catalogus Basisregistratie WOZ [[CATALOGUS-WOZ]] en de behoeften van afnemers zoals
 die naar voren komen uit de analyse in dit document.
 
-De huidige inrichting op basis van StUF en ebMS2 is ontworpen om aan deze eisen te voldoen. Het doel
-van dit hoofdstuk is om een toetsingskader te bieden waartegen zowel de huidige inrichting als
-alternatieven kunnen worden beoordeeld. De eisen in dit hoofdstuk betreffen het _wat_; de keuze
+Het doel van dit hoofdstuk is om een toetsingskader te bieden waartegen zowel de huidige inrichting
+als alternatieven kunnen worden beoordeeld. De eisen in dit hoofdstuk betreffen het _wat_; de keuze
 _hoe_ deze eisen worden ingevuld zijn architectuurkeuzes die aan bod komen in de
 oplossingsrichtingen.
 
@@ -127,13 +126,13 @@ Dit stelt eisen aan:
 
 ## Notificatie van afnemers
 
-Afnemers moeten tijdig worden geinformeerd over wijzigingen in WOZ-gegevens, zodat zij hun processen
+Afnemers moeten tijdig worden geïnformeerd over wijzigingen in WOZ-gegevens, zodat zij hun processen
 kunnen starten. De informatiebehoefte verschilt per afnemer:
 
 - De Belastingdienst heeft behoefte aan zowel gebeurtenisinformatie als de mogelijkheid om gegevens
   in een gestandaardiseerd formaat op te halen.
-- Waterschappen hebben behoefte aan specifieke gegevens (zoals het beschikkingsadres) die niet uit
-  een standaardbevraging komen.
+- Waterschappen hebben behoefte aan specifieke gegevens (zoals de aanduiding gebouwd/ongebouwd en
+  sluimerende WOZ-objecten) die voor andere afnemers worden weggefilterd.
 - Het CBS heeft behoefte aan statistische aggregaties.
 
 Het koppelvlak moet het mogelijk maken dat afnemers de voor hen relevante gegevens ontvangen of
@@ -159,8 +158,8 @@ Handelsregister). Het koppelvlak moet eenduidige, persistente identificatie onde
 gegevens betrouwbaar kunnen worden gekoppeld. Dit geldt voor:
 
 - **Objecten**: WOZ-objecten en hun relatie met BAG-objecten.
-- **Subjecten**: natuurlijke personen, niet-natuurlijke personen en vestigingen, geidentificeerd met
-  actuele identificatoren (BSN, RSIN, KvK-nummer).
+- **Subjecten**: natuurlijke personen, niet-natuurlijke personen en vestigingen, geïdentificeerd met
+  actuele identificatoren (BSN, RSIN, vestigingsnummer).
 - **Relaties**: de relatie tussen een subject en een WOZ-object (bijvoorbeeld een belang) moet
   eenduidig identificeerbaar zijn, ook wanneer relaties worden beëindigd of gecorrigeerd.
 
