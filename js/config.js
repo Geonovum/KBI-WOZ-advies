@@ -257,10 +257,17 @@ let respecConfig = {
       href: "https://wetten.overheid.nl/BWBR0007119/",
       publisher: "Rijksoverheid",
     },
+    "UB-WOZ-GEGEVENS": {
+      id: "UB-WOZ-GEGEVENS",
+      title:
+        "Uitvoeringsbesluit kostenverrekening en gegevensuitwisseling Wet waardering onroerende zaken",
+      href: "https://wetten.overheid.nl/BWBR0007230/",
+      publisher: "Rijksoverheid",
+    },
     "CATALOGUS-WOZ": {
       id: "CATALOGUS-WOZ",
       title: "Catalogus Basisregistratie WOZ",
-      href: "https://www.waarderingskamer.nl/basisregistratie-woz-lv-woz/catalogus-basisregistratie-woz/",
+      href: "https://www.waarderingskamer.nl/documenten/03.-Voor-gemeenten/04.-Gegevensbeheer/Catalogus-WOZ-gegevens-voor-afnemers-versie-1.8.pdf",
       publisher: "Waarderingskamer",
     },
     "SMART-ENDPOINTS": {

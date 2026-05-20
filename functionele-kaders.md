@@ -12,20 +12,19 @@ oplossingsrichtingen.
 
 ## Aanlevering en registratie
 
-De Wet WOZ (art. 37a-37b) beschrijft twee voorzieningen: de Basisregistratie WOZ bij de gemeente en
-de Landelijke Voorziening WOZ bij het Kadaster. Het college van B&W levert waardegegevens met
-bijbehorende temporele en meta-kenmerken aan het Kadaster ten behoeve van opname in de LV-WOZ (art.
-37b). De LV-WOZ heeft als doel deze gegevens te verstrekken aan afnemers (art. 37aa). De
-specificaties voor de aanlevering worden vastgesteld door de Waarderingskamer (Uitvoeringsbesluit
-art. 9).
+De Wet WOZ [WET-WOZ] beschrijft twee voorzieningen: de Basisregistratie WOZ bij de gemeente en de
+Landelijke Voorziening WOZ bij de Dienst (het Kadaster). Het college levert een waardegegeven met
+bijbehorende temporele en meta-kenmerken aan de Dienst ten behoeve van opname in de LV-WOZ
+(aanleverplicht, art. 37b); de Dienst verstrekt het waardegegeven vervolgens aan afnemers. De
+specificaties voor de aanlevering worden vastgesteld door de Waarderingskamer
+([[UB-WOZ-GEGEVENS]], art. 9).
 
-De wet beschrijft een aanleverplicht (art. 37b). De Waarderingskamer hanteert als uitgangspunt voor
-het gegevensbeheer dat de gegevens in de LV-WOZ steeds een volledige kopie ("conforme kopie") moeten
-zijn van de gegevens in de eigen administratie [[CATALOGUS-WOZ]]. Dit conforme-kopie-principe is
-leidend geweest bij het ontwerp van het huidige koppelvlak en wordt in dit document als geldend
-uitgangspunt gehanteerd.
+De Waarderingskamer hanteert voor het gegevensbeheer als uitgangspunt dat de gegevens in de LV-WOZ
+steeds een volledige kopie ("conforme kopie") zijn van de gegevens in de eigen administratie
+[[CATALOGUS-WOZ]]. Dit conforme-kopie-principe is leidend geweest bij het ontwerp van het huidige
+koppelvlak en wordt in dit document als uitgangspunt gehanteerd.
 
-De aanleverplicht en het conforme-kopie-principe stellen gezamenlijk eisen aan het koppelvlak:
+Aanleverplicht en conforme-kopie-principe stellen samen eisen aan het koppelvlak:
 
 - De bronhouder moet in staat zijn alle relevante gegevens aan te leveren, inclusief correcties en
   wijzigingen met terugwerkende kracht.
