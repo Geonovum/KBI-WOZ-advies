@@ -10,26 +10,26 @@ als alternatieven kunnen worden beoordeeld. De eisen in dit hoofdstuk betreffen 
 _hoe_ deze eisen worden ingevuld zijn architectuurkeuzes die aan bod komen in de
 oplossingsrichtingen.
 
+## Wettelijk kader
+
+De Wet WOZ [[WET-WOZ]] beschrijft twee voorzieningen: de Basisregistratie WOZ bij de gemeente en de
+Landelijke Voorziening WOZ bij de Dienst (het Kadaster). De wet legt twee verplichtingen vast die aan
+de eisen in dit hoofdstuk ten grondslag liggen:
+
+- **Leveren** (art. 37b, lid 1): Het college levert een waardegegeven met bijbehorende temporele en
+  meta-kenmerken aan de Dienst ten behoeve van de opname in de landelijke voorziening WOZ.
+- **Overeenstemmen** (art. 37aa, lid 3): De Dienst draagt er zorg voor dat de weergave van een in de
+  landelijke voorziening WOZ opgenomen gegeven overeenstemt met het overeenkomstig artikel 37b,
+  eerste lid, door het college verstrekte gegeven.
+
 ## Aanlevering en registratie
 
-De Wet WOZ [WET-WOZ] beschrijft twee voorzieningen: de Basisregistratie WOZ bij de gemeente en de
-Landelijke Voorziening WOZ bij de Dienst (het Kadaster). Het college levert een waardegegeven met
-bijbehorende temporele en meta-kenmerken aan de Dienst ten behoeve van opname in de LV-WOZ
-(aanleverplicht, art. 37b); de Dienst verstrekt het waardegegeven vervolgens aan afnemers. De
-specificaties voor de aanlevering worden vastgesteld door de Waarderingskamer
-([[UB-WOZ-GEGEVENS]], art. 9).
-
-De Waarderingskamer hanteert voor het gegevensbeheer als uitgangspunt dat de gegevens in de LV-WOZ
-steeds een volledige kopie ("conforme kopie") zijn van de gegevens in de eigen administratie
-[[CATALOGUS-WOZ]]. Dit conforme-kopie-principe is leidend geweest bij het ontwerp van het huidige
-koppelvlak en wordt in dit document als uitgangspunt gehanteerd.
-
-Aanleverplicht en conforme-kopie-principe stellen samen eisen aan het koppelvlak:
+Uit de verplichtingen tot leveren en overeenstemmen volgen eisen aan het koppelvlak:
 
 - De bronhouder moet in staat zijn alle relevante gegevens aan te leveren, inclusief correcties en
   wijzigingen met terugwerkende kracht.
-- Wanneer de LV-WOZ en de Basisregistratie WOZ uiteenlopen, moet er een mechanisme zijn om beide
-  weer in overeenstemming te brengen.
+- De LV-WOZ moet het door de bronhouder verstrekte gegeven getrouw kunnen weergeven en, na een
+  bijgestelde levering, de weergave daarmee in overeenstemming kunnen brengen.
 
 ## Bitemporele historie
 

@@ -1,5 +1,14 @@
 # Huidige situatie
 
+## Conforme kopie als uitgangspunt
+
+De Waarderingskamer hanteert voor het gegevensbeheer als uitgangspunt dat de gegevens in de LV-WOZ
+steeds een volledige kopie ("conforme kopie") zijn van de gegevens in de gemeentelijke administratie
+[[CATALOGUS-WOZ]]. Dit conforme-kopie-principe vult de wettelijke eis tot overeenstemmen (zie
+[Wettelijk kader](#wettelijk-kader)) strikt in: niet alleen het verstrekte
+gegeven, maar de volledige vastlegging in de LV moet overeenkomen met de bronregistratie. Het
+principe is leidend geweest bij het ontwerp van het huidige koppelvlak.
+
 ## Technische inrichting
 
 De gegevensuitwisseling tussen bronhouders en de [LV-WOZ](#def-lv-woz) is gebaseerd op twee

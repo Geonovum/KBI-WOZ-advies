@@ -12,16 +12,17 @@ te voeren.
 
 ## Leveren en overeenstemmen
 
-Een herformulering van het functionele uitgangspunt voor de LV-WOZ is mogelijk binnen de
-[bestaande functionele kaders](#functionele-kaders); die blijven het toetsingskader voor zowel de
-huidige inrichting als voor de alternatieven die volgen.
+De LV-WOZ kan worden ingericht rond de wettelijke begrippen leveren en overeenstemmen, in plaats van
+rond het strengere uitgangspunt "conforme kopie" van het huidige ontwerp. De functionele eisen, in
+het bijzonder die voor afnemers, blijven het [toetsingskader](#functionele-kaders); wat verandert,
+is hoe de LV ze invult.
 
 ### Aanleiding
 
-Het bestaande functionele kader hanteert "conforme kopie" als uitgangspunt voor het gegevensbeheer
-(zie [Aanlevering en registratie](#aanlevering-en-registratie)): de gegevens in de LV-WOZ moeten een
-volledige kopie zijn van de gegevens in de gemeentelijke administratie. Dit uitgangspunt staat op
-gespannen voet met twee aspecten van de huidige praktijk.
+De huidige inrichting hanteert [conforme kopie als uitgangspunt](#conforme-kopie-als-uitgangspunt)
+voor het gegevensbeheer: de gegevens in de LV-WOZ moeten een volledige kopie zijn van de gegevens in
+de gemeentelijke administratie. Dit uitgangspunt staat op gespannen voet met twee aspecten van de
+huidige praktijk.
 
 - De LV-WOZ legt geen 1-op-1 spiegel vast van de gemeentelijke registratie. Zij reconstrueert
   formele historie uit binnenkomende mutaties en leidt afgeleide tijdlijnwaarden af zoals begin- en
@@ -36,26 +37,14 @@ Beide observaties wijzen op een onderliggend spanningsveld: een conforme kopie e
 kunnen niet beide volledig worden gerealiseerd. Validatie creëert verschillen waar zij afkeurt;
 reconstructie creëert een vastlegging die structureel verschilt van de bronregistratie.
 
-Een herformulering van het functionele uitgangspunt adresseert dit spanningsveld zonder de eisen
-voor afnemers te wijzigen.
+Een herformulering van het ontwerpuitgangspunt adresseert dit spanningsveld zonder de eisen voor
+afnemers te wijzigen.
 
 ### Wettelijke basis
 
-Het uitgangspunt "conforme kopie" wordt door de Waarderingskamer gehanteerd in haar sturing op
-bronhouders en is leidend geweest bij het ontwerp van het huidige koppelvlak. De wet zelf gebruikt
-deze term niet.
-
-De Wet WOZ [WET-WOZ] legt twee relevante verplichtingen vast:
-
-- **Leveren** (art. 37b, lid 1): Het college levert een waardegegeven met bijbehorende temporele en
-  meta-kenmerken aan de Dienst ten behoeve van de opname in de landelijke voorziening WOZ.
-- **Overeenstemmen** (art. 37aa, lid 3): De Dienst draagt er zorg voor dat de weergave van een in de
-  landelijke voorziening WOZ opgenomen gegeven overeenstemt met het overeenkomstig artikel 37b,
-  eerste lid, door het college verstrekte gegeven.
-
-De wettekst spreekt van leveren en overeenstemmen, niet van een identieke vastlegging of een 1-op-1
-kopie. Een conforme kopie tussen LV en bronhouder is daarmee een ontwerpinvulling, geen wettelijke
-eis.
+De [wettekst](#wettelijk-kader) spreekt van leveren en overeenstemmen, niet van een identieke
+vastlegging of een 1-op-1 kopie. Een [conforme kopie](#conforme-kopie-als-uitgangspunt) tussen LV en
+bronhouder is daarmee een ontwerpinvulling, geen wettelijke eis.
 
 De Wet WOZ ontstond vóór de invoering van de LV; de LV is later in een zo beperkt mogelijke
 wetswijziging toegevoegd. De wet is daarmee niet vanaf de grond op het LV-concept geschreven, wat
@@ -97,13 +86,14 @@ worden uitgewerkt.
 "Oud" betekent niet hetzelfde bij gemeente, LV en afnemer; elke partij voert een eigen registratie
 met eigen interpretatie-logica. Verschillen in een meegestuurd oud-nieuw paar leiden tot afkeur of
 tot interpretatieonzekerheid bij afnemers. Door alleen de nieuwe toestand te leveren, vervalt deze
-divergentie-bron.
+divergentie-bron. De juistheid van de materiële historie wordt daarmee niet langer impliciet via het
+oud-nieuw paar bewaakt; die borging verschuift naar de bronhouder en naar terugmelding achteraf.
 
 #### 2. Vastleggen als stapel leveringen
 
 De gemeente levert wat materieel geldt voor een periode; de LV legt vast wanneer welke levering is
 verwerkt en beschikbaar gemaakt, en bouwt daaruit een eigen registratietijdlijn op. Het bestand
-groeit aan; eerdere uitspraken worden niet overschreven.
+groeit aan; eerdere uitspraken worden niet overschreven of verwijderd.
 
 - Elke levering krijgt een tijdstip waarop zij door de LV is verwerkt en beschikbaar gemaakt voor
   bevraging. Deze reeks vormt een eigen registratietijdlijn (formele tijdlijn) van de LV, los van de
@@ -121,6 +111,9 @@ groeit aan; eerdere uitspraken worden niet overschreven.
 - De LV reconstrueert de bronhouder-formele tijdlijn niet. De Belastingdienst heeft expliciet
   behoefte aan LV-formele historie ("wanneer wist de LV iets?") en reconstrueert die op dit moment
   zelf, omdat de LV deze niet bijhoudt (zie [Formele historie](#formele-historie)).
+- Formele-tijdlijngegevens van de bronhouder kunnen wel worden meegeleverd en door de LV als
+  doorgeefluik aan afnemers worden doorgeleverd. De LV reconstrueert die tijdlijn echter niet en
+  bewaakt haar niet (voor zover dat al mogelijk zou zijn).
 
 #### 3. Overeenstemmen via projecties
 
@@ -179,8 +172,8 @@ verminderen, niet alle verdwijnen):
   in de huidige inrichting fungeren synchronisatieberichten als noodgreep voor divergentie en als
   terugvaloptie voor correcties op historische gegevens. In het voorgestelde model is een nieuwe
   levering het normale mechanisme om een eerdere uitspraak bij te stellen. Een gebeurtenistype dat
-  alle feiten in één keer omvat (functioneel vergelijkbaar met de huidige synchronisatie) blijft
-  mogelijk; het verliest enkel zijn rol als hersteloplossing bij divergentie.
+  de volledige materiële tijdlijn bevat zou daarmee gebruikt kunnen worden om divergentie op te
+  lossen.
 - **[Interpretatielast](#de-interpretatielast)**: drie mechanismen verminderen de afleidingstaak in
   de keten. (1) De gebeurtenis wordt expliciet bij elke levering meegegeven; pattern-matching op
   datamutaties om af te leiden wat er is gebeurd, vervalt. (2) Correcties krijgen een eigen
@@ -368,10 +361,16 @@ het deelresultaat in plaats van op het geheel. Partial-success-semantiek vraagt 
 over wat een batch "geaccepteerd" maakt: alle leveringen succesvol, een minimumaandeel, of altijd
 een 2xx met fouten in de respons.
 
+Een bijkomend aspect is het sneeuwbaleffect van de volgorde-afhankelijkheid: faalt een vroege
+levering in een keten, dan falen de afhankelijke leveringen mee. Of bronhouders een batch daarom
+liever als één transactie (alles-of-niets) behandelen, is een open afweging tegenover de drie
+hierboven genoemde overwegingen tegen transactioneel gedrag.
+
 Een synchroon koppelvlak werkt zowel met als zonder batch; batchondersteuning is een uitbreiding
 boven op het basismodel. Open punten zijn de afweging tussen transportoverhead en
-foutafhandelingsgemak, de semantiek van partial success, en de behandeling van een herziene batch
-met dezelfde `Idempotency-Key`.
+foutafhandelingsgemak, de semantiek van partial success, de behandeling van een herziene batch met
+dezelfde `Idempotency-Key`, en de vraag of een batch voor bronhouders transactioneel zou moeten
+zijn.
 
 ### Welke knelpunten dit (deels) oplost
 
