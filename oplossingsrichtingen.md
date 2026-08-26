@@ -95,6 +95,12 @@ De gemeente levert wat materieel geldt voor een periode; de LV legt vast wanneer
 verwerkt en beschikbaar gemaakt, en bouwt daaruit een eigen registratietijdlijn op. Het bestand
 groeit aan; eerdere uitspraken worden niet overschreven of verwijderd.
 
+De vastlegging vormt niet één doorlopende stapel, maar is opgedeeld per beschikkingsjaar: het
+belastingjaar waarvoor een WOZ-waarde geldt. Elk beschikkingsjaar heeft een eigen waardepeildatum
+en daarmee een eigen stapel leveringen met een eigen registratietijdlijn. Elke levering hoort bij
+een specifiek beschikkingsjaar; de regel "meest recente uitspraak telt" en de projecties (zie
+hierna) werken binnen die partitie.
+
 - Elke levering krijgt een tijdstip waarop zij door de LV is verwerkt en beschikbaar gemaakt voor
   bevraging. Deze reeks vormt een eigen registratietijdlijn (formele tijdlijn) van de LV, los van de
   formele tijdlijn van de bronhouder. De materiële tijdlijn (geldigheidstijdlijn) blijft bij de
@@ -114,6 +120,11 @@ groeit aan; eerdere uitspraken worden niet overschreven of verwijderd.
 - Formele-tijdlijngegevens van de bronhouder kunnen wel worden meegeleverd en door de LV als
   doorgeefluik aan afnemers worden doorgeleverd. De LV reconstrueert die tijdlijn echter niet en
   bewaakt haar niet (voor zover dat al mogelijk zou zijn).
+
+Het bestaan van de leveringenstapels en de ordening daarop (welke uitspraak telt) is een
+ketenafspraak; hoe het Kadaster die stapels fysiek opslaat en bevraagbaar maakt (datamodel,
+indexering, performance) is een implementatiekeuze waarover geen ketenafspraken nodig zijn. Dit
+wat/hoe-onderscheid keert terug bij de projecties hieronder.
 
 #### 3. Overeenstemmen via projecties
 
