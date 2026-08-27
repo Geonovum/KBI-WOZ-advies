@@ -70,18 +70,19 @@ belastingtermijn vallen.
 
 Voor de transportlaag zijn er twee routes. ebMS3/AS4 is de actief onderhouden opvolger van ebMS2 en
 onderdeel van de Europese eDelivery-standaard. Het lost het onderhoudsprobleem op en verbetert de
-marktondersteuning. Het behoudt de MSH-architectuur, de behoefte aan specialistische kennis, en laat
-de inhoud van de berichten (StUF) ongemoeid. Het is in de kern een onderhoudstransitie.
+marktondersteuning. Het behoudt de architectuur met een aparte adapter (MSH), de behoefte aan
+specialistische kennis, en laat de inhoud van de berichten (StUF) ongemoeid. Het is in de kern een
+onderhoudstransitie.
 
-Een REST-gebaseerde architectuur neemt de aparte MSH weg; de WOZ-applicatie communiceert
+Een REST-gebaseerde architectuur neemt de aparte adapter (MSH) weg; de WOZ-applicatie communiceert
 rechtstreeks met de LV. Deze route sluit aan op de inmiddels verplichte standaarden. REST
 standaardiseert betrouwbaarheid, beheersing van piekbelasting, aanlevering van historie en het
 verwerken van correcties niet uit zichzelf; die moeten per domein worden vastgelegd. Dat is
 technisch mogelijk en vraagt om standaardisatie.
 
-De afweging is strategisch: investeren in de MSH-route met de huidige ketenstructuur, of investeren
-in een REST-architectuur die de ketenstructuur kan veranderen. Dit advies concludeert dat de
-REST-route de juiste is, op voorwaarde dat wat REST zelf niet regelt gezamenlijk wordt
+De afweging is strategisch: investeren in de adapterroute (MSH) met de huidige ketenstructuur, of
+investeren in een REST-architectuur die de ketenstructuur kan veranderen. Dit advies concludeert dat
+de REST-route de juiste is, op voorwaarde dat wat REST zelf niet regelt gezamenlijk wordt
 gestandaardiseerd. Die combinatie, REST-koppelvlakken plus gedeelde afspraken, is de lijn die dit
 advies schetst.
 
