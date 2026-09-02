@@ -51,6 +51,14 @@ wetswijziging toegevoegd. De wet is daarmee niet vanaf de grond op het LV-concep
 mede verklaart dat zij de rol van de LV niet uitputtend uitwerkt. Een herformulering van het
 ontwerpuitgangspunt vraagt geen wetswijziging.
 
+Voor het Uitvoeringsbesluit ligt dat anders. De delegatiebepaling van artikel 9 blijft bruikbaar,
+maar de formaatdefinities in het besluit beschrijven nog de bestandsuitwisseling van vóór de
+landelijke voorziening (zie [Staat van de regelgeving](#staat-van-de-regelgeving)). Actualisering
+van het Uitvoeringsbesluit is daarom gewenst, ongeacht welke oplossingsrichting wordt gekozen. Dat
+onderhoud kan het beste gelijk oplopen met de invoering van een nieuw koppelvlak, zodat regelgeving
+en implementatie niet opnieuw uit elkaar groeien. Bij de invoering van de BRO is de regelgeving op
+die manier meegeactualiseerd.
+
 ### Voorgesteld model: leveren, vastleggen, overeenstemmen
 
 Het voorstel bouwt de invulling van "leveren" en "overeenstemmen" op uit drie samenhangende
@@ -96,10 +104,10 @@ verwerkt en beschikbaar gemaakt, en bouwt daaruit een eigen registratietijdlijn 
 groeit aan; eerdere uitspraken worden niet overschreven of verwijderd.
 
 De vastlegging vormt niet één doorlopende stapel, maar is opgedeeld per beschikkingsjaar: het
-belastingjaar waarvoor een WOZ-waarde geldt. Elk beschikkingsjaar heeft een eigen waardepeildatum
-en daarmee een eigen stapel leveringen met een eigen registratietijdlijn. Elke levering hoort bij
-een specifiek beschikkingsjaar; de regel "meest recente uitspraak telt" en de projecties (zie
-hierna) werken binnen die partitie.
+belastingjaar waarvoor een WOZ-waarde geldt. Elk beschikkingsjaar heeft een eigen waardepeildatum en
+daarmee een eigen stapel leveringen met een eigen registratietijdlijn. Elke levering hoort bij een
+specifiek beschikkingsjaar; de regel "meest recente uitspraak telt" en de projecties (zie hierna)
+werken binnen die partitie.
 
 - Elke levering krijgt een tijdstip waarop zij door de LV is verwerkt en beschikbaar gemaakt voor
   bevraging. Deze reeks vormt een eigen registratietijdlijn (formele tijdlijn) van de LV, los van de
@@ -138,12 +146,12 @@ vraag-antwoord-patroon hetzelfde.
   op tijdstip T?) op basis van dezelfde basisfeiten.
 - Verschillende afnemers krijgen verschillende projecties, afgestemd op hun informatiebehoefte,
   zonder dat zij de onderliggende leveringen zelf hoeven te interpreteren.
-- Een [beschouwingsmoment](#herhaalbaarheid-en-beschouwingsmoment) op de projectie maakt herhaalbare
-  bevraging mogelijk: dezelfde vraag met hetzelfde beschouwingsmoment levert hetzelfde antwoord op.
-  Een beschouwingsmoment omvat naast een tijdstip ook de versie van de bevragingssoftware; een
-  tussentijdse softwarewijziging die de afleiding raakt kan anders alsnog tot een ander antwoord
-  leiden. De operationele invulling van versiebepaling (welke softwarecomponenten meetellen, hoe
-  versies traceerbaar blijven) vraagt nadere uitwerking.
+- [Beschouwingsmomenten](#herhaalbaarheid-en-beschouwingsmomenten) op de projectie maken herhaalbare
+  bevraging mogelijk: dezelfde vraag met dezelfde momenten voor geldigheid en registratie levert
+  hetzelfde antwoord op. Het beschouwingsmoment registratie omvat naast een tijdstip ook de versie
+  van de bevragingssoftware; een tussentijdse softwarewijziging die de afleiding raakt kan anders
+  alsnog tot een ander antwoord leiden. De operationele invulling van versiebepaling (welke
+  softwarecomponenten meetellen, hoe versies traceerbaar blijven) vraagt nadere uitwerking.
 
 De "wat" van projecties (welke projecties beschikbaar zijn, welke informatie zij dragen, welke
 toezeggingen rond herhaalbaarheid gelden) is een ketenkeuze die met afnemers wordt afgesproken. De
@@ -179,20 +187,19 @@ verminderen, niet alle verdwijnen):
   een levering bevat de nieuwe toestand voor een periode, niet de combinatie oud-nieuw. De validatie
   tegen een meegestuurde "oude situatie" vervalt, en daarmee een belangrijke bron van
   afkeurmeldingen die ontstaat wanneer de LV-toestand afwijkt van wat de bronhouder veronderstelt.
-- **[Synchronisatieberichten als herstelmechanisme](#synchronisatieberichten-als-herstelmechanisme)**:
-  in de huidige inrichting fungeren synchronisatieberichten als noodgreep voor divergentie en als
-  terugvaloptie voor correcties op historische gegevens. In het voorgestelde model is een nieuwe
-  levering het normale mechanisme om een eerdere uitspraak bij te stellen. Een gebeurtenistype dat
-  de volledige materiële tijdlijn bevat zou daarmee gebruikt kunnen worden om divergentie op te
-  lossen.
+- **[Synchronisatieberichten](#synchronisatieberichten)**: in de huidige inrichting zijn
+  synchronisatieberichten de enige route voor correcties op historische gegevens, en daarnaast het
+  herstelmechanisme bij divergentie. In het voorgestelde model is een nieuwe levering het normale
+  mechanisme om een eerdere uitspraak bij te stellen. Een gebeurtenistype dat de volledige materiële
+  tijdlijn bevat zou daarmee gebruikt kunnen worden om divergentie op te lossen.
 - **[Interpretatielast](#de-interpretatielast)**: drie mechanismen verminderen de afleidingstaak in
   de keten. (1) De gebeurtenis wordt expliciet bij elke levering meegegeven; pattern-matching op
   datamutaties om af te leiden wat er is gebeurd, vervalt. (2) Correcties krijgen een eigen
-  gebeurtenistype, zodat afnemers in een "nieuwe beschikking"-bericht niet meer hoeven te scannen op
-  meegekomen correcties die een herziening (in plaats van een nieuwe aanslag) vereisen. (3) De LV
-  doet de afleiding eenmalig en levert het resultaat als projectie; de noodzaak voor elke afnemer om
-  dezelfde afleiding zelfstandig uit te voeren vervalt, en daarmee ook het risico op afwijkende
-  interpretaties tussen ketenpartners.
+  gebeurtenistype, zodat een correctie niet langer als kennisgeving kan meelopen in een
+  dienstbericht voor een reguliere gebeurtenis. (3) De LV doet de afleiding eenmalig en levert het
+  resultaat als projectie; een afnemer die die projectie afneemt hoeft de afleiding niet te
+  herhalen. Afnemers die om procesredenen hun eigen verwerking willen blijven doen, kunnen dat; het
+  verschil is dat zij daarvoor niet langer zijn aangewezen op reconstructie uit datamutaties.
 - **[Formele historie](#formele-historie)**: de LV bouwt een eigen formele historie ("wanneer was
   een uitspraak verwerkt en beschikbaar in de LV") in plaats van de bronhouder-formele historie te
   reconstrueren. Dit beantwoordt de behoefte van afnemers zoals de Belastingdienst en neemt de eis
@@ -217,7 +224,9 @@ verminderen, niet alle verdwijnen):
   dat losstaat van de bevraging via projecties.
 - **[Correctiesemantiek](#correctiesemantiek)**: doordat correcties een eigen gebeurtenistype
   krijgen, is het onderscheid tussen wijziging en correctie niet langer iets wat afnemers uit
-  patronen in datamutaties moeten afleiden.
+  patronen in datamutaties moeten afleiden. Randvoorwaarde is wel dat beide begrippen scherper
+  worden gedefinieerd dan nu het geval is; zonder die definitie is een eigen gebeurtenistype niet
+  eenduidig af te bakenen.
 
 ## Synchroon aanleveren en verwerken
 

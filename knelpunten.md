@@ -2,13 +2,33 @@
 
 De [functionele eisen](#functionele-kaders) waaraan de WOZ-keten moet voldoen, worden in de
 [huidige inrichting](#huidige-situatie) op basis van StUF en ebMS2 voor het merendeel ingevuld. Dit
-hoofdstuk analyseert de spanning tussen die eisen en de wijze waarop ze in de huidige standaarden
-zijn geïmplementeerd. De beschreven knelpunten zijn geïdentificeerd op basis van gesprekken met
-stakeholders (Kadaster, VNG, Waarderingskamer, afnemers) en analyse van de bestaande specificaties
-en evaluaties. Niet alle stakeholders waarderen elke observatie op dezelfde manier: wat voor de ene
+hoofdstuk beschrijft waar die invulling in de uitvoering spanning oplevert. De basis is gevormd door
+gesprekken met stakeholders (Kadaster, VNG, Waarderingskamer, afnemers) en analyse van de bestaande
+specificaties en evaluaties.
+
+Bij het lezen van dit hoofdstuk zijn twee dingen van belang.
+
+Ten eerste komen de beschreven knelpunten uit drie verschillende hoeken, en dat maakt uit voor wat
+een andere standaardkeuze eraan verandert:
+
+- Knelpunten die samenhangen met de **standaard**, zoals de MSH-architectuur en het CPA-beheer. Deze
+  kunnen met een andere standaard anders uitpakken.
+- Knelpunten die samenhangen met de **functionele eisen** zelf. Bitemporele historie,
+  correctiesemantiek en consistentiebewaking zijn inhoudelijk complex, ongeacht in welke standaard
+  zij worden uitgedrukt. Deze verdwijnen niet bij een standaardwissel.
+- Knelpunten die samenhangen met **ontwerpkeuzes in de keteninrichting**, zoals de vraag wiens
+  formele historie de LV bijhoudt. Deze staan los van de standaard en kunnen ook zonder
+  standaardwissel worden herzien.
+
+De [conclusie](#conclusie) van dit hoofdstuk sorteert de belangrijkste knelpunten langs deze drie
+lijnen. Dat onderscheid is bepalend voor de beoordeling van de alternatieven in de volgende
+hoofdstukken: een standaardwissel adresseert alleen de eerste categorie.
+
+Ten tweede waarderen niet alle stakeholders elke observatie op dezelfde manier. Wat voor de ene
 partij een knelpunt is, kan voor een andere partij een aanvaardbaar gevolg zijn van het voldoen aan
-functionele eisen. Het hoofdstuk beschrijft de spanningen zo feitelijk mogelijk, zodat ze kunnen
-worden meegewogen bij het beoordelen van alternatieven.
+een functionele eis. De observaties staan hier zodat ze kunnen worden meegewogen bij het beoordelen
+van alternatieven, en zijn beschreven zoals zij zich in de uitvoering voordoen, zonder ze zwaarder
+aan te zetten dan ze zijn.
 
 ## De standaarden
 
@@ -149,12 +169,19 @@ maar de gebeurtenis wordt altijd als geheel verwerkt: als één kennisgeving nie
 wordt het gehele dienstbericht afgewezen.
 
 De kennisgevingen binnen een dienstbericht zijn technisch gezien _state transfer messages_. Een
-wijzigkennisgeving bevat zowel de oude situatie als de nieuwe situatie. De ontvanger moet valideren
-dat de oude situatie overeenkomt met zijn huidige toestand, de wijziging toepassen, en een
-foutbericht genereren als de validatie faalt.
+wijzigkennisgeving bevat zowel de oude situatie als de nieuwe situatie. De standaard biedt de
+ontvanger daarmee de mogelijkheid te valideren dat de oude situatie overeenkomt met zijn huidige
+toestand; zij schrijft dat niet voor. Het LV-WOZ-koppelvlak maakt van die mogelijkheid gebruik: de
+LV valideert de oude situatie, past de wijziging toe, en genereert een foutbericht wanneer de
+validatie faalt.
 
-Een bijkomend probleem is het invoegen en verschuiven van entries op de materiële tijdlijn. Dit is
-extreem complex en wordt aangemerkt als de belangrijkste bron van implementatieproblemen.
+Het invoegen en verschuiven van entries op de materiële tijdlijn is complex in de implementatie en
+wordt door betrokkenen aangemerkt als een belangrijke bron van implementatieproblemen. Dit is geen
+bijkomend probleem van de standaard, maar de uitwerking van een functionele eis: de
+[correctiesemantiek](#correctiesemantiek) en de [bitemporele historie](#bitemporele-historie) vragen
+dat historische perioden kunnen worden bijgesteld. Elke standaard die deze eis invult moet hiervoor
+een mechanisme bieden. Wat per standaard verschilt, is hoeveel van die complexiteit bij de
+bronhouder terechtkomt.
 
 Dit patroon heeft specifieke eigenschappen. Berichten moeten in exacte volgorde worden verwerkt; als
 bericht B arriveert vóór bericht A, faalt de validatie. In de praktijk wordt dit probleem
@@ -172,32 +199,40 @@ de gegevens in de LV-WOZ een conforme kopie zijn van de gegevens in de Basisregi
 
 De StUF-standaard erkent dit: "StUF ondersteunt niet het gericht corrigeren van een enkel foutief
 historisch gegeven." Het huidige koppelvlak kent geen eigen gebeurtenistypen voor correcties; die
-zijn ooit gespecificeerd maar nooit geïmplementeerd. Correcties worden daarom afgehandeld via
-synchronisatieberichten: de volledige toestand opnieuw aanleveren. Dit adresseert de directe
-inconsistentie, maar niet de onderliggende oorzaak van de divergentie.
+zijn ooit gespecificeerd maar nooit geïmplementeerd. Voor het corrigeren van historische gegevens
+resteert daarom alleen het synchronisatiebericht: de volledige toestand opnieuw aanleveren. Dit
+adresseert de directe inconsistentie, maar niet de onderliggende oorzaak van de divergentie.
 
-### Synchronisatieberichten als herstelmechanisme
+### Synchronisatieberichten
 
-StUF voorziet in synchronisatieberichten (Sh-berichten) voor herstel na divergentie. Het Sectormodel
-beschrijft wanneer de LV-WOZ om synchronisatie vraagt: "als in een dienstbericht een
+StUF voorziet in synchronisatieberichten (Sh-berichten). Zij vervullen in de WOZ-keten twee
+verschillende rollen.
+
+De eerste is regulier gebruik op initiatief van de bronhouder. Correcties op historische gegevens
+kunnen in het huidige koppelvlak uitsluitend via een synchronisatiebericht worden aangeleverd (zie
+[Technische inrichting](#technische-inrichting)). Het merendeel van de synchronisatieberichten wordt
+dan ook door de bronhouder verstuurd zonder dat de LV daarom heeft gevraagd. Veelal constateert de
+bronhouder zelf, bijvoorbeeld bij de analyse van een foutbericht, dat historische gegevens in de
+LV-WOZ niet kloppen, en kan hij dat alleen met een synchronisatiebericht herstellen.
+
+De tweede is herstel na divergentie, waarbij de LV expliciet om een volledig beeld vraagt. Het
+Sectormodel beschrijft wanneer de LV-WOZ om synchronisatie vraagt: "als in een dienstbericht een
 toevoegkennisgeving of de oude situatie in een wijzigkennisgeving niet overeenkomt met de huidige
-situatie in de LV WOZ." Met andere woorden: de LV-WOZ valideert de kennisgevingen binnen elk
-aangeleverd dienstbericht tegen haar eigen toestand, en vraagt om synchronisatie wanneer die
-toestand niet klopt.
+situatie in de LV WOZ." De LV-WOZ valideert de kennisgevingen binnen elk aangeleverd dienstbericht
+tegen haar eigen toestand, en vraagt om synchronisatie wanneer die toestand niet aansluit.
 
-Dit is een recovery-mechanisme waarbij de LV inconsistenties detecteert en om een volledig beeld
-vraagt. De implementatie brengt complexiteit met zich mee. Synchronisatieberichten hebben een
-geneste structuur met strikte sorteervereisten: alle historische registraties moeten oplopend
+In beide rollen brengt de implementatie complexiteit met zich mee. Synchronisatieberichten hebben
+een geneste structuur met strikte sorteervereisten: alle historische registraties moeten oplopend
 gesorteerd zijn op `tijdstipRegistratie`, en binnen één tijdstipRegistratie oplopend op
 `beginGeldigheid`. De bronhouder moet de volledige historie kunnen reconstrueren in StUF-formaat,
 inclusief de juiste volgorde van registraties. In de praktijk is dit voor veel bronhouders niet
 haalbaar; niet alle WOZ-systemen zijn hierop ingericht.
 
-Synchronisatie blijkt vaker nodig dan het ontwerp veronderstelt. De WOZ-keten opereert daarmee in
-een hybride model: berichten worden asynchroon verwerkt, maar het protocol verwacht dat verzender en
-ontvanger dezelfde toestand hebben. De bronhouder heeft geen mechanisme om te verifiëren of en
-wanneer verwerking is voltooid. Wanneer de consistentie-verwachting niet wordt waargemaakt, valt het
-systeem terug op volledige synchronisatie.
+Synchronisatie als herstelmechanisme blijkt vaker nodig dan het ontwerp veronderstelt. De WOZ-keten
+opereert daarmee in een hybride model: berichten worden asynchroon verwerkt, maar het protocol
+verwacht dat verzender en ontvanger dezelfde toestand hebben. De bronhouder heeft geen mechanisme om
+te verifiëren of en wanneer verwerking is voltooid. Wanneer de consistentie-verwachting niet wordt
+waargemaakt, valt het systeem terug op volledige synchronisatie.
 
 ### De interpretatielast
 
@@ -210,13 +245,27 @@ Het dienstbericht bevat weliswaar een gebeurtenis-indicatie (een van de WOZ-gebe
 de feitelijke verwerking bij zowel de LV-WOZ als afnemers vindt plaats op het niveau van de
 individuele kennisgevingen: toestandsovergangen per object. Wanneer de relatie tussen de gebeurtenis
 op dienstberichtniveau en de kennisgevingen daarbinnen niet eenduidig is, moet de ontvanger zelf
-afleiden wat er is gebeurd. Dit speelt bij synchronisatieberichten, maar ook bij reguliere
-gebeurtenisberichten: de schema's zijn generiek genoeg om correctiekennisgevingen toe te laten in
-een dienstbericht voor een reguliere gebeurtenis. Een afnemer die een bericht van type "Nieuwe
-beschikking" ontvangt, kan daarin ook correcties op eerdere gegevens aantreffen die een ander
-vervolgproces vereisen (herziening in plaats van nieuwe aanslag). Elke ontvanger in de keten moet
-zelfstandig afleiden wat de datamutaties betekenen. Dit leidt tot divergentie: dezelfde datamutatie
-kan door verschillende partijen anders worden geïnterpreteerd. Het probleem wordt versterkt bij
+afleiden wat er is gebeurd. Dit speelt vooral bij synchronisatieberichten, waarin de gebeurtenis die
+tot de mutatie leidde niet wordt meegegeven.
+
+Daarnaast laat de XSD-validatie op de dienstberichten meer toe dan functioneel is bedoeld. Bij
+berichttypen die alleen mogen toevoegen, zoals de nieuwe beschikking, speelt dit niet. Maar de
+schema's sluiten correctiekennisgevingen (mutatiesoort F) niet in het algemeen uit, en in de
+praktijk sturen bronhouders die ook mee in dienstberichten voor reguliere gebeurtenissen. De
+attributen die per dienstbericht zijn toegestaan, zijn gekozen op basis van de gebeurtenis en niet
+op basis van een correctie; het bericht drukt dan niet uit wat er functioneel is gebeurd. Het
+bedoelde gebruik van de gebeurtenistypen is met het huidige schema niet afdwingbaar.
+
+Ontvangers leiden vervolgens zelf af wat de datamutaties betekenen. Dat elke afnemer daarbij eigen
+keuzes maakt is inherent aan de keten: iedere afnemer verwerkt de gegevens voor het eigen
+werkproces, en die werkprocessen verschillen. Een nieuwe beschikking kan bij de ene afnemer tot een
+nieuwe aanslag leiden, bij de andere tot herziening van een bestaande aanslag, en bij een derde
+alleen tot vastlegging voor later gebruik. Uniforme interpretatie is dus geen doel op zich.
+
+Wat wel opvalt, is dat de afleiding die daaraan voorafgaat, namelijk vaststellen wát er is gebeurd,
+door iedere ketenpartner opnieuw wordt gedaan. Het dienstbericht draagt de gebeurtenis wel als type
+mee, maar de koppeling tussen dat type en de afzonderlijke kennisgevingen daarbinnen is niet
+eenduidig; die relatie moet uit de mutaties worden gereconstrueerd. Het probleem wordt versterkt bij
 hersynchronisatie: het verschil tussen de vorige aanlevering en een synchronisatiebericht kan het
 gevolg zijn van meerdere gebeurtenissen die eerder niet zijn verwerkt. De ontvanger kan dan niet
 meer herleiden welke afzonderlijke gebeurtenissen de mutatie hebben veroorzaakt. De
@@ -243,16 +292,24 @@ historie" is een reconstructie uit StUF-berichten, niet een registratie van wann
 LV beschikbaar kwamen. De kernvraag van afnemers, "Wat wist de LV vier weken geleden?", kan niet
 worden beantwoord.
 
-Uit gesprekken met afnemers blijkt dat zij primair behoefte hebben aan materiële historie (wat was
-de WOZ-waarde op een peildatum?) en LV-formele historie (wanneer was dit beschikbaar?). De formele
-historie van de bronhouder is voor afnemers niet relevant. De Belastingdienst heeft expliciet
-behoefte aan LV-formele historie om de vraag te kunnen beantwoorden: "als ik dit vier weken geleden
-had opgevraagd, had ik dit dan ook gezien?" Omdat de LV dit niet kan beantwoorden, reconstrueert de
-Belastingdienst zelf een registratietijdlijn door herhaaldelijk de materiële historie op te halen en
-eerdere ophaalresultaten te bewaren. Daarnaast haalt de Belastingdienst minstens eenmaal per jaar de
-volledige dataset op om te controleren dat hun kopie overeenkomt met de LV. De architectuur
-investeert in het synchroniseren van informatie die afnemers niet nodig hebben, terwijl de
-informatie die zij wel nodig hebben niet wordt bijgehouden.
+Uit gesprekken met afnemers blijkt dat zij behoefte hebben aan materiële historie (welke gegevens
+golden voor een bepaalde periode?) en aan LV-formele historie (wanneer was dit in de LV
+beschikbaar?). De eis van formele historie staat daarmee niet ter discussie; de vraag is van wélke
+registratie de formele tijdlijn wordt bijgehouden. De formele historie van de bronhouder wordt aan
+afnemers doorgeleverd, maar zij kunnen daarmee hun eigen vraag niet beantwoorden: die gaat over het
+moment waarop een gegeven voor hén beschikbaar was. De Belastingdienst heeft expliciet behoefte aan
+LV-formele historie om de vraag te kunnen beantwoorden: "als ik dit vier weken geleden had
+opgevraagd, had ik dit dan ook gezien?" Omdat de LV die vraag op dit moment niet kan beantwoorden,
+reconstrueert de Belastingdienst zelf een registratietijdlijn door herhaaldelijk de materiële
+historie op te halen en eerdere ophaalresultaten te bewaren. Daarnaast haalt de Belastingdienst
+minstens eenmaal per jaar de volledige dataset op om te controleren dat hun kopie overeenkomt met de
+LV. De architectuur investeert daarmee in het reconstrueren van een tijdlijn waarmee afnemers hun
+eigen vraag niet kunnen beantwoorden, terwijl de tijdlijn die zij daarvoor nodig hebben niet wordt
+bijgehouden.
+
+Dat de LV-formele historie voor afnemers zwaarder weegt dan de formele historie bij gemeenten is
+geen nieuw inzicht. Het is vastgelegd in het voorstel voor implementatie van het IMWOZ-model dat in
+2021 met de ketenpartijen is besproken, maar waarvan de vaststelling destijds is uitgesteld.
 
 ### Identificatie van subjecten en relaties
 
@@ -272,9 +329,11 @@ identificatie. Er lagen voorstellen om tot één identificatiesysteem te komen v
 informatiemodel, maar de vaststelling en implementatie hiervan is in 2021 uitgesteld.
 
 Relaties worden geïdentificeerd door een samengestelde sleutel: de identificatie van het WOZ-object,
-de identificatie van het gerelateerde subject, én de `beginGeldigheid`. Deze identificatie is niet
-persistent: bij het invullen van een eindrelatie kan de identificatie veranderen. Bij correcties is
-niet altijd eenduidig welke relatie-instantie wordt bedoeld.
+de identificatie van het gerelateerde subject, én de `beginRelatie`. Deze identificatie is niet
+persistent: een correctie op `beginRelatie` wijzigt de sleutel zelf. Dat is vooral bezwaarlijk
+wanneer dezelfde combinatie van object en subject meerdere keren in de tijd voorkomt, bijvoorbeeld
+wanneer iemand eigenaar is van 2001 tot 2004 en opnieuw vanaf 2015. Bij een correctie is dan niet
+altijd eenduidig welke relatie-instantie wordt bedoeld.
 
 ### Kopiegegevens en synchronisatielast
 
@@ -283,10 +342,12 @@ Het koppelvlak draagt naast identificatoren ook kopiegegevens over van authentie
 zijn aan de WOZ (zoals het correspondentieadres voor een specifiek WOZ-object). De aanwezigheid van
 kopiegegevens brengt operationele last met zich mee: wanneer gegevens in een bronregistratie
 wijzigen, is het de verantwoordelijkheid van de bronhouder om de kopiegegevens in de LV-WOZ bij te
-werken. De LV-WOZ houdt subjectgegevens per bronhouder bij; er vindt geen de-duplicatie over
-bronhouders heen plaats. Dezelfde persoon kan daardoor door meerdere gemeenten met verschillende
-gegevens zijn geregistreerd. Voor niet-ingezetenen is de WOZ soms de enige plek waar deze gegevens
-zijn vastgelegd, waardoor de kopiegegevens daar niet redundant zijn.
+werken. Tegenover die last staat een functioneel voordeel: doordat naamgegevens in de LV aanwezig
+zijn, is zoeken op de naam van een subject mogelijk zonder bevraging van een andere registratie. De
+LV-WOZ houdt subjectgegevens per bronhouder bij; er vindt geen de-duplicatie over bronhouders heen
+plaats. Dezelfde persoon kan daardoor door meerdere gemeenten met verschillende gegevens zijn
+geregistreerd. Voor niet-ingezetenen is de WOZ soms de enige plek waar deze gegevens zijn
+vastgelegd, waardoor de kopiegegevens daar niet redundant zijn.
 
 ### Terugmeldingen
 
@@ -298,10 +359,16 @@ betekent dat de terugmeldfaciliteit in de praktijk beperkt wordt gebruikt.
 ### Positie van de Landelijke Voorziening
 
 De LV-WOZ ontvangt berichten van honderden bronhouders, elk met eigen systemen, processen en
-interpretaties. De voorziening heeft geen controle over de kwaliteit van wat binnenkomt, geen
-controle over de volgorde, en beperkte mogelijkheden om terug te communiceren. Zij kan niet strenger
-zijn dan de zwakste schakel: wanneer een bronhouder geen formele historie aanlevert, kan de LV die
-niet fabriceren.
+interpretaties. De verantwoordelijkheid voor de kwaliteit van die gegevens ligt bij de bronhouder,
+zoals bij alle decentrale basisregistraties. Kenmerkend voor de LV-WOZ is dat daarbovenop diverse
+ingangscontroles zijn gedefinieerd, juist om de kwaliteit voor afnemers te optimaliseren.
+
+Die controles hebben wel een grens. De LV toetst wat in het bericht zichtbaar is, tegen de
+specificatie en tegen haar eigen vastlegging, maar kan niet vaststellen of een aangeleverd gegeven
+met de werkelijkheid overeenkomt. Ook de volgorde waarin berichten binnenkomen ligt buiten haar
+invloed, en de mogelijkheden om terug te communiceren zijn beperkt tot foutberichten en de
+terugmeldfaciliteit. Wanneer een bronhouder geen sluitende formele historie aanlevert, kan de LV die
+niet aanvullen.
 
 ### Validatie versus divergentie
 
@@ -322,20 +389,21 @@ op basis van de gebeurtenissen.
 
 ### Doorlevering aan afnemers
 
-De keten moet afnemers tijdig informeren over wijzigingen, afgestemd op hun specifieke
-informatiebehoefte (zie [Notificatie van afnemers](#notificatie-van-afnemers)). De LV-WOZ stuurt via
-Digilevering [[DIGILEVERING-WOZ]] in de LV-WOZ verwerkte berichten door naar afnemers. Hierbij vindt
-per afnemertype filtering plaats: waterschappen ontvangen gegevens die voor hen relevant zijn (zoals
-de aanduiding gebouwd/ongebouwd en sluimerende WOZ-objecten) die voor berichten naar de
-Belastingdienst worden weggefilterd, en omgekeerd. De LV-WOZ voegt geen informatie toe, maar vervult
-wel een actieve mediërende rol tussen bronhouders en afnemers.
+De keten moet afnemers tijdig informeren over wijzigingen (zie
+[Notificatie van afnemers](#notificatie-van-afnemers)) en daarbij per afnemer bepalen welke gegevens
+worden verstrekt (zie [Autorisatie op attribuutniveau](#autorisatie-op-attribuutniveau)). De LV-WOZ
+stuurt via Digilevering [[DIGILEVERING-WOZ]] in de LV-WOZ verwerkte berichten door naar afnemers,
+met filtering per afnemertype. De LV-WOZ voegt geen informatie toe, maar vervult wel een actieve
+mediërende rol tussen bronhouders en afnemers.
 
 De LV-WOZ investeert aanzienlijk in het correct interpreteren van inkomende berichten: pattern
 matching op datamutaties, reconstructie van formele historie, samenhangvalidatie op
 dienstberichtniveau. De huidige architectuur voorziet er echter niet in om het resultaat van deze
 interpretatie door te geven aan afnemers; in plaats daarvan wordt het oorspronkelijke bronbericht
-doorgestuurd. Afnemers moeten daardoor dezelfde complexe interpretatie opnieuw uitvoeren, elk met
-eigen interpretatielogica en met het risico op afwijkende uitkomsten.
+doorgestuurd. Elke afnemer moet daardoor opnieuw uit de mutaties afleiden wat er is gebeurd, voordat
+de eigen verwerking kan beginnen. Dat afnemers die verwerking verschillend inrichten is inherent aan
+hun uiteenlopende werkprocessen; dat zij allemaal dezelfde afleiding vooraf moeten doen, is dat
+niet.
 
 Digilevering biedt filtering op postcodegebied of gemeente, maar geen inhoudelijke filtering op wat
 er is gewijzigd. Bij herstelacties ontvangen afnemers grote aantallen berichten waarin voor hen geen
@@ -357,8 +425,28 @@ afleveringsstatus en verwerking niet volledig wordt gerealiseerd. De inhoudslaag
 een adequate implementatie van de functionele eisen, maar de complexiteit van de standaard en de
 afnemende beschikbaarheid van specialistische kennis zetten de onderhoudbaarheid onder druk.
 
-De keteninrichting kent spanningen op het vlak van formele historie (de LV synchroniseert
-bronhouder-historie die afnemers niet nodig hebben), identificatie (meerdere identificatiesystemen
-naast elkaar) en doorlevering aan afnemers (interpretatielast wordt vermenigvuldigd door de keten).
+De keteninrichting kent spanningen op het vlak van formele historie (de LV reconstrueert
+bronhouder-historie waarmee afnemers hun eigen vraag niet kunnen beantwoorden), identificatie
+(meerdere identificatiesystemen naast elkaar) en doorlevering aan afnemers (interpretatielast wordt
+vermenigvuldigd door de keten).
 
-Het volgende hoofdstuk analyseert of de transitie naar ebMS3/AS4 deze knelpunten kan adresseren.
+Langs de drie lijnen uit de inleiding van dit hoofdstuk vallen de knelpunten als volgt uiteen:
+
+- **Aan de standaard gebonden**: de MSH-architectuur, het CPA-beheer, de asynchrone foutafhandeling,
+  het ontbreken van gestandaardiseerde batchaanlevering en de afnemende beschikbaarheid van
+  specialistische kennis. Deze kunnen met een andere standaardkeuze anders uitpakken.
+- **Aan de functionele eisen gebonden**: het bijstellen van historische perioden, het onderscheid
+  tussen wijziging en correctie, de samenhangbewaking over mutaties binnen één gebeurtenis en de
+  eenduidige identificatie van objecten, subjecten en relaties. Deze blijven bestaan en moeten in
+  elke inrichting worden uitgewerkt.
+- **Aan ontwerpkeuzes in de keteninrichting gebonden**: welke formele tijdlijn de LV bijhoudt, of de
+  LV haar interpretatie meegeeft aan afnemers, waar de grens van afkeuring ligt, welke kopiegegevens
+  worden meegestuurd en hoe de terugmeldfaciliteit is ingericht. Deze staan los van de standaard en
+  kunnen ook zonder standaardwissel worden herzien.
+
+Deze indeling is bepalend voor de beoordeling van de alternatieven: een standaardwissel adresseert
+de eerste categorie en laat de tweede onaangeroerd. De derde categorie vraagt om afspraken in de
+keten, niet om een andere standaard.
+
+Het volgende hoofdstuk analyseert of de transitie naar ebMS3/AS4 de aan de standaard gebonden
+knelpunten kan adresseren.

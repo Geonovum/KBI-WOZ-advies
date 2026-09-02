@@ -69,6 +69,23 @@ ebMS3/AS4 is de situatie anders:
 - Open source opties beschikbaar
 - Betere integratie in moderne integratieplatforms
 
+Marktondersteuning is echter niet hetzelfde als _installed base_: het aantal organisaties dat de
+standaard daadwerkelijk in productie gebruikt en het aantal leveranciers dat daarmee ervaring heeft
+opgebouwd. Voor ebMS2 is die basis binnen de Nederlandse overheid breed: het draagt de aanlevering
+aan de LV-WOZ en aan diverse andere registraties die op StUF en Digikoppeling zijn gebaseerd. Die
+ervaring zit wel vooral bij de organisaties en bij de partijen die het MSH-beheer verzorgen, en veel
+minder bij de leveranciers van de WOZ-applicaties zelf; dat is juist de reden waarom veel
+bronhouders dat beheer uitbesteden (zie
+[ebMS2: lifecycle en specialistische kennis](#ebms2-lifecycle-en-specialistische-kennis)).
+
+Voor ebMS3/AS4 ligt de vraag anders. Het profiel is sinds 2024 opgenomen in de
+Digikoppeling-standaarddocumentatie, maar dat zegt nog niets over het gebruik: voor welke
+binnenlandse toepassingen de standaard daadwerkelijk (verplicht) wordt ingezet, en hoeveel
+gemeentelijke leveranciers hem ondersteunen, is een vraag die vóór een keuze beantwoord moet worden.
+Het Europese gebruik via eDelivery staat daar los van en zegt weinig over de implementatiesnelheid
+in de Nederlandse keten. Hoe die vraag te beantwoorden, komt aan bod in
+[Installed base en adoptie](#installed-base-en-adoptie).
+
 ### EU eDelivery-compliance
 
 ebMS3/AS4 is de basis van de EU eDelivery-standaard voor grensoverschrijdende gegevensuitwisseling.
@@ -221,9 +238,10 @@ vereist:
 4. **Ketencoördinatie**: Alle partijen in de keten moeten migreren; de LV-WOZ kan pas volledig
    overstappen als alle bronhouders ebMS3/AS4 ondersteunen
 
-Voor een keten met circa 340 ebMS-verbindingen en honderden bronhouders is dit een substantiële
-operatie. De Digikoppeling-roadmap voorziet ondersteuning bij het migratieproces, maar de
-daadwerkelijke migratie moet door elke organisatie zelf worden uitgevoerd.
+Voor een keten met circa 340 ebMS-aansluitingen, verdeeld over ongeveer 150 aanleverende
+organisaties, is dit een substantiële operatie. De Digikoppeling-roadmap voorziet ondersteuning bij
+het migratieproces, maar de daadwerkelijke migratie moet door elke organisatie zelf worden
+uitgevoerd.
 
 ## Samenvatting ebMS3/AS4
 

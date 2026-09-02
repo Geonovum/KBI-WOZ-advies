@@ -5,7 +5,7 @@ let respecConfig = {
   // TODO: title is verplicht! Neem hieronder de titel van het document op
   title: "Implementatie-advies modernisering gegevensaanlevering LV-WOZ",
   //-- specStatus is verplicht! (activeer 1 van de volgende)
-  specStatus: "wv", // Werkversie
+  specStatus: "cv", // Werkversie
   //specStatus: "cv",               // Consultatieversie
   //specStatus: "vv",               // Versie ter vaststelling
   //specStatus: "def",              // Vastgestelde versie
@@ -40,7 +40,7 @@ let respecConfig = {
 
   //-- publishDate is verplicht. Als je werkversie gekozen hebt  dan pakt Respec
   //-- de pushdate maar de publishDate is nog steeds verplicht.
-  publishDate: "2025-11-17",
+  publishDate: "2026-09-02",
 
   //-- publishVersion is verplicht. Hij mag wel leeg zijn [], maar niet de lege string zijn "".
   publishVersion: [],
@@ -72,11 +72,6 @@ let respecConfig = {
   authors: [
     {
       name: "Joost Farla",
-      company: "Geonovum",
-      companyURL: "https://www.geonovum.nl",
-    },
-    {
-      name: "Frank Terpstra",
       company: "Geonovum",
       companyURL: "https://www.geonovum.nl",
     },
@@ -118,6 +113,13 @@ let respecConfig = {
       title: "StUF - Open Standaarden",
       href: "https://www.forumstandaardisatie.nl/open-standaarden/stuf",
       publisher: "Forum Standaardisatie",
+    },
+    "MONITOR-OS": {
+      id: "MONITOR-OS",
+      title: "Monitor Open Standaarden 2025 - Hoofdlijnen en conclusies",
+      href: "https://www.forumstandaardisatie.nl/monitor-open-standaarden-2025-hoofdlijnen-en-conclusies",
+      publisher: "Forum Standaardisatie",
+      date: "2025",
     },
     "FORUM-STUF-EVAL": {
       id: "FORUM-STUF-EVAL",
@@ -266,8 +268,8 @@ let respecConfig = {
     },
     "CATALOGUS-WOZ": {
       id: "CATALOGUS-WOZ",
-      title: "Catalogus Basisregistratie WOZ",
-      href: "https://www.waarderingskamer.nl/documenten/03.-Voor-gemeenten/04.-Gegevensbeheer/Catalogus-WOZ-gegevens-voor-afnemers-versie-1.8.pdf",
+      title: "Catalogus Basisregistratie WOZ, versie 1.8",
+      href: "https://www.waarderingskamer.nl/uploads/documents/03.-Voor-gemeenten/04.-Gegevensbeheer/Catalogus-Basisregistratie-WOZ-versie-1.8.pdf",
       publisher: "Waarderingskamer",
     },
     "SMART-ENDPOINTS": {

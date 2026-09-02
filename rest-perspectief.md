@@ -32,6 +32,12 @@ noodzakelijk is. Het is primair ontworpen voor synchrone request-response patron
 belangrijker is dan gegarandeerde aflevering. Dit sluit niet in eerste instantie aan op de
 functionele behoeften in de WOZ-keten.
 
+Het profiel staat wel in ontwikkeling: sinds versie 2.0 zijn FSC en optionele berichtondertekening
+opgenomen. De vraag welke patronen naast request-response in het profiel thuishoren, waaronder
+notificeren en grootschalige of asynchrone uitwisseling, is daarmee ook een vraag aan de
+doorontwikkeling van het profiel zelf. Een keuze voor REST in de WOZ-keten is niet alleen een keuze
+voor het profiel zoals het nu luidt, maar ook een inbreng in de richting waarin het zich ontwikkelt.
+
 ## Vergelijking met MSH-gebaseerde protocollen
 
 Op een aantal vlakken bieden het REST API profiel en de MSH-gebaseerde protocollen (ebMS2 en
@@ -74,9 +80,10 @@ voor het vastleggen van _wat_ er met gegevens is gebeurd: welke gegevens zijn ve
 wanneer en voor welk doel. Waar FSC-logging technische correlatie tussen API-aanroepen mogelijk
 maakt, richt Logboek Dataverwerkingen zich op de inhoudelijke verantwoording die nodig is voor
 AVG-compliance en transparantie naar burgers. De standaard is in ontwikkeling bij Logius en beoogt
-opname op de lijst met aanbevolen standaarden. Voor de WOZ-keten kan deze standaard een
-gestructureerde manier bieden om te verantwoorden welke WOZ-gegevens aan welke afnemers zijn
-verstrekt.
+opname op de lijst met aanbevolen standaarden. Ook hier geldt dat de gebruikservaring binnen de
+Nederlandse overheid meeweegt bij de vraag wat de standaard in de praktijk oplevert. Voor de
+WOZ-keten kan deze standaard een gestructureerde manier bieden om te verantwoorden welke
+WOZ-gegevens aan welke afnemers zijn verstrekt.
 
 ### Toegangsbeheer
 
@@ -300,12 +307,70 @@ REST-gebaseerde architectuur, moet het volgende worden gestandaardiseerd:
    REST API?
 2. **Bitemporele aanlevering**: Welke velden zijn verplicht, wat is hun semantiek?
 3. **Een WOZ-specifiek datamodel**: MIM-conforme modellen en JSON-schema's voor WOZ-gegevens
-4. **Interactiepatronen**: Hoe worden kennisgevingen vertaald naar REST-operaties, of iets anders?
+4. **Interactiepatronen**: Hoe wordt een gebeurtenis met de bijbehorende kennisgevingen als geheel
+   aangeboden en beantwoord? De gebeurtenis is daarbij de eenheid, niet het afzonderlijke
+   objecttype.
 5. **Capaciteitsbeheersing**: Hoe gaan clients om met overbelasting? Welke rate limits gelden, wat
    is het retry-gedrag, en is er server-side buffering?
 
 Dit is geen technisch probleem, want REST _kan_ dit allemaal ondersteunen. Het is een
 standaardisatie-opgave die tijd, governance en adoptie vereist.
+
+### Resources volgen de handeling, niet het informatiemodel
+
+Bij het invullen van die standaardisatie-opgave ligt één aanname voor de hand die niet past bij de
+WOZ-keten: dat een REST-koppelvlak neerkomt op het als resource ontsluiten van de objecttypen uit
+het informatiemodel, met CRUD-operaties daarop. Een WOZ-object dat wordt aangemaakt, gewijzigd en
+verwijderd.
+
+De reden dat dit niet past is dezelfde als bij het
+[gebeurtenisgedreven karakter](#gebeurtenisgedreven-karakter) van de keten: de eenheid van
+uitwisseling is de gebeurtenis, niet de afzonderlijke objectmutatie. Een CRUD-koppelvlak draagt over
+hoe de registratie verandert, niet wat er is gebeurd. Het verplaatst daarmee dezelfde afleidingstaak
+naar de ontvanger die in de huidige keten al speelt (zie
+[De interpretatielast](#de-interpretatielast)).
+
+De resources worden daarom bepaald door de handeling: een levering, een gebeurtenis van een bepaald
+type, een correctie. De mapping naar het onderliggende informatiemodel blijft intern en wordt niet
+via de resource-structuur naar buiten gekopieerd. Dit sluit aan bij de beweging naar
+handeling-gedreven API's die is beschreven bij [Common Ground](#common-ground).
+
+### Installed base en adoptie
+
+Bij de keuze voor een standaard telt niet alleen wat de standaard specificeert, maar ook hoeveel
+organisaties en leveranciers haar daadwerkelijk in productie gebruiken. Die _installed base_ bepaalt
+in belangrijke mate hoe snel een transitie kan verlopen: zij bepaalt de beschikbaarheid van
+implementaties, de aanwezigheid van kennis bij leveranciers, en de mate waarin problemen al door
+anderen zijn opgelost.
+
+De invoering van Digikoppeling in het gemeentelijke domein illustreert dit. De standaard bestond al
+jaren, maar was in dat domein nog nauwelijks geïmplementeerd toen ervoor werd gekozen. Het
+aansluiten van alle bronhouders op de LV-WOZ besloeg vervolgens de periode 2013 tot 2018. Een
+standaard kan gereed zijn terwijl de markt dat niet is.
+
+Voor REST wordt vaak aangenomen dat de uitgangspositie gunstiger is, omdat REST, JSON en OpenAPI de
+gangbare werkwijze zijn bij softwareontwikkeling. Of dat ook geldt voor de leveranciers van
+gemeentelijke WOZ-applicaties, en in welke mate zij deze technieken al inzetten voor andere
+registraties, is niet vastgesteld en verdient onderzoek. Voor de onderdelen die nog moeten worden
+gestandaardiseerd (mutatiemodel, bitemporele aanlevering, capaciteitsbeheersing) bestaat hoe dan ook
+nog geen installed base, ongeacht hoe vertrouwd de onderliggende techniek is.
+
+Hieruit volgt een concrete stap bij de standaardkeuze: laat vaststellen wat de installed base van de
+kandidaat-standaarden op dat moment is, voordat een besluit wordt genomen. Bruikbare ingangen zijn
+de Monitor Open Standaarden van Forum Standaardisatie [[MONITOR-OS]], een inventarisatie van wat de
+leveranciers van gemeentelijke WOZ-applicaties voor andere registraties al ondersteunen, en
+onafhankelijke bronnen over het gebruik van de standaard buiten Nederland.
+
+### Verantwoording van de standaardkeuze
+
+Zowel de ebMS-koppelvlakstandaarden als het REST API profiel maken deel uit van Digikoppeling, dat
+de status 'pas toe of leg uit' heeft. Met beide routes wordt dus aan die verplichting voldaan, en de
+formele uitlegplicht komt niet in beeld.
+
+Dat maakt de keuze niet vrijblijvend. Wie voor de ene route kiest, kiest de andere niet, en die
+keuze werkt door bij elke partij die op beide moet kunnen aansluiten. Wat Forum Standaardisatie over
+de betrokken standaarden vaststelt, in het bijzonder over hun adoptie, is daarom onderdeel van de
+onderbouwing die bij het besluit hoort.
 
 ### Uitbesteding bij REST
 

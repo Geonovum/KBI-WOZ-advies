@@ -2,12 +2,27 @@
 
 ## Conforme kopie als uitgangspunt
 
-De Waarderingskamer hanteert voor het gegevensbeheer als uitgangspunt dat de gegevens in de LV-WOZ
-steeds een volledige kopie ("conforme kopie") zijn van de gegevens in de gemeentelijke administratie
-[[CATALOGUS-WOZ]]. Dit conforme-kopie-principe vult de wettelijke eis tot overeenstemmen (zie
-[Wettelijk kader](#wettelijk-kader)) strikt in: niet alleen het verstrekte
-gegeven, maar de volledige vastlegging in de LV moet overeenkomen met de bronregistratie. Het
-principe is leidend geweest bij het ontwerp van het huidige koppelvlak.
+Artikel 9 van het Uitvoeringsbesluit kostenverrekening en gegevensuitwisseling Wet WOZ
+[[UB-WOZ-GEGEVENS]] bepaalt dat de specificaties voor de aanlevering van gegevens door het college
+aan de Dienst door de Waarderingskamer worden vastgesteld, in overleg met de afnemers en de Dienst,
+en door de Waarderingskamer worden gepubliceerd. De Catalogus Basisregistratie WOZ [[CATALOGUS-WOZ]]
+en het koppelvlak [[LV-WOZ-KV]] zijn de uitwerking daarvan.
+
+In die specificaties geldt voor het gegevensbeheer als uitgangspunt dat de gegevens in de LV-WOZ
+steeds een volledige kopie ("conforme kopie") zijn van de gegevens in de gemeentelijke
+administratie. Dit conforme-kopie-principe vult de wettelijke eis tot overeenstemmen (zie
+[Wettelijk kader](#wettelijk-kader)) strikt in: niet alleen het verstrekte gegeven, maar de
+volledige vastlegging in de LV moet overeenkomen met de bronregistratie. Het principe is leidend
+geweest bij het ontwerp van het huidige koppelvlak.
+
+## Staat van de regelgeving
+
+Het Uitvoeringsbesluit is niet meegegroeid met de praktijk. De formaatdefinities erin (mutatiecodes,
+vaste recordlengtes, subjectnummer-categorieën) beschrijven nog de bestandsuitwisseling van vóór de
+landelijke voorziening, die sinds de overgang naar XML niet meer in gebruik is. De delegatiebepaling
+van artikel 9 werkt onverminderd, maar de omschrijving van de uitwisseling eromheen loopt meer dan
+een decennium achter op wat er feitelijk gebeurt. Zie [Wettelijke basis](#wettelijke-basis) voor de
+betekenis hiervan voor het vervolg.
 
 ## Technische inrichting
 
@@ -65,6 +80,8 @@ beide kanten worden ingeladen.
 definieert een gedetailleerd objectmodel voor WOZ-objecten, belanghebbenden, waarden en hun
 onderlinge relaties. StUF ondersteunt:
 
+- **Dienstberichten**: Voor het communiceren van een gebeurtenis met de bijbehorende kennisgevingen;
+  voor het LV-WOZ-koppelvlak zijn dit de belangrijkste berichten
 - **Mutatieberichten**: Voor het doorgeven van wijzigingen aan registraties
 - **Correctieberichten**: Voor het corrigeren van eerder geregistreerde gegevens
 - **Vraag-/antwoordberichten**: Voor het formuleren en beantwoorden van bevragingen
@@ -115,8 +132,19 @@ ingericht basisregistratiesysteem.
 Een substantieel deel van de bronhouders heeft het beheer van de Digikoppelingsadapter (MSH)
 uitbesteed aan een externe partij. Deze uitbesteding kan een afzonderlijke uitbesteding zijn, maar
 kan ook onderdeel zijn van de volledige outsourcing van de ICT-voorzieningen die de bronhouder
-gebruikt voor het beheer van de WOZ-administratie en de communicatie met de LV-WOZ. De LV-WOZ
-onderhoudt momenteel circa 340 ebMS-verbindingen met gemeenten en samenwerkingsverbanden.
+gebruikt voor het beheer van de WOZ-administratie en de communicatie met de LV-WOZ.
+
+De LV-WOZ onderhoudt met bronhouders circa 340 CPA's: vanuit autorisatie-oogpunt één per gemeente,
+ongeacht of de gemeente zelf aanlevert of een samenwerkingsverband dat namens haar doet. Daarnaast
+bestaat een klein aantal CPA's met afnemers, onder meer voor de doorlevering via Digilevering en
+voor massaal bevragen, en met gemeenten die in hun rol als bronhouder gegevens terugbevragen.
+
+Dat aantal zegt niet hoeveel organisaties of systemen er feitelijk achter zitten. Tellen we
+belastingsamenwerkingen als één aanleverende organisatie, dan gaat het om ongeveer 150 organisaties.
+Het aantal onderliggende technische systemen is nog moeilijker vast te stellen, doordat meerdere
+gemeenten via dezelfde leveranciersomgeving aanleveren. Voor het beheer is de CPA niettemin de
+relevante eenheid: verstoringen in het berichtenverkeer manifesteren zich per CPA, dwars door
+samenwerkingsverbanden en leveranciers heen.
 
 Een bijzondere variant is het belastingsamenwerkingsverband: een organisatie die namens meerdere
 gemeenten de WOZ-taken uitvoert. In deze constructie levert de samenwerking alle gegevens namens de

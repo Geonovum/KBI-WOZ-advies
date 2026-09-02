@@ -26,8 +26,10 @@ het Kadaster en valt onder toezicht van de Waarderingskamer. Afnemers zijn onder
 Belastingdienst, de waterschappen en het CBS. Na 1 januari ontvangen ongeveer 10 miljoen huishoudens
 en rechtspersonen een WOZ-beschikking; die gegevens moeten binnen de wettelijke termijn van 8 weken
 bij de LV zijn. In januari en februari is het berichtenvolume een veelvoud van de rest van het jaar.
-De LV onderhoudt ongeveer 340 ebMS-verbindingen. Een substantieel deel van de bronhouders heeft het
-beheer van de technische adapter (de MSH) uitbesteed.
+De LV onderhoudt met bronhouders ongeveer 340 ebMS-aansluitingen, één per gemeente, ook waar een
+samenwerkingsverband namens meerdere gemeenten aanlevert. Omdat die samenwerkingsverbanden meerdere
+gemeenten bundelen, gaat het feitelijk om ongeveer 150 aanleverende organisaties. Een substantieel
+deel van de bronhouders heeft het beheer van de technische adapter (de MSH) uitbesteed.
 
 ## Wat werkt en wat knelt
 
@@ -36,8 +38,8 @@ WOZ 2025 dat de verwerking van berichten met minder fouten verliep dan voorheen.
 gegevens gebruiken voor hun wettelijke taken. Er is geen acute noodzaak die om een overhaast besluit
 vraagt.
 
-De knelpunten hieronder zijn structureel, niet acuut. Ze zijn zichtbaar in de dagelijkse uitvoering
-en kosten daar tijd en herstelwerk, maar ze leggen de keten niet stil. Het punt is dat het fundament
+De knelpunten hieronder vragen geen acute ingreep. Ze zijn zichtbaar in de dagelijkse uitvoering en
+kosten daar tijd en herstelwerk, maar ze leggen de keten niet stil. Het punt is dat het fundament
 veroudert terwijl de eisen aan registraties toenemen, en dat de kosten van uitstel oplopen.
 
 In het transport vereist ebMS2 een aparte adapter (MSH) naast de WOZ-applicatie. De
@@ -60,11 +62,12 @@ reconstrueert dit zelf.
 
 Dezelfde spanning speelt bij de doorlevering aan afnemers. De LV stuurt de in haar verwerkte
 bronberichten door en filtert daarbij per afnemertype, maar geeft de eigen interpretatie van die
-berichten niet mee. Elke afnemer voert daardoor dezelfde afleiding opnieuw uit, met eigen logica en
-met het risico op afwijkende uitkomsten. Digilevering filtert op gebied of gemeente, niet op wat
-inhoudelijk is gewijzigd; bij herstelacties ontvangen afnemers grote aantallen berichten zonder
-nieuwe informatie, en de Belastingdienst ontvangt soms gegevens ouder dan zes jaar die buiten haar
-belastingtermijn vallen.
+berichten niet mee. Wat afnemers met een gebeurtenis moeten doen verschilt per werkproces en zal
+altijd verschillen; wat zich onnodig herhaalt is de stap daarvóór, namelijk uit de datamutaties
+afleiden wát er is gebeurd. Die afleiding doet elke ketenpartner opnieuw. Digilevering filtert op
+gebied of gemeente, niet op wat inhoudelijk is gewijzigd; bij herstelacties ontvangen afnemers grote
+aantallen berichten zonder nieuwe informatie, en de Belastingdienst ontvangt soms gegevens ouder dan
+zes jaar die buiten haar belastingtermijn vallen.
 
 ## Twee routes voor het transport
 
@@ -98,8 +101,9 @@ wetswijziging. In dit model draagt een levering alleen de nieuwe toestand voor e
 legt leveringen vast als een aangroeiende stapel per beschikkingsjaar en leidt daaruit per afnemer
 een beeld af dat op diens behoefte is afgestemd. De LV bouwt een eigen formele historie op, precies
 wat de Belastingdienst nodig heeft. Correcties worden expliciet als correctie herkenbaar gemaakt,
-wat de interpretatielast in de keten verlaagt. De verantwoordelijkheid voor kwaliteit komt terug bij
-de bronhouder: de LV keurt alleen af waar zij haar verstrekkingstaak niet kan uitvoeren, en
+wat de interpretatielast in de keten verlaagt; daarvoor moeten wijziging en correctie wel scherper
+worden gedefinieerd dan nu het geval is. De verantwoordelijkheid voor kwaliteit komt terug bij de
+bronhouder: de LV keurt alleen af waar zij haar verstrekkingstaak niet kan uitvoeren, en
 inhoudelijke afwijkingen worden achteraf teruggemeld. Dit vraagt wel om een sterkere
 terugmeldfaciliteit.
 
@@ -107,7 +111,7 @@ De tweede richting is synchroon aanleveren en verwerken. De uitwisseling tussen 
 wordt teruggebracht tot één directe aanroep waarin de levering en het verwerkingsresultaat
 samenvallen. De bronhouder krijgt direct zekerheid. Batchaanlevering is bij deze richting een
 mogelijke optimalisatie voor de piekperiode. Deze richting neemt de aparte adapter weg, en daarmee
-een structurele foutenbron.
+een terugkerende foutenbron.
 
 Beide richtingen zijn gefaseerd in te voeren, elk in een eigen tempo.
 
@@ -117,20 +121,27 @@ Bestuurlijke stukken over informatievoorziening zetten de bestaande problemen va
 schetsen daarna een toekomst zonder problemen. Dat beeld past hier niet. De keuze gaat over een
 ander soort problemen, niet over de afwezigheid ervan.
 
-Complexiteit verdwijnt niet, maar verplaatst. Wat ebMS2 vandaag in de transportlaag afdwingt
+Een deel van wat vandaag als probleem wordt ervaren, komt niet voort uit de gekozen standaard maar
+uit de functionele eisen zelf. Bitemporele historie, correcties met terugwerkende kracht en
+consistentiebewaking over samenhangende mutaties zijn inhoudelijk complex, in welke standaard zij
+ook worden uitgedrukt. Een andere standaard kan die complexiteit beter hanteerbaar maken; hij neemt
+haar niet weg.
+
+Complexiteit verdwijnt dus niet, maar verplaatst. Wat ebMS2 vandaag in de transportlaag afdwingt
 (betrouwbare aflevering, volgorde, herhaling), moet in een REST-inrichting expliciet worden
 afgesproken en vastgelegd. Die afspraken zijn er nog niet allemaal. Het werk verschuift van
 productkeuze naar standaardisatie en governance.
 
 De migratie kost tijd en geld. Bronhouders en LV zullen een periode twee koppelvlakken naast elkaar
-in de lucht houden, bij ongeveer 340 verbindingen en bij een aanzienlijk deel van de bronhouders dat
-het technisch beheer heeft uitbesteed. De piek in januari en februari beperkt het migratievenster
-tot een deel van het jaar.
+in de lucht houden, bij ongeveer 340 aansluitingen en bij een aanzienlijk deel van de bronhouders
+dat het technisch beheer heeft uitbesteed. De piek in januari en februari beperkt het
+migratievenster tot een deel van het jaar.
 
 De grootste veranderingen zijn niet technisch. Kwaliteitsverantwoordelijkheid terugleggen bij de
-bronhouder vraagt een sterkere terugmeldfaciliteit. Afnemers die nu hun eigen afleidingslogica
-onderhouden, moeten die loslaten en op de interpretatie van de LV gaan vertrouwen. Dat raakt
-werkprocessen en afspraken, niet alleen koppelvlakken.
+bronhouder vraagt een sterkere terugmeldfaciliteit. Afnemers blijven hun gegevens verwerken voor het
+eigen werkproces, maar de winst treedt pas op als zij durven te bouwen op de interpretatie die de LV
+meegeeft in plaats van die zelf te blijven reconstrueren. Dat vraagt vertrouwen en afspraken over
+wat de LV toezegt, en raakt daarmee werkprocessen, niet alleen koppelvlakken.
 
 Ook de nieuwe inrichting kent een levenscyclus. Over een reeks jaren ligt er opnieuw een
 vernieuwingsvraag. De winst zit niet in een besparing op korte termijn, maar in onderhoudbaarheid,

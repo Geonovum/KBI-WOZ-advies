@@ -12,7 +12,8 @@ het betrouwbaar en veilig uitwisselen van elektronische berichten tussen organis
 ebMS 3.0 is de opvolger van ebMS2, gepubliceerd door OASIS in 2007. Het AS4-profiel (Applicability
 Statement 4) is een vereenvoudigd profiel van ebMS 3.0 dat in 2013 een OASIS-standaard werd en in
 2020 een ISO-standaard. AS4 is de basis van de EU eDelivery-standaard voor grensoverschrijdende
-gegevensuitwisseling en wordt binnen Digikoppeling voorbereid als opvolger van ebMS2.
+gegevensuitwisseling. Binnen Digikoppeling is het profiel sinds 2024 opgenomen in de
+standaarddocumentatie, als opvolger van ebMS2.
 
 <dfn id="def-pmode">PMode</dfn>
 
@@ -54,11 +55,21 @@ Een Collaboration Protocol Agreement (CPA) is een technisch contract in XML-form
 ebMS-communicatie tussen twee partijen regelt. Het specificeert de identiteit van beide partijen, de
 toegestane berichttypen, beveiligingsprofielen, endpoints en parameters voor retry-gedrag.
 
+<dfn id="def-digikoppeling">Digikoppeling</dfn>
+
+Digikoppeling [[DK-ARCH]] is het stelsel van afspraken en koppelvlakstandaarden van Logius voor
+gestandaardiseerde gegevensuitwisseling tussen overheidsorganisaties. Het omvat onder meer de
+koppelvlakstandaarden ebMS2 [[DK-EBMS2]], ebMS3/AS4 en REST-API [[DK-RESTAPI]], en heeft de status
+'pas toe of leg uit'. Aansluiten op de ebMS-koppelvlakstandaarden gebeurt via een [MSH](#def-msh).
+
 <dfn id="def-msh">MSH</dfn>
 
 De Message Service Handler (MSH) is het softwarecomponent dat de ebMS-protocollogica afhandelt. De
 MSH verzorgt het verzenden en ontvangen van berichten, het verwerken van acknowledgements, het
-uitvoeren van retries en de duplicaat-eliminatie.
+uitvoeren van retries en de duplicaat-eliminatie. De MSH vormt de aansluiting op de
+ebMS-koppelvlakstandaarden van [Digikoppeling](#def-digikoppeling) en wordt daarom ook wel
+Digikoppelingsadapter genoemd; het beheer ervan kan worden uitbesteed aan een
+[intermediair](#def-intermediair).
 
 <dfn id="def-oin">OIN</dfn>
 
@@ -68,9 +79,9 @@ PKIoverheid-certificaten en wordt gebruikt in CPA's en berichtheaders.
 
 <dfn id="def-intermediair">Intermediair</dfn>
 
-Een intermediair is een organisatie die namens andere organisaties de Digikoppelingsverbinding
-beheert. In de WOZ-keten betreft dit doorgaans het beheer van de MSH-component (de
-Digikoppelingsadapter).
+Een intermediair is een organisatie die namens andere organisaties de aansluiting op
+[Digikoppeling](#def-digikoppeling) beheert. In de WOZ-keten betreft dit doorgaans het beheer van de
+[MSH](#def-msh).
 
 <dfn id="def-bitemporeel">Bitemporele historie</dfn>
 

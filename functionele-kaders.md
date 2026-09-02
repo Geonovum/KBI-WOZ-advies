@@ -13,8 +13,8 @@ oplossingsrichtingen.
 ## Wettelijk kader
 
 De Wet WOZ [[WET-WOZ]] beschrijft twee voorzieningen: de Basisregistratie WOZ bij de gemeente en de
-Landelijke Voorziening WOZ bij de Dienst (het Kadaster). De wet legt twee verplichtingen vast die aan
-de eisen in dit hoofdstuk ten grondslag liggen:
+Landelijke Voorziening WOZ bij de Dienst (het Kadaster). De wet legt twee verplichtingen vast die
+aan de eisen in dit hoofdstuk ten grondslag liggen:
 
 - **Leveren** (art. 37b, lid 1): Het college levert een waardegegeven met bijbehorende temporele en
   meta-kenmerken aan de Dienst ten behoeve van de opname in de landelijke voorziening WOZ.
@@ -35,25 +35,44 @@ Uit de verplichtingen tot leveren en overeenstemmen volgen eisen aan het koppelv
 
 De WOZ-keten vereist bitemporele historie: de combinatie van materiële historie (wanneer iets in de
 werkelijkheid geldig was) en formele historie (wanneer iets in de registratie is vastgelegd). Beide
-dimensies zijn nodig voor bezwaar, beroep en verantwoording.
+dimensies zijn nodig voor het formele gebruik van de gegevens. Dat gebruik omvat belastingheffing in
+het algemeen, en daarnaast bezwaar, beroep en verantwoording.
 
-- **Materiële historie**: Afnemers moeten kunnen vaststellen welke WOZ-waarde gold op een bepaalde
-  peildatum. Dit is essentieel voor belastingheffing, waar de waarde op de waardepeildatum bepalend
-  is.
+- **Materiële historie**: Afnemers moeten kunnen vaststellen welke gegevens op een bepaald moment in
+  de werkelijkheid golden: welke waarde gold voor een belastingjaar, wie op dat moment
+  belanghebbende was, en hoe het WOZ-object er toen uitzag. De waardepeildatum speelt hierbij een
+  andere rol: die bepaalt naar welk moment een waarde is getaxeerd, niet vanaf wanneer een gegeven
+  geldig is.
 - **Formele historie**: De keten moet vastleggen wanneer gegevens zijn geregistreerd en wanneer zij
   beschikbaar kwamen voor afnemers. Het onderscheid tussen de formele historie van de bronhouder
   (wanneer de gemeente iets registreerde) en de formele historie van de LV (wanneer het voor
   afnemers beschikbaar werd) is hierbij relevant.
 
-## Herhaalbaarheid en beschouwingsmoment
+## Herhaalbaarheid en beschouwingsmomenten
 
-Bij bezwaar of beroep moet reconstrueerbaar zijn welke gegevens op het moment van een besluit
-beschikbaar waren. Dit vereist herhaalbaarheid: dezelfde vraag met dezelfde parameters moet
-hetzelfde antwoord opleveren, ongeacht wanneer de vraag wordt gesteld.
+Afnemers moeten kunnen reconstrueren welke gegevens op een bepaald moment beschikbaar waren. Dit
+speelt bij bezwaar en beroep, maar evengoed bij het reguliere gebruik van de gegevens voor
+belastingheffing en bij verantwoording achteraf. Het vereist herhaalbaarheid: dezelfde vraag met
+dezelfde parameters moet hetzelfde antwoord opleveren, ongeacht wanneer de vraag wordt gesteld.
 
-Om herhaalbaarheid mogelijk te maken, moet de LV-WOZ bij bevraging een beschouwingsmoment kunnen
-communiceren: het tijdstip waarop het antwoord betrekking heeft. Een afnemer die later dezelfde
-vraag stelt met hetzelfde beschouwingsmoment, ontvangt hetzelfde antwoord.
+Herhaalbaarheid vraagt om twee beschouwingsmomenten, die de twee dimensies van de
+[bitemporele historie](#bitemporele-historie) volgen. Beide moeten afzonderlijk kunnen worden
+opgegeven bij een bevraging en afzonderlijk worden teruggegeven in het antwoord:
+
+- **Beschouwingsmoment geldigheid**: het moment in de werkelijkheid waarnaar wordt gekeken, oftewel
+  welke gegevens toen golden.
+- **Beschouwingsmoment registratie**: het moment in de registratie waarnaar wordt gekeken, oftewel
+  wat op dat moment was vastgelegd.
+
+Eén enkelvoudig moment dekt beide dimensies niet. Een afnemer die later dezelfde vraag stelt met
+dezelfde twee beschouwingsmomenten, ontvangt hetzelfde antwoord. Wordt alleen het moment van
+geldigheid vastgezet, dan mag hetzelfde verzoek op een later tijdstip een ander antwoord opleveren.
+In de huidige inrichting zijn dit de parameters `peiltijdstipMaterieel` en `peiltijdstipFormeel`; de
+eis zelf staat los van die invulling.
+
+Deze eis zegt niet van wélke registratie de formele tijdlijn maatgevend is. Dat is een ontwerpvraag,
+die aan de orde komt bij [Formele historie](#formele-historie) en in de
+[oplossingsrichtingen](#oplossingsrichtingen).
 
 ## Gebeurtenisgedreven karakter
 
@@ -72,17 +91,36 @@ validatie.
 
 ## Correctiesemantiek
 
-Gemeenten maken fouten in hun registratie en moeten deze kunnen corrigeren. Het koppelvlak moet
+Gemeenten moeten gegevens die zij eerder hebben geregistreerd kunnen bijstellen. Het koppelvlak moet
 onderscheid kunnen maken tussen:
 
 - **Wijzigingen**: er is iets in de werkelijkheid veranderd (bijvoorbeeld een nieuwe eigenaar)
 - **Correcties**: de registratie was fout; de werkelijkheid is niet veranderd (bijvoorbeeld een
   verkeerd geregistreerde oppervlakte)
 
-Dit onderscheid is relevant voor afnemers. Een wijziging kan leiden tot een nieuwe aanslag; een
-correctie kan leiden tot herziening van een eerder opgelegde aanslag. Afnemers moeten uit de
-aangeleverde gegevens kunnen afleiden of het om een wijziging of een correctie gaat, zodat zij de
-juiste vervolgactie kunnen bepalen.
+In de praktijk is dit onderscheid niet zwart-wit, en het is ook niet los te zien van de manier
+waarop de gegevens zijn gemodelleerd. Staat de heer Jansen geregistreerd als gebruiker sinds 2009,
+dan is het vastleggen dat mevrouw De Vries vanaf 1 april 2026 gebruiker is een wijziging. Stond
+echter al geregistreerd dat Jansen gebruiker was tot 1 juni 2026, dan krijgt dezelfde verandering in
+de werkelijkheid het karakter van een correctie: de einddatum bij Jansen klopte niet. In het huidige
+model zijn de relatie tussen het WOZ-object en Jansen en die tussen het WOZ-object en De Vries
+echter twee afzonderlijke entiteiten, elk met een eigen bitemporele historie. Of hier sprake is van
+een correctie hangt er dan van af naar welke van de twee wordt gekeken.
+
+Ook het spraakgebruik loopt niet gelijk met het historiemodel. Een waardeherziening na bezwaar wordt
+in het dagelijks taalgebruik een correctie genoemd, terwijl het in het historiemodel een wijziging
+is.
+
+Beide begrippen vragen daarom een preciezere definitie dan hier wordt gegeven, in samenhang met de
+modellering van objecten en relaties. Die definitie hoort bij het informatiemodel, bij voorkeur zo
+generiek mogelijk geformuleerd; waar zij toch domeinspecifiek moet zijn, hoort zij thuis in de
+domeinanalyse voor de WOZ.
+
+Wat het koppelvlak hoe dan ook moet kunnen uitdrukken, is welke periode op de materiële tijdlijn
+wordt geraakt en of een eerdere vastlegging daarmee wordt bijgesteld. Voor de vervolgactie bij
+afnemers is de gebeurtenis leidend en niet de vraag of iets als wijziging of als correctie is
+getypeerd; het gebeurtenistype draagt de aanleiding, en wat een afnemer daarmee doet volgt uit het
+eigen werkproces (zie [Gebeurtenisgedreven karakter](#gebeurtenisgedreven-karakter)).
 
 ## Consistentievalidatie
 
@@ -126,18 +164,27 @@ Dit stelt eisen aan:
 ## Notificatie van afnemers
 
 Afnemers moeten tijdig worden geïnformeerd over wijzigingen in WOZ-gegevens, zodat zij hun processen
-kunnen starten. De informatiebehoefte verschilt per afnemer:
+kunnen starten. Het koppelvlak moet daarvoor het type gebeurtenis en de betrokken objecten kunnen
+communiceren, en wel zo tijdig dat de vervolgprocessen bij afnemers binnen de voor hen geldende
+termijnen kunnen worden uitgevoerd.
 
-- De Belastingdienst heeft behoefte aan zowel gebeurtenisinformatie als de mogelijkheid om gegevens
-  in een gestandaardiseerd formaat op te halen.
-- Waterschappen hebben behoefte aan specifieke gegevens (zoals de aanduiding gebouwd/ongebouwd en
-  sluimerende WOZ-objecten) die voor andere afnemers worden weggefilterd.
-- Het CBS heeft behoefte aan statistische aggregaties.
+Notificeren en bevragen staan hierbij niet los van elkaar. Zowel de Belastingdienst als de
+waterschappen hebben behoefte aan gebeurtenisinformatie én aan de mogelijkheid om gegevens in een
+gestandaardiseerd formaat op te halen; het CBS heeft daarnaast behoefte aan statistische
+aggregaties. De keten moet in al deze vormen kunnen voorzien, en daarbij ook voldoen aan de
+verwachtingen van afnemers over de reactiesnelheid bij bevragen.
 
-Het koppelvlak moet het mogelijk maken dat afnemers de voor hen relevante gegevens ontvangen of
-kunnen ophalen, zonder dat zij gegevens ontvangen die buiten hun informatiebehoefte vallen.
-Doelbinding is hierbij een randvoorwaarde: het moet controleerbaar en logbaar zijn met welk doel een
-afnemer gegevens ontvangt of verwerkt.
+## Autorisatie op attribuutniveau
+
+Afnemers zijn niet voor dezelfde gegevens geautoriseerd. Zowel de Belastingdienst als de
+waterschappen zijn geautoriseerd voor enkele gegevens die specifiek voor hen in de LV-WOZ staan; de
+aanduiding gebouwd/ongebouwd en sluimerende WOZ-objecten zijn daarvan voorbeelden aan de kant van de
+waterschappen. De keten moet per afnemer kunnen bepalen welke gegevens worden verstrekt, tot op het
+niveau van het afzonderlijke attribuut, en zowel bij notificatie als bij bevraging.
+
+Autorisatie is hierbij iets anders dan informatiebehoefte. Autorisatie bepaalt wat een afnemer mág
+ontvangen en is een harde grens; de informatiebehoefte bepaalt wat een afnemer wíl ontvangen en
+stuurt de filtering daarbinnen. Filtering op behoefte mag de autorisatiegrens niet vervangen.
 
 ## Traceerbaarheid en verantwoording
 
@@ -149,6 +196,15 @@ verwerkt, en aan wie is deze doorgeleverd? Dit is relevant voor:
 - **Ketenverantwoording**: bij fouten in de keten moet vast te stellen zijn waar het misging (bij de
   bronhouder, in het transport, bij de LV, of bij de afnemer).
 - **AVG-verantwoording**: welke persoonsgegevens zijn wanneer aan wie verstrekt?
+
+## Logging van bevragingen en doelbinding
+
+Waar traceerbaarheid zich richt op het herleiden van een gegeven door de keten, stelt de
+verstrekking aan afnemers een eigen eis: elke bevraging moet worden gelogd, met vastlegging van wie
+bevroeg, wat werd verstrekt en op welke grondslag. Dit maakt controleerbaar dat een afnemer gegevens
+ontvangt en verwerkt met het doel waarvoor hij is geautoriseerd. Deze eis is bij bevraging zwaarder
+dan bij notificatie, omdat de afnemer daar het initiatief heeft en het volume en de selectie niet
+vooraf vastliggen.
 
 ## Identificatie en verwijzing
 
@@ -168,11 +224,19 @@ beschikbaarheid van de gekoppelde registraties en de behoeften van afnemers.
 
 ## Afbakening
 
-De bovenstaande eisen betreffen het koppelvlak en de keten tussen bronhouder, LV-WOZ en afnemers. De
-volgende zaken vallen buiten scope:
+De bovenstaande eisen betreffen het koppelvlak en de keten tussen bronhouder, LV-WOZ en afnemers.
+Verschillende eisen in dit hoofdstuk (notificatie, autorisatie, logging, herhaalbaarheid) raken de
+afnemerskant. Dat is bewust: de aanlevering wordt in dit advies beoordeeld op wat zij de rest van de
+keten mogelijk maakt, en de bestaande gebeurtenisberichten zijn juist vanuit dat afnemersperspectief
+ontworpen (zie [Scope en afbakening](#scope-en-afbakening)).
+
+De volgende zaken vallen buiten scope:
 
 - De inrichting van gemeentelijke WOZ-systemen
 - De interne architectuur van de LV-WOZ
+- Het ontwerp van de bevragings-API's zelf. De eisen die bevraging aan de keten stelt
+  (herhaalbaarheid, autorisatie, logging) staan wel in dit hoofdstuk, omdat zij bepalen wat er in de
+  aanlevering en in de vastlegging bij de LV moet worden geborgd.
 - Functioneel-inhoudelijke keuzes binnen het informatiemodel, zoals welke attributen worden
   opgenomen en de granulariteit van tijdregistratie. Deze keuzes zijn relevant, maar betreffen het
   informatiemodel, niet de standaarden- en architectuurkeuze die in dit document centraal staat.

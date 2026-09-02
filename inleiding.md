@@ -28,13 +28,25 @@ raken. Binnen de scope vallen:
 
 - de architectuurprincipes en ontwerpkeuzes voor het berichtenverkeer en de gegevensuitwisseling
 - de randvoorwaarden voor interoperabiliteit, authenticatie, beveiliging en governance
-- de transitiestrategie voor de overgang van StUF/ebMS naar REST-gebaseerde koppelingen
+- de migratielast en de faseerbaarheid van een overgang weg van StUF/ebMS2
 - de aansluiting op generieke kaders zoals de [NL API Strategie](#def-nl-api-strategie)
   [[NL-API-STRATEGIE]], [NORA](#def-nora) [[NORA]] en [GEMMA](#def-gemma) [[GEMMA]]
+
+De aanlevering staat centraal, maar wordt niet los van de rest van de keten beoordeeld. De
+gebeurtenisberichten die gemeenten nu aanleveren zijn juist vanuit het afnemersperspectief
+ontworpen, en de keuzes aan de aanleverkant werken direct door in wat de LV aan afnemers kan
+doorleveren en laten bevragen. Doorlevering, notificatie en bevraging komen daarom aan bod voor
+zover zij volgen uit keuzes aan het aanleverkoppelvlak, of daaraan eisen stellen.
 
 Buiten de scope vallen:
 
 - het interne ontwerp en de implementatie van de LV-WOZ zelf
 - de inrichting van gemeentelijke bronsystemen of interne processen bij bronhouders
+- het ontwerp van de bevragings-API's zelf, zoals de binnengemeentelijke WOZ-API's en de API's voor
+  het WOZ-taxatieverslag; deze komen alleen als context aan de orde
 
-Het advies is verkennend van aard. Het formuleert ontwerpuitgangspunten en aanbevelingen.
+Het advies is verkennend van aard. Het beschrijft de ontwerpuitgangspunten die uit de analyse volgen
+en spreekt een voorkeur uit voor de richting waarin het koppelvlak zich zou moeten ontwikkelen. Wat
+die transitie betekent aan migratielast en fasering komt aan de orde; planning, prioritering en
+financiering vallen erbuiten. Dat zijn bestuurlijke afwegingen die op basis van dit advies kunnen
+worden gemaakt, niet erin.

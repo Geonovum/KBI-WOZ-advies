@@ -29,7 +29,10 @@ Kernprincipes uit dit onderzoek zijn breed relevant:
 - **Herhaalbaarheid en beschouwingsmoment**: Een bevraging op hetzelfde moment moet altijd hetzelfde
   resultaat opleveren. Dit vereist dat bronnen een consistent beschouwingsmoment kunnen bieden: een
   punt in de tijd waarvan vaststaat dat alle schrijftransacties zijn afgerond. Het project stelt
-  voor om dit beschouwingsmoment expliciet mee te geven in API-responses.
+  voor om dit beschouwingsmoment expliciet mee te geven in API-responses. Bij registraties met
+  bitemporele historie betreft dit het beschouwingsmoment registratie; het beschouwingsmoment
+  geldigheid komt daar als tweede moment naast (zie
+  [Herhaalbaarheid en beschouwingsmomenten](#herhaalbaarheid-en-beschouwingsmomenten)).
 - **Event-oriëntatie**: Het werken met events kan een geschikte manier zijn om te "informeren bij de
   bron"; afnemers worden genotificeerd over wijzigingen en bepalen zelf wanneer en wat zij ophalen.
 
@@ -37,7 +40,7 @@ Het onderzoek maakt een expliciet onderscheid tussen de intentie van een handeli
 ervan. Een bron die alleen toestandsgegevens vastlegt zonder de context van de handelingen die tot
 die toestand hebben geleid, kan niet volledig verantwoording afleggen. Dit inzicht sluit aan bij de
 spanning tussen event-driven intentie en synchronisatie-praktijk die zichtbaar wordt in
-[Synchronisatieberichten als herstelmechanisme](#synchronisatieberichten-als-herstelmechanisme).
+[Synchronisatieberichten](#synchronisatieberichten).
 
 Het WOZ-domein is expliciet een van de toepassingsgebieden waarin het project inzichten beproeft.
 Dit maakt de bevindingen direct relevant voor de modernisering van de LV-WOZ.
@@ -168,7 +171,14 @@ informatiemodel voor het LV-deel, maar deze zijn destijds niet tot uitvoering ge
 De ambitie is dan ook om een informatiemodel specifiek voor de LV te ontwikkelen. Dit zou een
 belangrijk fundament bieden voor de standaardisatie van een nieuw koppelvlak.
 
-## Haal Centraal WOZ Bevragen API
+## Bevragings-API's rond de WOZ
+
+Het ontwerp van bevragings-API's valt buiten de scope van dit advies (zie
+[Scope en afbakening](#scope-en-afbakening)). De hieronder beschreven initiatieven zijn opgenomen
+als context: zij laten zien welke pogingen er in het WOZ-domein al zijn gedaan om gegevens via REST
+te ontsluiten, en waar die tot nu toe op zijn vastgelopen.
+
+### Haal Centraal WOZ Bevragen API
 
 De WOZ Bevragen API [[KADASTER-WOZ-API]] is ontwikkeld door het Kadaster in samenwerking met VNG
 Realisatie binnen het Haal Centraal-programma. De API stelt bronhouders in staat om WOZ-gegevens te
@@ -194,7 +204,7 @@ rechtstreeks inzien. In die gevallen wordt de data via de Haal Centraal API opge
 patroon groeit naarmate er meer grondslagen komen waarmee gemeenten WOZ-data mogen gebruiken, onder
 meer voor de Omgevingswet.
 
-## Binnengemeentelijke WOZ-API's
+### Binnengemeentelijke WOZ-API's
 
 VNG Realisatie heeft binnengemeentelijke WOZ-bevragingen [[IMWOZ-BEVRAGINGEN]] in ontwikkeling: REST
 API's voor het bevragen van WOZ-gegevens binnen de gemeente. Deze API's zijn bedoeld naast StUF-WOZ,
@@ -202,3 +212,8 @@ niet als vervanging. De huidige status (december 2024): "Deze API's zijn in ontw
 ogenblik zijn de API's nog niet volwassen genoeg om ingebouwd te worden in productie-software." De
 ontwikkeling heeft tot nu toe geen concrete resultaten opgeleverd en kent beperkt draagvlak bij de
 betrokken partijen.
+
+De Waarderingskamer merkt hierbij op dat de belangrijkste binnengemeentelijke bevragings-API's op
+dit moment die zijn welke zijn ontwikkeld voor het gemoderniseerde
+[WOZ-taxatieverslag woningen](https://www.waarderingskamer.nl/voor-gemeenten/woningen/woz-taxatieverslag-woningen).
+Deze API's staan los van het LV-koppelvlak.
