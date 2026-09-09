@@ -81,6 +81,8 @@ let respecConfig = {
   //neem hier de URL van de github repository op waar het respec document in staat
   github: "https://github.com/Geonovum/KBI-WOZ-advies",
 
+  postProcess: [...(organisationConfig.postProcess ?? []), localizeGitHubHeaderLinks],
+
   // Create PDF and link to file in header (optional):
   // TODO: Change the filename as preferred.
   //alternateFormats: [
@@ -282,3 +284,16 @@ let respecConfig = {
     },
   },
 };
+
+function localizeGitHubHeaderLinks(_config, document) {
+  if (document.documentElement.lang !== "nl") {
+    return;
+  }
+
+  const issueLink = document.querySelector(
+    '.head dl a[href$="/issues/"], .head dl a[href$="/issues"]'
+  );
+  if (issueLink) {
+    issueLink.textContent = "Alle issues";
+  }
+}
