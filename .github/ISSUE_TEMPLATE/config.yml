@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Consultatieversie van het document
+    url: https://geonovum.github.io/KBI-WOZ-advies/
+    about: Lees eerst het document waarop de consultatie betrekking heeft.
+  - name: Contact met het projectteam
+    url: https://developer.overheid.nl/implementatie-ondersteuning#hoe-bereik-je-ons
+    about: "Liever niet via GitHub reageren, of een vraag vooraf? Mail naar api@geonovum.nl."

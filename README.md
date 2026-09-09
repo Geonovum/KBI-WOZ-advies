@@ -7,7 +7,7 @@ gemeenten aan de Landelijke Voorziening WOZ (LV-WOZ). Het document is opgesteld 
 [Kennisborging en implementatieondersteuning](https://developer.overheid.nl/implementatie-ondersteuning)
 van [Geonovum](https://www.geonovum.nl), in opdracht van het Ministerie van BZK.
 
-Werkversie: https://geonovum.github.io/KBI-WOZ-advies/
+Consultatieversie: https://geonovum.github.io/KBI-WOZ-advies/
 
 ## Over dit document
 
@@ -17,6 +17,15 @@ ontwerpuitgangspunten en aanbevelingen voor een REST-gebaseerde architectuur.
 
 De analyse richt zich op het koppelvlak tussen gemeenten (als bronhouders) en de landelijke
 voorziening. De bevindingen zijn breder toepasbaar op registraties die dezelfde transitie doormaken.
+
+## Consultatie
+
+Dit document is in publieke consultatie. Reacties zijn welkom via
+[het consultatieformulier](https://github.com/Geonovum/KBI-WOZ-advies/issues/new?template=consultatiereactie.yml).
+
+Dien per onderwerp een aparte reactie in en kijk eerst of uw punt al is
+[ingediend door een ander](https://github.com/Geonovum/KBI-WOZ-advies/issues?q=is%3Aissue+label%3Aconsultatie).
+Reacties zijn openbaar. Alle reacties worden verwerkt en van een terugkoppeling voorzien.
 
 ## Contact
 

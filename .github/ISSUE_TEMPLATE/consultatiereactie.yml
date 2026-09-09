@@ -1,0 +1,121 @@
+name: Consultatiereactie
+description: Dien een reactie in op het implementatie-advies modernisering gegevensaanlevering LV-WOZ
+title: "[Consultatie] "
+labels: ["consultatie"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bedankt voor uw reactie op de consultatieversie van het
+        [implementatie-advies modernisering gegevensaanlevering LV-WOZ](https://geonovum.github.io/KBI-WOZ-advies/).
+
+        Enkele aandachtspunten vooraf:
+
+        - Dien per onderwerp een aparte reactie in. Dat maakt de verwerking en de terugkoppeling
+          navolgbaar.
+        - Kijk eerst of uw punt al is ingediend. Sluit u in dat geval aan bij de bestaande reactie
+          met een opmerking, in plaats van een nieuwe aan te maken.
+        - Reacties zijn openbaar. Deel geen vertrouwelijke of persoonlijke gegevens.
+        - Liever niet via GitHub reageren? Dat kan per e-mail via
+          [api@geonovum.nl](mailto:api@geonovum.nl).
+
+  - type: input
+    id: indiener
+    attributes:
+      label: Naam en organisatie
+      description: Optioneel. Helpt ons de reactie in de juiste context te plaatsen en zo nodig contact op te nemen.
+      placeholder: "Bijvoorbeeld: J. Jansen, gemeente Voorbeeld"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: rol
+    attributes:
+      label: Vanuit welke rol reageert u?
+      description: Optioneel. Het perspectief van de indiener weegt mee bij de beoordeling.
+      options:
+        - Gemeente (bronhouder)
+        - Softwareleverancier
+        - Intermediair of samenwerkingsverband
+        - Uitvoeringsorganisatie of beheerder landelijke voorziening
+        - Afnemer van WOZ-gegevens
+        - Beleid, toezicht of standaardisatie
+        - Anders of niet van toepassing
+    validations:
+      required: false
+
+  - type: dropdown
+    id: hoofdstuk
+    attributes:
+      label: Op welk onderdeel heeft uw reactie betrekking?
+      options:
+        - Samenvatting
+        - Inleiding
+        - Terminologie
+        - Functionele kaders
+        - Huidige situatie
+        - Knelpunten
+        - Het ebMS3/AS4-perspectief
+        - Het REST-perspectief
+        - Relevante ontwikkelingen
+        - Oplossingsrichtingen
+        - Meerdere hoofdstukken of het document als geheel
+    validations:
+      required: true
+
+  - type: input
+    id: vindplaats
+    attributes:
+      label: Vindplaats in de tekst
+      description: Paragraafnummer, kopje of een kort citaat, zodat de passage terug te vinden is.
+      placeholder: "Bijvoorbeeld: 9.2 Synchroon aanleveren en verwerken, alinea 3"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: soort
+    attributes:
+      label: Soort reactie
+      options:
+        - Inhoudelijke opmerking of bezwaar
+        - Feitelijke onjuistheid
+        - Ontbrekend onderwerp of ontbrekende afweging
+        - Onduidelijke of voor meerdere uitleg vatbare tekst
+        - Redactionele of tekstuele correctie
+        - Vraag om toelichting
+    validations:
+      required: true
+
+  - type: textarea
+    id: reactie
+    attributes:
+      label: Uw reactie
+      description: Beschrijf uw punt zo concreet mogelijk. Benoem waar het advies volgens u tekortschiet, en waarom.
+    validations:
+      required: true
+
+  - type: textarea
+    id: voorstel
+    attributes:
+      label: Voorstel voor aanpassing
+      description: Optioneel. Een concrete voorgestelde formulering of richting helpt bij de verwerking.
+    validations:
+      required: false
+
+  - type: textarea
+    id: onderbouwing
+    attributes:
+      label: Onderbouwing of context
+      description: Optioneel. Bijvoorbeeld praktijkervaring, volumes, verwijzingen naar standaarden, wet- en regelgeving of andere documenten.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: voorwaarden
+    attributes:
+      label: Voorwaarden
+      options:
+        - label: Ik heb gecontroleerd of dit punt nog niet als reactie is ingediend.
+          required: true
+        - label: Ik begrijp dat deze reactie openbaar is en dat de reactie en de verwerking ervan onder [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.nl) beschikbaar komen.
+          required: true
