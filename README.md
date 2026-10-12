@@ -20,7 +20,7 @@ voorziening. De bevindingen zijn breder toepasbaar op registraties die dezelfde 
 
 ## Consultatie
 
-Dit document is in publieke consultatie. Reacties zijn welkom via
+Dit document is in publieke consultatie tot en met 3 november 2026. Reacties zijn welkom via
 [het consultatieformulier](https://github.com/Geonovum/KBI-WOZ-advies/issues/new?template=consultatiereactie.yml).
 
 Dien per onderwerp een aparte reactie in en kijk eerst of uw punt al is
