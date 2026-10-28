@@ -7,7 +7,8 @@ gemeenten aan de Landelijke Voorziening WOZ (LV-WOZ). Het document is opgesteld 
 [Kennisborging en implementatieondersteuning](https://developer.overheid.nl/implementatie-ondersteuning)
 van [Geonovum](https://www.geonovum.nl), in opdracht van het Ministerie van BZK.
 
-Consultatieversie: https://geonovum.github.io/KBI-WOZ-advies/
+Consultatieversie: https://docs.geostandaarden.nl/kbi/cv-hr-woz-advies-20260902/ 
+Werkversie: https://geonovum.github.io/KBI-WOZ-advies/
 
 ## Over dit document
 
