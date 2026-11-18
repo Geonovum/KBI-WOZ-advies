@@ -18,8 +18,10 @@ Digikoppeling-ecosysteem.
 
 Het REST API profiel schrijft voor:
 
-- **Conformiteit aan de REST API Design Rules**: Volledige naleving van de ADR 2.0-standaard met
-  regels voor naamgeving, URL-structuur, HTTP-methoden, foutafhandeling en versionering.
+- **Conformiteit aan de REST API Design Rules**: Volledige naleving van het normatieve deel van de
+  REST API Design Rules [[ADR]], met regels voor naamgeving, URL-structuur, HTTP-methoden,
+  foutafhandeling en versionering. Het profiel verwijst niet naar een vaste versie van de Design
+  Rules.
 - **Tweezijdige TLS**: Authenticatie via PKIoverheid-certificaten met OIN-gebaseerde identificatie
   van organisaties.
 - **FSC-standaard**: Sinds versie 2.0 is [Federated Service Connectivity (FSC)](#def-fsc) verplicht
@@ -42,13 +44,14 @@ voor het profiel zoals het nu luidt, maar ook een inbreng in de richting waarin 
 
 Op een aantal vlakken bieden het REST API profiel en de MSH-gebaseerde protocollen (ebMS2 en
 ebMS3/AS4) vergelijkbare functionaliteit. Voor de vergelijking is het relevant om zowel ebMS2 (de
-huidige standaard bij veel registraties) als ebMS3/AS4 (de opvolger van ebMS2 binnen Digikoppeling)
-te beschouwen.
+huidige standaard bij veel registraties) als ebMS3/AS4 (de mogelijke opvolger van ebMS2, waarover
+binnen Digikoppeling nog geen besluit is genomen) te beschouwen.
 
 ### Authenticatie en identificatie
 
-Alle drie de profielen gebruiken PKIoverheid-certificaten en OIN-gebaseerde identificatie. De
-cryptografische basis voor het vaststellen van de identiteit van organisaties is vergelijkbaar:
+Het REST API profiel en het ebMS2-profiel van Digikoppeling gebruiken PKIoverheid-certificaten en
+OIN-gebaseerde identificatie; bij ebMS3/AS4 is dezelfde basis toepasbaar. De cryptografische basis
+voor het vaststellen van de identiteit van organisaties is vergelijkbaar:
 
 - **REST API**: Tweezijdige TLS (mTLS) met PKIoverheid-certificaten
 - **ebMS2**: TLS in combinatie met WS-Security
@@ -58,9 +61,9 @@ cryptografische basis voor het vaststellen van de identiteit van organisaties is
 ### Berichtondertekening en versleuteling
 
 Het REST API profiel ondersteunt sinds versie 2.0 optionele ondertekening en versleuteling van
-berichten. ebMS2 en ebMS3/AS4 bieden vergelijkbare functionaliteit via WS-Security. Bij alle drie de
-profielen is het gebruik configureerbaar; ebMS3/AS4 biedt meer flexibiliteit dan ebMS2 via MSH
-Profile Management.
+berichten. ebMS2 en ebMS3/AS4 bieden vergelijkbare functionaliteit via WS-Security. Bij alle drie is
+het gebruik configureerbaar; ebMS3/AS4 biedt meer flexibiliteit dan ebMS2 via MSH Profile
+Management.
 
 ### Logging en verantwoording
 
@@ -87,7 +90,7 @@ WOZ-gegevens aan welke afnemers zijn verstrekt.
 
 ### Toegangsbeheer
 
-De drie profielen hanteren verschillende modellen voor toegangsbeheer:
+De drie varianten hanteren verschillende modellen voor toegangsbeheer:
 
 - **ebMS2**: Bilaterale Collaboration Protocol Agreements (CPA's) die per partijcombinatie worden
   afgesloten en beheerd
@@ -96,8 +99,18 @@ De drie profielen hanteren verschillende modellen voor toegangsbeheer:
 - **REST API met FSC**: Contracts en Grants via een gedistribueerd model met centrale Directory
 
 FSC Contracts zijn conceptueel vergelijkbaar met CPA's en PModes, maar met een moderner, meer
-gedistribueerd beheermodel. De FSC Directory biedt service discovery functionaliteit die bij ebMS2
-en ebMS3 niet gestandaardiseerd is.
+gedistribueerd beheermodel.
+
+Een verschil zit in het vinden van diensten. Bij FSC is dat onderdeel van de standaard zelf: in de
+Directory vinden organisaties welke partijen en welke services binnen een FSC-groep beschikbaar
+zijn, en waar zij een contract kunnen aanvragen. Het ebMS2-profiel van Digikoppeling kent geen
+vergelijkbare functie; het CPA-register ondersteunt het opstellen van CPA's, niet het vinden van
+diensten. Binnen het Europese eDelivery is het dynamisch vinden van deelnemers en hun mogelijkheden
+wel gestandaardiseerd, in afzonderlijke specificaties naast het AS4-profiel: SMP voor het publiceren
+van de gegevens van een deelnemer, en BDXL voor het vinden van de juiste SMP (de voorziening
+daarvoor heet SML). Beide zijn gebaseerd op OASIS-standaarden. Het eDelivery AS4-profiel
+[[EDELIVERY-AS4]] kent dynamisch zenden en ontvangen als optionele uitbreidingen en schrijft
+daarvoor geen specifieke voorziening voor. Deze specificaties maken geen deel uit van Digikoppeling.
 
 ### Reliable messaging
 
@@ -111,8 +124,8 @@ Dit is het gebied waar de protocollen fundamenteel verschillen:
 
 ebMS3/AS4 biedt dezelfde reliable messaging functionaliteit als ebMS2, maar met een modernere
 technische basis en betere aansluiting bij actuele WS-\* standaarden. Voor scenario's waar
-gegarandeerde aflevering essentieel is, blijft een MSH-gebaseerd protocol (ebMS2 of ebMS3/AS4) de
-gestandaardiseerde keuze binnen Digikoppeling.
+gegarandeerde aflevering essentieel is, blijft ebMS2 de gestandaardiseerde keuze binnen
+Digikoppeling; ebMS3/AS4 biedt dezelfde garanties, maar maakt geen deel uit van Digikoppeling.
 
 ## Wat niet is gestandaardiseerd
 
@@ -204,8 +217,9 @@ uitdagingen:
 - Retry-gedrag bij onbereikbaarheid van de client is niet gestandaardiseerd
 - De volgorde van webhook-notificaties is niet gegarandeerd
 
-Binnen de NL GOV API-strategie wordt gewerkt aan standaardisatie van notificaties via Cloudevents,
-maar deze standaard is nog niet breed geadopteerd.
+Voor het berichtformaat van notificaties heeft Forum Standaardisatie het NL GOV-profiel voor
+CloudEvents als verplichte standaard ('pas toe of leg uit') vastgesteld, maar deze standaard is nog
+niet breed geadopteerd.
 
 ebMS2 standaardiseert dit: acknowledgements worden asynchroon verstuurd naar een vooraf afgesproken
 endpoint, met gedefinieerde timeouts en retry-gedrag. Bij REST moet dit per API worden
@@ -274,8 +288,8 @@ FSC is bewust beperkt tot connectiviteit. Zaken als betrouwbare aflevering, beri
 domeinspecifieke datamodellen vallen buiten de scope van FSC. Niet omdat FSC tekortschiet, maar
 omdat dit andere vraagstukken zijn die op andere lagen moeten worden geadresseerd:
 
-- **Betrouwbaarheid**: Een applicatie-niveau verantwoordelijkheid of een keuze voor een ander
-  protocol (ebMS3/AS4)
+- **Betrouwbaarheid**: Een applicatie-niveau verantwoordelijkheid of een keuze voor een
+  MSH-gebaseerd protocol
 - **Berichtsemantiek**: Een domeinspecifieke standaardisatie-opgave (vergelijkbaar met StUF-WOZ)
 - **Bitemporele modellering**: Een informatiemodel-vraagstuk (MIM, IMWOZ)
 
@@ -363,14 +377,18 @@ onafhankelijke bronnen over het gebruik van de standaard buiten Nederland.
 
 ### Verantwoording van de standaardkeuze
 
-Zowel de ebMS-koppelvlakstandaarden als het REST API profiel maken deel uit van Digikoppeling, dat
-de status 'pas toe of leg uit' heeft. Met beide routes wordt dus aan die verplichting voldaan, en de
-formele uitlegplicht komt niet in beeld.
+Digikoppeling heeft de status 'pas toe of leg uit' en omvat zowel de koppelvlakstandaard ebMS2 als
+het REST API profiel. Een overstap naar het REST API profiel blijft daarmee binnen Digikoppeling, en
+de formele uitlegplicht komt niet in beeld. Voor ebMS3/AS4 ligt dat anders: zolang over adoptie
+binnen Digikoppeling geen besluit is genomen (zie
+[Achtergrond en besluitvorming](#achtergrond-en-besluitvorming)), is die route geen
+koppelvlakstandaard van Digikoppeling en hangt haar formele status af van besluitvorming die nog
+moet plaatsvinden.
 
-Dat maakt de keuze niet vrijblijvend. Wie voor de ene route kiest, kiest de andere niet, en die
-keuze werkt door bij elke partij die op beide moet kunnen aansluiten. Wat Forum Standaardisatie over
-de betrokken standaarden vaststelt, in het bijzonder over hun adoptie, is daarom onderdeel van de
-onderbouwing die bij het besluit hoort.
+Vrijblijvend is de keuze in geen van beide gevallen. Wie voor de ene route kiest, kiest de andere
+niet, en die keuze werkt door bij elke partij die op beide moet kunnen aansluiten. Wat Forum
+Standaardisatie over de betrokken standaarden vaststelt, in het bijzonder over hun adoptie, is
+daarom onderdeel van de onderbouwing die bij het besluit hoort.
 
 ### Uitbesteding bij REST
 
@@ -379,6 +397,42 @@ communiceert rechtstreeks via HTTP met de LV-WOZ (of via lichtgewicht tussenligg
 Daarmee verdwijnt de architecturele scheiding die in
 [De MSH als gescheiden component](#de-msh-als-gescheiden-component) is beschreven als bron van
 verlies van end-to-end zicht.
+
+Dat de MSH als component vervalt, betekent niet dat alles wat de MSH doet overbodig wordt. De
+functies krijgen een andere plek:
+
+- **Beveiliging, toegangsbeheer en logging** worden ingevuld door het REST API profiel met FSC (zie
+  [Vergelijking met MSH-gebaseerde protocollen](#vergelijking-met-msh-gebaseerde-protocollen)).
+- **Ontvangstbevestiging en duplicaat-eliminatie** worden in het voorgestelde model onderdeel van
+  het koppelvlak zelf: de HTTP-respons is de bevestiging, en een idempotente inrichting maakt
+  opnieuw aanbieden veilig (zie
+  [Synchroon aanleveren en verwerken](#synchroon-aanleveren-en-verwerken)).
+- **Herhalen en bufferen** van leveringen, wanneer de LV niet bereikbaar is of haar
+  capaciteitslimiet heeft bereikt, komt bij de bronhouder te liggen.
+- **Bewaking en foutafhandeling** blijven bij de bronhouder nodig: vaststellen of leveringen zijn
+  aangekomen en verwerkt, en handelen wanneer dat niet zo is.
+
+Voor de laatste twee is geen apart, gestandaardiseerd component nodig, al blijft een afzonderlijk
+component wel een optie. De functionaliteit is met gangbare frameworks en bibliotheken in de
+WOZ-applicatie zelf in te bouwen; bij ebMS wordt de protocollogica in de praktijk in een apart
+component ondergebracht. Dat inbouwen vraagt wel werk van bronhouders en hun leveranciers, en is
+voor kleine bronhouders een wezenlijke verschuiving. Een afzonderlijk of gedeeld component kan dat
+werk beperken en voorkomen dat elke leverancier dezelfde functionaliteit zelf bouwt. Daar staat
+tegenover dat het de scheiding kan terugbrengen die hierboven als bron van verlies van end-to-end
+zicht is genoemd. Wie de functionaliteit in een afzonderlijk component onderbrengt, bijvoorbeeld
+omdat het technisch beheer is uitbesteed, kan dat doen. Dat is een ontwerpoverweging voor
+bronhouders en hun leveranciers, geen eis die het koppelvlak stelt; zo houden partijen
+implementatievrijheid. Bij synchrone aanlevering is naar verwachting bovendien minder nodig: tussen
+aanlevering en verwerking treden dan minder fouten op, zodat er minder behoefte is aan een
+voorziening die foutmeldingen ontvangt en bewaart tot iemand ze oppakt.
+
+Wat wel om afspraken vraagt, is het gedrag aan het koppelvlak. In de HTTP-semantiek betekent een
+4xx-respons dat de fout bij de aanroepende partij ligt; het is dan aan de bronhouder om daarop te
+handelen. De actuele versie van de REST API Design Rules [[ADR]] schrijft voor dat foutresponsen de
+vorm van _problem details_ hebben, met naast de statuscode een leesbare toelichting. Aanvullend
+daarop zijn twee dingen denkbaar: een WOZ-specifiek profiel met eigen foutmeldingen, en minimumeisen
+aan de bewakingsfunctie bij bronhouders, zodat een afgewezen levering bij de bronhouder zelf
+terechtkomt, ook wanneer het technisch beheer is uitbesteed.
 
 De organisatorische behoefte aan uitbesteding blijft wel bestaan: bronhouders willen op diverse
 vlakken ontzorgd worden. De complexiteitsdrempel verschuift (REST API's zijn toegankelijker dan

@@ -2,13 +2,13 @@
 
 Binnen de Nederlandse overheid zijn diverse basisregistraties voor hun gegevensuitwisseling
 gebaseerd op [ebMS2](#def-ebms2) en [StUF](#def-stuf). Beide standaarden worden niet langer
-doorontwikkeld en recente beleidsbesluiten stellen eisen aan gegevensuitwisseling waaraan de huidige
-inrichting niet voldoet. De transitie naar moderne alternatieven speelt daarmee bij elke registratie
-die op deze standaarden leunt. Dit document analyseert die transitie aan de hand van één concrete
-keten: de WOZ. De combinatie van hoog volume, complexe bitemporele semantiek, een breed
-intermediairlandschap en seizoensgebonden piekbelasting maakt dat de knelpunten hier in
-geconcentreerde vorm zichtbaar worden. De analyse en ontwerpuitgangspunten zijn echter breder
-toepasbaar.
+doorontwikkeld, en binnen [Digikoppeling](#def-digikoppeling) zijn moderne API-standaarden opgenomen
+die een alternatief bieden voor koppelvlakken die nu op deze standaarden zijn gebaseerd. De
+transitie naar moderne alternatieven speelt daarmee bij elke registratie die op deze standaarden
+leunt. Dit document analyseert die transitie aan de hand van één concrete keten: de WOZ. De
+combinatie van hoog volume, complexe bitemporele semantiek, een breed intermediairlandschap en
+seizoensgebonden piekbelasting maakt dat de knelpunten hier in geconcentreerde vorm zichtbaar
+worden. De analyse en ontwerpuitgangspunten zijn echter breder toepasbaar.
 
 Tegen deze achtergrond is het project _Kennisborging en implementatieondersteuning_ van Geonovum, in
 opdracht van het Ministerie van BZK, gevraagd om een ontwerpverkenning uit te voeren en advies op te
@@ -50,3 +50,20 @@ en spreekt een voorkeur uit voor de richting waarin het koppelvlak zich zou moet
 die transitie betekent aan migratielast en fasering komt aan de orde; planning, prioritering en
 financiering vallen erbuiten. Dat zijn bestuurlijke afwegingen die op basis van dit advies kunnen
 worden gemaakt, niet erin.
+
+## Status van dit advies
+
+Dit document is een implementatie-advies aan de partijen die erom hebben gevraagd: Kadaster, VNG en
+Waarderingskamer. Het benoemt de knelpunten in de huidige inrichting en de oplossingsrichtingen die
+daarvoor in beeld zijn. Het is een bouwsteen voor het vervolg en geen besluit: de vertaling naar een
+concreet plan vraagt keuzes over planning en financiering die niet los van de inhoud te zien zijn,
+en die de betrokken partijen in het vervolgtraject maken.
+
+De consultatieversie heeft tot en met 3 november 2026 ter publieke consultatie voorgelegen. Er zijn
+zes reacties ontvangen, alle vanuit beleid en standaardisatie. Bronhouders, softwareleveranciers en
+afnemers hebben tot nu toe niet via de consultatie gereageerd. De reacties hebben geleid tot
+aanscherpingen van de tekst, niet tot wijziging van de hoofdlijn. De reacties en de terugkoppeling
+daarop zijn openbaar en terug te vinden in de
+[GitHub-repository](https://github.com/Geonovum/KBI-WOZ-advies/issues?q=is%3Aissue+label%3Aconsultatie)
+van dit document. Deze versie ligt, na verwerking van de reacties, ter vaststelling voor bij de
+betrokken partijen.
