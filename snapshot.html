@@ -1502,6 +1502,12 @@ bewegen.">
       "href": "https://www.waarderingskamer.nl/uploads/documents/03.-Voor-gemeenten/04.-Gegevensbeheer/Catalogus-Basisregistratie-WOZ-versie-1.8.pdf",
       "publisher": "Waarderingskamer"
     },
+    "HANDREIKING-DBDB": {
+      "id": "HANDREIKING-DBDB",
+      "title": "Handreiking data bij de bron",
+      "href": "https://www.noraonline.nl/wiki/Handreiking_data_bij_de_bron",
+      "publisher": "Federatief Datastelsel"
+    },
     "SMART-ENDPOINTS": {
       "id": "SMART-ENDPOINTS",
       "title": "Microservices - Smart endpoints and dumb pipes",
@@ -1515,12 +1521,14 @@ bewegen.">
     }
   },
   "title": "Implementatie-advies modernisering gegevensaanlevering LV-WOZ",
-  "specStatus": "cv",
+  "specStatus": "vv",
   "specType": "HR",
   "pubDomain": "kbi",
   "shortName": "woz-advies",
-  "publishDate": "2026-09-02",
+  "publishDate": "2026-11-18",
   "publishVersion": [],
+  "previousPublishDate": "2026-09-02",
+  "previousMaturity": "CV",
   "editors": [
     {
       "name": "Joost Farla",
@@ -1550,12 +1558,12 @@ bewegen.">
     
     <h2>
       Geonovum Handreiking<br>
-      Consultatieversie
-      <time class="dt-published" datetime="2026-09-02">02 september 2026</time>
+      Versie ter vaststelling
+      <time class="dt-published" datetime="2026-11-18">18 november 2026</time>
     </h2>
     <dl>
       <dt>Deze versie:</dt><dd class="status">
-              <a class="u-url status" href="https://docs.geostandaarden.nl/kbi/cv-hr-woz-advies-20260902">https://docs.geostandaarden.nl/kbi/cv-hr-woz-advies-20260902</a>
+              <a class="u-url status" href="https://docs.geostandaarden.nl/kbi/vv-hr-woz-advies-20261118">https://docs.geostandaarden.nl/kbi/vv-hr-woz-advies-20261118</a>
             </dd>
       <dt>Laatst gepubliceerde versie:</dt><dd>
               <a href="https://docs.geostandaarden.nl/kbi/woz-advies/">https://docs.geostandaarden.nl/kbi/woz-advies/</a>
@@ -1564,7 +1572,7 @@ bewegen.">
       
       
       
-      
+      <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/kbi/cv-hr-woz-advies-20260902">https://docs.geostandaarden.nl/kbi/cv-hr-woz-advies-20260902</a></dd>
       
       <dt>Redacteurs:</dt>
       <dd class="editor p-author h-card vcard">
@@ -1607,9 +1615,9 @@ bewegen.</p>
 <p>Veel basisregistraties bij de Nederlandse overheid wisselen gegevens uit via twee standaarden die
 aan het einde van hun levenscyclus zijn: StUF voor de inhoud van berichten en ebMS2 voor het
 transport. Beide worden niet of nauwelijks doorontwikkeld en de kennis ervan in de markt neemt af.
-Tegelijk heeft de overheid moderne API-standaarden verplicht gesteld waaraan de huidige inrichting
-niet voldoet, en wordt de generieke dienst waarmee afnemers nu worden beleverd (Digilevering) op
-termijn gestaakt.</p>
+Tegelijk zijn binnen Digikoppeling moderne API-standaarden opgenomen, die een alternatief bieden
+voor koppelvlakken die nu op StUF en ebMS2 zijn gebaseerd. Naar de toekomst van Digilevering, de
+generieke voorziening waarmee afnemers nu worden beleverd, vindt onderzoek plaats.</p>
 <p>Dit advies analyseert de transitie aan de hand van de WOZ-keten, omdat die keten hoog volume,
 complexe historie met meerdere tijdlijnen, een breed intermediairlandschap en een sterke
 seizoenspiek combineert.</p>
@@ -1656,15 +1664,15 @@ aantallen berichten zonder nieuwe informatie, en de Belastingdienst ontvangt som
 zes jaar die buiten haar belastingtermijn vallen.</p>
 </section><section id="twee-routes-voor-het-transport"><div class="header-wrapper"><h3 id="twee-routes-voor-het-transport-0">Twee routes voor het transport</h3><a class="self-link" href="#twee-routes-voor-het-transport" aria-label="Permalink for this Section"></a></div>
 <p>Voor de transportlaag zijn er twee routes. ebMS3/AS4 is de actief onderhouden opvolger van ebMS2 en
-onderdeel van de Europese eDelivery-standaard. Het lost het onderhoudsprobleem op en verbetert de
-marktondersteuning. Het behoudt de architectuur met een aparte adapter (MSH), de behoefte aan
-specialistische kennis, en laat de inhoud van de berichten (StUF) ongemoeid. Het is in de kern een
-onderhoudstransitie.</p>
+onderdeel van de Europese eDelivery-standaard; over adoptie binnen Digikoppeling is nog geen besluit
+genomen. Het lost het onderhoudsprobleem op en verbetert de marktondersteuning. Het behoudt de
+architectuur met een aparte adapter (MSH), de behoefte aan specialistische kennis, en laat de inhoud
+van de berichten (StUF) ongemoeid. Het is in de kern een onderhoudstransitie.</p>
 <p>Een REST-gebaseerde architectuur neemt de aparte adapter (MSH) weg; de WOZ-applicatie communiceert
-rechtstreeks met de LV. Deze route sluit aan op de inmiddels verplichte standaarden. REST
-standaardiseert betrouwbaarheid, beheersing van piekbelasting, aanlevering van historie en het
-verwerken van correcties niet uit zichzelf; die moeten per domein worden vastgelegd. Dat is
-technisch mogelijk en vraagt om standaardisatie.</p>
+rechtstreeks met de LV. Deze route sluit aan op de API-standaarden die binnen Digikoppeling zijn
+opgenomen. REST standaardiseert betrouwbaarheid, beheersing van piekbelasting, aanlevering van
+historie en het verwerken van correcties niet uit zichzelf; die moeten per domein worden vastgelegd.
+Dat is technisch mogelijk en vraagt om standaardisatie.</p>
 <p>De afweging is strategisch: investeren in de adapterroute (MSH) met de huidige ketenstructuur, of
 investeren in een REST-architectuur die de ketenstructuur kan veranderen. Dit advies concludeert dat
 de REST-route de juiste is, op voorwaarde dat wat REST zelf niet regelt gezamenlijk wordt
@@ -1715,8 +1723,8 @@ meegeeft in plaats van die zelf te blijven reconstrueren. Dat vraagt vertrouwen 
 wat de LV toezegt, en raakt daarmee werkprocessen, niet alleen koppelvlakken.</p>
 <p>Ook de nieuwe inrichting kent een levenscyclus. Over een reeks jaren ligt er opnieuw een
 vernieuwingsvraag. De winst zit niet in een besparing op korte termijn, maar in onderhoudbaarheid,
-in aansluiting op de standaarden die inmiddels verplicht zijn, en in minder dubbele interpretatie in
-de keten.</p>
+in aansluiting op de API-standaarden die binnen Digikoppeling zijn opgenomen, en in minder dubbele
+interpretatie in de keten.</p>
 </section><section id="waarom-dit-verder-reikt-dan-de-woz"><div class="header-wrapper"><h3 id="waarom-dit-verder-reikt-dan-de-woz-0">Waarom dit verder reikt dan de WOZ</h3><a class="self-link" href="#waarom-dit-verder-reikt-dan-de-woz" aria-label="Permalink for this Section"></a></div>
 <p>De knelpunten zijn niet uniek voor de WOZ. De scheiding tussen applicatie en MSH, de asynchrone
 terugkoppeling, historie die uit berichten moet worden gereconstrueerd en afnemers die dezelfde
@@ -1733,19 +1741,19 @@ invullingen zich bij hen op. De uitwisseling wordt dan per registratie moderner,
 landschap als geheel niet eenvoudiger wordt. Uniformiteit is in dit dossier geen bijvangst, maar de
 eigenlijke opbrengst.</p>
 </section></section>
-    <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>Dit is een consultatieversie.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding">Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#de-woz-keten-in-cijfers">De WOZ-keten in cijfers</a></li><li class="tocline"><a class="tocxref" href="#wat-werkt-en-wat-knelt">Wat werkt en wat knelt</a></li><li class="tocline"><a class="tocxref" href="#twee-routes-voor-het-transport">Twee routes voor het transport</a></li><li class="tocline"><a class="tocxref" href="#twee-uitgewerkte-oplossingsrichtingen">Twee uitgewerkte oplossingsrichtingen</a></li><li class="tocline"><a class="tocxref" href="#wat-de-geschetste-lijn-niet-oplost">Wat de geschetste lijn niet oplost</a></li><li class="tocline"><a class="tocxref" href="#waarom-dit-verder-reikt-dan-de-woz">Waarom dit verder reikt dan de WOZ</a></li></ol></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#inleiding"><bdi class="secno">1. </bdi>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#scope-en-afbakening"><bdi class="secno">1.1 </bdi>Scope en afbakening</a></li></ol></li><li class="tocline"><a class="tocxref" href="#terminologie"><bdi class="secno">2. </bdi>Terminologie</a></li><li class="tocline"><a class="tocxref" href="#functionele-kaders"><bdi class="secno">3. </bdi>Functionele kaders</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wettelijk-kader"><bdi class="secno">3.1 </bdi>Wettelijk kader</a></li><li class="tocline"><a class="tocxref" href="#aanlevering-en-registratie"><bdi class="secno">3.2 </bdi>Aanlevering en registratie</a></li><li class="tocline"><a class="tocxref" href="#bitemporele-historie"><bdi class="secno">3.3 </bdi>Bitemporele historie</a></li><li class="tocline"><a class="tocxref" href="#herhaalbaarheid-en-beschouwingsmomenten"><bdi class="secno">3.4 </bdi>Herhaalbaarheid en beschouwingsmomenten</a></li><li class="tocline"><a class="tocxref" href="#gebeurtenisgedreven-karakter"><bdi class="secno">3.5 </bdi>Gebeurtenisgedreven karakter</a></li><li class="tocline"><a class="tocxref" href="#correctiesemantiek"><bdi class="secno">3.6 </bdi>Correctiesemantiek</a></li><li class="tocline"><a class="tocxref" href="#consistentievalidatie"><bdi class="secno">3.7 </bdi>Consistentievalidatie</a></li><li class="tocline"><a class="tocxref" href="#betrouwbare-aflevering"><bdi class="secno">3.8 </bdi>Betrouwbare aflevering</a></li><li class="tocline"><a class="tocxref" href="#verwerking-bij-piekbelasting"><bdi class="secno">3.9 </bdi>Verwerking bij piekbelasting</a></li><li class="tocline"><a class="tocxref" href="#notificatie-van-afnemers"><bdi class="secno">3.10 </bdi>Notificatie van afnemers</a></li><li class="tocline"><a class="tocxref" href="#autorisatie-op-attribuutniveau"><bdi class="secno">3.11 </bdi>Autorisatie op attribuutniveau</a></li><li class="tocline"><a class="tocxref" href="#traceerbaarheid-en-verantwoording"><bdi class="secno">3.12 </bdi>Traceerbaarheid en verantwoording</a></li><li class="tocline"><a class="tocxref" href="#logging-van-bevragingen-en-doelbinding"><bdi class="secno">3.13 </bdi>Logging van bevragingen en doelbinding</a></li><li class="tocline"><a class="tocxref" href="#identificatie-en-verwijzing"><bdi class="secno">3.14 </bdi>Identificatie en verwijzing</a></li><li class="tocline"><a class="tocxref" href="#afbakening"><bdi class="secno">3.15 </bdi>Afbakening</a></li></ol></li><li class="tocline"><a class="tocxref" href="#huidige-situatie"><bdi class="secno">4. </bdi>Huidige situatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#conforme-kopie-als-uitgangspunt"><bdi class="secno">4.1 </bdi>Conforme kopie als uitgangspunt</a></li><li class="tocline"><a class="tocxref" href="#staat-van-de-regelgeving"><bdi class="secno">4.2 </bdi>Staat van de regelgeving</a></li><li class="tocline"><a class="tocxref" href="#technische-inrichting"><bdi class="secno">4.3 </bdi>Technische inrichting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ebms2-als-transportprotocol"><bdi class="secno">4.3.1 </bdi>ebMS2 als transportprotocol</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#collaboration-protocol-agreements"><bdi class="secno">4.3.1.1 </bdi>Collaboration Protocol Agreements</a></li></ol></li><li class="tocline"><a class="tocxref" href="#stuf-als-berichtenstandaard"><bdi class="secno">4.3.2 </bdi>StUF als berichtenstandaard</a></li><li class="tocline"><a class="tocxref" href="#schaal-en-seizoenspatroon"><bdi class="secno">4.3.3 </bdi>Schaal en seizoenspatroon</a></li><li class="tocline"><a class="tocxref" href="#de-ketenarchitectuur"><bdi class="secno">4.3.4 </bdi>De ketenarchitectuur</a></li></ol></li><li class="tocline"><a class="tocxref" href="#kenmerken-van-de-huidige-inrichting"><bdi class="secno">4.4 </bdi>Kenmerken van de huidige inrichting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#betrouwbare-basisfunctionaliteit"><bdi class="secno">4.4.1 </bdi>Betrouwbare basisfunctionaliteit</a></li><li class="tocline"><a class="tocxref" href="#gestandaardiseerde-semantiek"><bdi class="secno">4.4.2 </bdi>Gestandaardiseerde semantiek</a></li><li class="tocline"><a class="tocxref" href="#ondersteuning-voor-bitemporele-historie"><bdi class="secno">4.4.3 </bdi>Ondersteuning voor bitemporele historie</a></li><li class="tocline"><a class="tocxref" href="#bewezen-governance"><bdi class="secno">4.4.4 </bdi>Bewezen governance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#status-van-de-standaarden"><bdi class="secno">4.5 </bdi>Status van de standaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#knelpunten"><bdi class="secno">5. </bdi>Knelpunten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#de-standaarden"><bdi class="secno">5.1 </bdi>De standaarden</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ebms2-lifecycle-en-specialistische-kennis"><bdi class="secno">5.1.1 </bdi>ebMS2: lifecycle en specialistische kennis</a></li><li class="tocline"><a class="tocxref" href="#stuf-woz-complexiteit-en-specialistische-kennis"><bdi class="secno">5.1.2 </bdi>StUF-WOZ: complexiteit en specialistische kennis</a></li></ol></li><li class="tocline"><a class="tocxref" href="#het-berichtenverkeer"><bdi class="secno">5.2 </bdi>Het berichtenverkeer</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#de-msh-als-gescheiden-component"><bdi class="secno">5.2.1 </bdi>De MSH als gescheiden component</a></li><li class="tocline"><a class="tocxref" href="#asynchrone-communicatie"><bdi class="secno">5.2.2 </bdi>Asynchrone communicatie</a></li><li class="tocline"><a class="tocxref" href="#piekbelasting-en-berichtgranulariteit"><bdi class="secno">5.2.3 </bdi>Piekbelasting en berichtgranulariteit</a></li><li class="tocline"><a class="tocxref" href="#recovery-en-ketenrisico"><bdi class="secno">5.2.4 </bdi>Recovery en ketenrisico</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-berichtsemantiek"><bdi class="secno">5.3 </bdi>De berichtsemantiek</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#toestandsoverdracht-en-volgorde-afhankelijkheid"><bdi class="secno">5.3.1 </bdi>Toestandsoverdracht en volgorde-afhankelijkheid</a></li><li class="tocline"><a class="tocxref" href="#synchronisatieberichten"><bdi class="secno">5.3.2 </bdi>Synchronisatieberichten</a></li><li class="tocline"><a class="tocxref" href="#de-interpretatielast"><bdi class="secno">5.3.3 </bdi>De interpretatielast</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-keteninrichting"><bdi class="secno">5.4 </bdi>De keteninrichting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#formele-historie"><bdi class="secno">5.4.1 </bdi>Formele historie</a></li><li class="tocline"><a class="tocxref" href="#identificatie-van-subjecten-en-relaties"><bdi class="secno">5.4.2 </bdi>Identificatie van subjecten en relaties</a></li><li class="tocline"><a class="tocxref" href="#kopiegegevens-en-synchronisatielast"><bdi class="secno">5.4.3 </bdi>Kopiegegevens en synchronisatielast</a></li><li class="tocline"><a class="tocxref" href="#terugmeldingen"><bdi class="secno">5.4.4 </bdi>Terugmeldingen</a></li><li class="tocline"><a class="tocxref" href="#positie-van-de-landelijke-voorziening"><bdi class="secno">5.4.5 </bdi>Positie van de Landelijke Voorziening</a></li><li class="tocline"><a class="tocxref" href="#validatie-versus-divergentie"><bdi class="secno">5.4.6 </bdi>Validatie versus divergentie</a></li><li class="tocline"><a class="tocxref" href="#doorlevering-aan-afnemers"><bdi class="secno">5.4.7 </bdi>Doorlevering aan afnemers</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conclusie"><bdi class="secno">5.5 </bdi>Conclusie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#het-ebms3-as4-perspectief"><bdi class="secno">6. </bdi>Het ebMS3/AS4-perspectief</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#achtergrond-en-besluitvorming"><bdi class="secno">6.1 </bdi>Achtergrond en besluitvorming</a></li><li class="tocline"><a class="tocxref" href="#wat-is-ebms3-as4"><bdi class="secno">6.2 </bdi>Wat is ebMS3/AS4?</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#evolutie-van-de-standaard"><bdi class="secno">6.2.1 </bdi>Evolutie van de standaard</a></li><li class="tocline"><a class="tocxref" href="#msh-architectuur"><bdi class="secno">6.2.2 </bdi>MSH-architectuur</a></li></ol></li><li class="tocline"><a class="tocxref" href="#wat-ebms3-as4-oplost"><bdi class="secno">6.3 </bdi>Wat ebMS3/AS4 oplost</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#actief-onderhouden-standaard"><bdi class="secno">6.3.1 </bdi>Actief onderhouden standaard</a></li><li class="tocline"><a class="tocxref" href="#verbeterde-marktondersteuning"><bdi class="secno">6.3.2 </bdi>Verbeterde marktondersteuning</a></li><li class="tocline"><a class="tocxref" href="#eu-edelivery-compliance"><bdi class="secno">6.3.3 </bdi>EU eDelivery-compliance</a></li><li class="tocline"><a class="tocxref" href="#flexibeler-configuratiemodel"><bdi class="secno">6.3.4 </bdi>Flexibeler configuratiemodel</a></li><li class="tocline"><a class="tocxref" href="#light-client-profiel"><bdi class="secno">6.3.5 </bdi>Light Client-profiel</a></li><li class="tocline"><a class="tocxref" href="#behoud-van-reliable-messaging"><bdi class="secno">6.3.6 </bdi>Behoud van reliable messaging</a></li></ol></li><li class="tocline"><a class="tocxref" href="#wat-ebms3-as4-niet-oplost"><bdi class="secno">6.4 </bdi>Wat ebMS3/AS4 niet oplost</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#de-noodzaak-van-msh-middleware"><bdi class="secno">6.4.1 </bdi>De noodzaak van MSH-middleware</a></li><li class="tocline"><a class="tocxref" href="#competentieschaarste"><bdi class="secno">6.4.2 </bdi>Competentieschaarste</a></li><li class="tocline"><a class="tocxref" href="#msh-scheiding-blijft-bestaan"><bdi class="secno">6.4.3 </bdi>MSH-scheiding blijft bestaan</a></li><li class="tocline"><a class="tocxref" href="#stuf-en-berichtsemantiek"><bdi class="secno">6.4.4 </bdi>StUF en berichtsemantiek</a></li><li class="tocline"><a class="tocxref" href="#volgordeproblemen"><bdi class="secno">6.4.5 </bdi>Volgordeproblemen</a></li><li class="tocline"><a class="tocxref" href="#foutafhandeling-en-terugkoppeling"><bdi class="secno">6.4.6 </bdi>Foutafhandeling en terugkoppeling</a></li><li class="tocline"><a class="tocxref" href="#syncreply-synchrone-acknowledgements"><bdi class="secno">6.4.7 </bdi>SyncReply: synchrone acknowledgements</a></li><li class="tocline"><a class="tocxref" href="#volledig-synchrone-verwerking"><bdi class="secno">6.4.8 </bdi>Volledig synchrone verwerking</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-migratielast"><bdi class="secno">6.5 </bdi>De migratielast</a></li><li class="tocline"><a class="tocxref" href="#samenvatting-ebms3-as4"><bdi class="secno">6.6 </bdi>Samenvatting ebMS3/AS4</a></li></ol></li><li class="tocline"><a class="tocxref" href="#het-rest-perspectief"><bdi class="secno">7. </bdi>Het REST-perspectief</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#het-digikoppeling-rest-api-profiel"><bdi class="secno">7.1 </bdi>Het Digikoppeling REST API profiel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kernkenmerken"><bdi class="secno">7.1.1 </bdi>Kernkenmerken</a></li><li class="tocline"><a class="tocxref" href="#functioneel-toepassingsgebied"><bdi class="secno">7.1.2 </bdi>Functioneel toepassingsgebied</a></li></ol></li><li class="tocline"><a class="tocxref" href="#vergelijking-met-msh-gebaseerde-protocollen"><bdi class="secno">7.2 </bdi>Vergelijking met MSH-gebaseerde protocollen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#authenticatie-en-identificatie"><bdi class="secno">7.2.1 </bdi>Authenticatie en identificatie</a></li><li class="tocline"><a class="tocxref" href="#berichtondertekening-en-versleuteling"><bdi class="secno">7.2.2 </bdi>Berichtondertekening en versleuteling</a></li><li class="tocline"><a class="tocxref" href="#logging-en-verantwoording"><bdi class="secno">7.2.3 </bdi>Logging en verantwoording</a></li><li class="tocline"><a class="tocxref" href="#toegangsbeheer"><bdi class="secno">7.2.4 </bdi>Toegangsbeheer</a></li><li class="tocline"><a class="tocxref" href="#reliable-messaging"><bdi class="secno">7.2.5 </bdi>Reliable messaging</a></li></ol></li><li class="tocline"><a class="tocxref" href="#wat-niet-is-gestandaardiseerd"><bdi class="secno">7.3 </bdi>Wat niet is gestandaardiseerd</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#betrouwbaarheid"><bdi class="secno">7.3.1 </bdi>Betrouwbaarheid</a></li><li class="tocline"><a class="tocxref" href="#capaciteitsbeheersing-en-backpressure"><bdi class="secno">7.3.2 </bdi>Capaciteitsbeheersing en backpressure</a></li><li class="tocline"><a class="tocxref" href="#asynchrone-verwerking"><bdi class="secno">7.3.3 </bdi>Asynchrone verwerking</a></li><li class="tocline"><a class="tocxref" href="#volgorde-afhandeling"><bdi class="secno">7.3.4 </bdi>Volgorde-afhandeling</a></li><li class="tocline"><a class="tocxref" href="#correctie-semantiek-en-bitemporele-historie"><bdi class="secno">7.3.5 </bdi>Correctie-semantiek en bitemporele historie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-rol-van-fsc"><bdi class="secno">7.4 </bdi>De rol van FSC</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#functionaliteit"><bdi class="secno">7.4.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#scope-afbakening"><bdi class="secno">7.4.2 </bdi>Scope-afbakening</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-transitie-uitdaging"><bdi class="secno">7.5 </bdi>De transitie-uitdaging</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wat-verloren-gaat"><bdi class="secno">7.5.1 </bdi>Wat verloren gaat</a></li><li class="tocline"><a class="tocxref" href="#wat-moet-worden-gestandaardiseerd"><bdi class="secno">7.5.2 </bdi>Wat moet worden gestandaardiseerd</a></li><li class="tocline"><a class="tocxref" href="#resources-volgen-de-handeling-niet-het-informatiemodel"><bdi class="secno">7.5.3 </bdi>Resources volgen de handeling, niet het informatiemodel</a></li><li class="tocline"><a class="tocxref" href="#installed-base-en-adoptie"><bdi class="secno">7.5.4 </bdi>Installed base en adoptie</a></li><li class="tocline"><a class="tocxref" href="#verantwoording-van-de-standaardkeuze"><bdi class="secno">7.5.5 </bdi>Verantwoording van de standaardkeuze</a></li><li class="tocline"><a class="tocxref" href="#uitbesteding-bij-rest"><bdi class="secno">7.5.6 </bdi>Uitbesteding bij REST</a></li></ol></li><li class="tocline"><a class="tocxref" href="#samenvatting-rest"><bdi class="secno">7.6 </bdi>Samenvatting REST</a></li></ol></li><li class="tocline"><a class="tocxref" href="#relevante-ontwikkelingen"><bdi class="secno">8. </bdi>Relevante ontwikkelingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#uit-betrouwbare-bron"><bdi class="secno">8.1 </bdi>Uit Betrouwbare Bron</a></li><li class="tocline"><a class="tocxref" href="#common-ground"><bdi class="secno">8.2 </bdi>Common Ground</a></li><li class="tocline"><a class="tocxref" href="#smart-endpoints-dumb-pipes"><bdi class="secno">8.3 </bdi>Smart Endpoints, Dumb Pipes</a></li><li class="tocline"><a class="tocxref" href="#werkgroep-historie"><bdi class="secno">8.4 </bdi>Werkgroep Historie</a></li><li class="tocline"><a class="tocxref" href="#informatiemodel-woz"><bdi class="secno">8.5 </bdi>Informatiemodel WOZ</a></li><li class="tocline"><a class="tocxref" href="#bevragings-api-s-rond-de-woz"><bdi class="secno">8.6 </bdi>Bevragings-API's rond de WOZ</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#haal-centraal-woz-bevragen-api"><bdi class="secno">8.6.1 </bdi>Haal Centraal WOZ Bevragen API</a></li><li class="tocline"><a class="tocxref" href="#binnengemeentelijke-woz-api-s"><bdi class="secno">8.6.2 </bdi>Binnengemeentelijke WOZ-API's</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#oplossingsrichtingen"><bdi class="secno">9. </bdi>Oplossingsrichtingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#leveren-en-overeenstemmen"><bdi class="secno">9.1 </bdi>Leveren en overeenstemmen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding-0"><bdi class="secno">9.1.1 </bdi>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#wettelijke-basis"><bdi class="secno">9.1.2 </bdi>Wettelijke basis</a></li><li class="tocline"><a class="tocxref" href="#voorgesteld-model-leveren-vastleggen-overeenstemmen"><bdi class="secno">9.1.3 </bdi>Voorgesteld model: leveren, vastleggen, overeenstemmen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x1-leveren-als-gebeurtenis-met-enkel-de-nieuwe-toestand"><bdi class="secno">9.1.3.1 </bdi>1. Leveren als gebeurtenis met enkel de nieuwe toestand</a></li><li class="tocline"><a class="tocxref" href="#x2-vastleggen-als-stapel-leveringen"><bdi class="secno">9.1.3.2 </bdi>2. Vastleggen als stapel leveringen</a></li><li class="tocline"><a class="tocxref" href="#x3-overeenstemmen-via-projecties"><bdi class="secno">9.1.3.3 </bdi>3. Overeenstemmen via projecties</a></li></ol></li><li class="tocline"><a class="tocxref" href="#verantwoordelijkheid-en-uitvoering-van-kwaliteitscontrole"><bdi class="secno">9.1.4 </bdi>Verantwoordelijkheid en uitvoering van kwaliteitscontrole</a></li><li class="tocline"><a class="tocxref" href="#welke-knelpunten-dit-deels-oplost"><bdi class="secno">9.1.5 </bdi>Welke knelpunten dit (deels) oplost</a></li></ol></li><li class="tocline"><a class="tocxref" href="#synchroon-aanleveren-en-verwerken"><bdi class="secno">9.2 </bdi>Synchroon aanleveren en verwerken</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding-1"><bdi class="secno">9.2.1 </bdi>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#voorgesteld-model-een-synchrone-uitwisseling"><bdi class="secno">9.2.2 </bdi>Voorgesteld model: één synchrone uitwisseling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x1-een-uitwisseling-een-antwoord"><bdi class="secno">9.2.2.1 </bdi>1. Eén uitwisseling, één antwoord</a></li><li class="tocline"><a class="tocxref" href="#x2-asynchroniteit-bij-de-bronhouder"><bdi class="secno">9.2.2.2 </bdi>2. Asynchroniteit bij de bronhouder</a></li><li class="tocline"><a class="tocxref" href="#x3-idempotentie"><bdi class="secno">9.2.2.3 </bdi>3. Idempotentie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#capaciteitsbeheersing"><bdi class="secno">9.2.3 </bdi>Capaciteitsbeheersing</a></li><li class="tocline"><a class="tocxref" href="#verantwoordelijkheid-en-herstel"><bdi class="secno">9.2.4 </bdi>Verantwoordelijkheid en herstel</a></li><li class="tocline"><a class="tocxref" href="#batchaanlevering-als-optimalisatie"><bdi class="secno">9.2.5 </bdi>Batchaanlevering als optimalisatie</a></li><li class="tocline"><a class="tocxref" href="#welke-knelpunten-dit-deels-oplost-0"><bdi class="secno">9.2.6 </bdi>Welke knelpunten dit (deels) oplost</a></li></ol></li><li class="tocline"><a class="tocxref" href="#validatiestrategie"><bdi class="secno">9.3 </bdi>Validatiestrategie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#spectrum-afkeuren-versus-signaleren"><bdi class="secno">9.3.1 </bdi>Spectrum: afkeuren versus signaleren</a></li><li class="tocline"><a class="tocxref" href="#waar-ligt-de-grens"><bdi class="secno">9.3.2 </bdi>Waar ligt de grens</a></li><li class="tocline"><a class="tocxref" href="#doorwerking-naar-terugmelden"><bdi class="secno">9.3.3 </bdi>Doorwerking naar terugmelden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#notificatiestrategie"><bdi class="secno">9.4 </bdi>Notificatiestrategie</a></li><li class="tocline"><a class="tocxref" href="#kopiegegevens-en-verwijzingen"><bdi class="secno">9.5 </bdi>Kopiegegevens en verwijzingen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#index"><bdi class="secno">A. </bdi>Index</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#index-defined-here"><bdi class="secno">A.1 </bdi>Termen gedefinieerd door deze specificatie</a></li><li class="tocline"><a class="tocxref" href="#index-defined-elsewhere"><bdi class="secno">A.2 </bdi>Termen gedefinieerd door verwijzing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">B. </bdi>Referenties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informatieve-referenties"><bdi class="secno">B.1 </bdi>Informatieve referenties</a></li></ol></li></ol></nav>
+    <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding">Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#de-woz-keten-in-cijfers">De WOZ-keten in cijfers</a></li><li class="tocline"><a class="tocxref" href="#wat-werkt-en-wat-knelt">Wat werkt en wat knelt</a></li><li class="tocline"><a class="tocxref" href="#twee-routes-voor-het-transport">Twee routes voor het transport</a></li><li class="tocline"><a class="tocxref" href="#twee-uitgewerkte-oplossingsrichtingen">Twee uitgewerkte oplossingsrichtingen</a></li><li class="tocline"><a class="tocxref" href="#wat-de-geschetste-lijn-niet-oplost">Wat de geschetste lijn niet oplost</a></li><li class="tocline"><a class="tocxref" href="#waarom-dit-verder-reikt-dan-de-woz">Waarom dit verder reikt dan de WOZ</a></li></ol></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#inleiding"><bdi class="secno">1. </bdi>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#scope-en-afbakening"><bdi class="secno">1.1 </bdi>Scope en afbakening</a></li><li class="tocline"><a class="tocxref" href="#status-van-dit-advies"><bdi class="secno">1.2 </bdi>Status van dit advies</a></li></ol></li><li class="tocline"><a class="tocxref" href="#terminologie"><bdi class="secno">2. </bdi>Terminologie</a></li><li class="tocline"><a class="tocxref" href="#functionele-kaders"><bdi class="secno">3. </bdi>Functionele kaders</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wettelijk-kader"><bdi class="secno">3.1 </bdi>Wettelijk kader</a></li><li class="tocline"><a class="tocxref" href="#aanlevering-en-registratie"><bdi class="secno">3.2 </bdi>Aanlevering en registratie</a></li><li class="tocline"><a class="tocxref" href="#bitemporele-historie"><bdi class="secno">3.3 </bdi>Bitemporele historie</a></li><li class="tocline"><a class="tocxref" href="#herhaalbaarheid-en-beschouwingsmomenten"><bdi class="secno">3.4 </bdi>Herhaalbaarheid en beschouwingsmomenten</a></li><li class="tocline"><a class="tocxref" href="#gebeurtenisgedreven-karakter"><bdi class="secno">3.5 </bdi>Gebeurtenisgedreven karakter</a></li><li class="tocline"><a class="tocxref" href="#correctiesemantiek"><bdi class="secno">3.6 </bdi>Correctiesemantiek</a></li><li class="tocline"><a class="tocxref" href="#consistentievalidatie"><bdi class="secno">3.7 </bdi>Consistentievalidatie</a></li><li class="tocline"><a class="tocxref" href="#betrouwbare-aflevering"><bdi class="secno">3.8 </bdi>Betrouwbare aflevering</a></li><li class="tocline"><a class="tocxref" href="#verwerking-bij-piekbelasting"><bdi class="secno">3.9 </bdi>Verwerking bij piekbelasting</a></li><li class="tocline"><a class="tocxref" href="#notificatie-van-afnemers"><bdi class="secno">3.10 </bdi>Notificatie van afnemers</a></li><li class="tocline"><a class="tocxref" href="#autorisatie-op-attribuutniveau"><bdi class="secno">3.11 </bdi>Autorisatie op attribuutniveau</a></li><li class="tocline"><a class="tocxref" href="#traceerbaarheid-en-verantwoording"><bdi class="secno">3.12 </bdi>Traceerbaarheid en verantwoording</a></li><li class="tocline"><a class="tocxref" href="#logging-van-bevragingen-en-doelbinding"><bdi class="secno">3.13 </bdi>Logging van bevragingen en doelbinding</a></li><li class="tocline"><a class="tocxref" href="#identificatie-en-verwijzing"><bdi class="secno">3.14 </bdi>Identificatie en verwijzing</a></li><li class="tocline"><a class="tocxref" href="#afbakening"><bdi class="secno">3.15 </bdi>Afbakening</a></li></ol></li><li class="tocline"><a class="tocxref" href="#huidige-situatie"><bdi class="secno">4. </bdi>Huidige situatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#conforme-kopie-als-uitgangspunt"><bdi class="secno">4.1 </bdi>Conforme kopie als uitgangspunt</a></li><li class="tocline"><a class="tocxref" href="#staat-van-de-regelgeving"><bdi class="secno">4.2 </bdi>Staat van de regelgeving</a></li><li class="tocline"><a class="tocxref" href="#technische-inrichting"><bdi class="secno">4.3 </bdi>Technische inrichting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ebms2-als-transportprotocol"><bdi class="secno">4.3.1 </bdi>ebMS2 als transportprotocol</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#collaboration-protocol-agreements"><bdi class="secno">4.3.1.1 </bdi>Collaboration Protocol Agreements</a></li></ol></li><li class="tocline"><a class="tocxref" href="#stuf-als-berichtenstandaard"><bdi class="secno">4.3.2 </bdi>StUF als berichtenstandaard</a></li><li class="tocline"><a class="tocxref" href="#schaal-en-seizoenspatroon"><bdi class="secno">4.3.3 </bdi>Schaal en seizoenspatroon</a></li><li class="tocline"><a class="tocxref" href="#de-ketenarchitectuur"><bdi class="secno">4.3.4 </bdi>De ketenarchitectuur</a></li></ol></li><li class="tocline"><a class="tocxref" href="#kenmerken-van-de-huidige-inrichting"><bdi class="secno">4.4 </bdi>Kenmerken van de huidige inrichting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#betrouwbare-basisfunctionaliteit"><bdi class="secno">4.4.1 </bdi>Betrouwbare basisfunctionaliteit</a></li><li class="tocline"><a class="tocxref" href="#gestandaardiseerde-semantiek"><bdi class="secno">4.4.2 </bdi>Gestandaardiseerde semantiek</a></li><li class="tocline"><a class="tocxref" href="#ondersteuning-voor-bitemporele-historie"><bdi class="secno">4.4.3 </bdi>Ondersteuning voor bitemporele historie</a></li><li class="tocline"><a class="tocxref" href="#bewezen-governance"><bdi class="secno">4.4.4 </bdi>Bewezen governance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#status-van-de-standaarden"><bdi class="secno">4.5 </bdi>Status van de standaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#knelpunten"><bdi class="secno">5. </bdi>Knelpunten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#de-standaarden"><bdi class="secno">5.1 </bdi>De standaarden</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ebms2-lifecycle-en-specialistische-kennis"><bdi class="secno">5.1.1 </bdi>ebMS2: lifecycle en specialistische kennis</a></li><li class="tocline"><a class="tocxref" href="#stuf-woz-complexiteit-en-specialistische-kennis"><bdi class="secno">5.1.2 </bdi>StUF-WOZ: complexiteit en specialistische kennis</a></li></ol></li><li class="tocline"><a class="tocxref" href="#het-berichtenverkeer"><bdi class="secno">5.2 </bdi>Het berichtenverkeer</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#de-msh-als-gescheiden-component"><bdi class="secno">5.2.1 </bdi>De MSH als gescheiden component</a></li><li class="tocline"><a class="tocxref" href="#asynchrone-communicatie"><bdi class="secno">5.2.2 </bdi>Asynchrone communicatie</a></li><li class="tocline"><a class="tocxref" href="#piekbelasting-en-berichtgranulariteit"><bdi class="secno">5.2.3 </bdi>Piekbelasting en berichtgranulariteit</a></li><li class="tocline"><a class="tocxref" href="#recovery-en-ketenrisico"><bdi class="secno">5.2.4 </bdi>Recovery en ketenrisico</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-berichtsemantiek"><bdi class="secno">5.3 </bdi>De berichtsemantiek</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#toestandsoverdracht-en-volgorde-afhankelijkheid"><bdi class="secno">5.3.1 </bdi>Toestandsoverdracht en volgorde-afhankelijkheid</a></li><li class="tocline"><a class="tocxref" href="#synchronisatieberichten"><bdi class="secno">5.3.2 </bdi>Synchronisatieberichten</a></li><li class="tocline"><a class="tocxref" href="#de-interpretatielast"><bdi class="secno">5.3.3 </bdi>De interpretatielast</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-keteninrichting"><bdi class="secno">5.4 </bdi>De keteninrichting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#formele-historie"><bdi class="secno">5.4.1 </bdi>Formele historie</a></li><li class="tocline"><a class="tocxref" href="#identificatie-van-subjecten-en-relaties"><bdi class="secno">5.4.2 </bdi>Identificatie van subjecten en relaties</a></li><li class="tocline"><a class="tocxref" href="#kopiegegevens-en-synchronisatielast"><bdi class="secno">5.4.3 </bdi>Kopiegegevens en synchronisatielast</a></li><li class="tocline"><a class="tocxref" href="#terugmeldingen"><bdi class="secno">5.4.4 </bdi>Terugmeldingen</a></li><li class="tocline"><a class="tocxref" href="#positie-van-de-landelijke-voorziening"><bdi class="secno">5.4.5 </bdi>Positie van de Landelijke Voorziening</a></li><li class="tocline"><a class="tocxref" href="#validatie-versus-divergentie"><bdi class="secno">5.4.6 </bdi>Validatie versus divergentie</a></li><li class="tocline"><a class="tocxref" href="#doorlevering-aan-afnemers"><bdi class="secno">5.4.7 </bdi>Doorlevering aan afnemers</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conclusie"><bdi class="secno">5.5 </bdi>Conclusie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#het-ebms3-as4-perspectief"><bdi class="secno">6. </bdi>Het ebMS3/AS4-perspectief</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#achtergrond-en-besluitvorming"><bdi class="secno">6.1 </bdi>Achtergrond en besluitvorming</a></li><li class="tocline"><a class="tocxref" href="#wat-is-ebms3-as4"><bdi class="secno">6.2 </bdi>Wat is ebMS3/AS4?</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#evolutie-van-de-standaard"><bdi class="secno">6.2.1 </bdi>Evolutie van de standaard</a></li><li class="tocline"><a class="tocxref" href="#msh-architectuur"><bdi class="secno">6.2.2 </bdi>MSH-architectuur</a></li></ol></li><li class="tocline"><a class="tocxref" href="#wat-ebms3-as4-oplost"><bdi class="secno">6.3 </bdi>Wat ebMS3/AS4 oplost</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#actief-onderhouden-standaard"><bdi class="secno">6.3.1 </bdi>Actief onderhouden standaard</a></li><li class="tocline"><a class="tocxref" href="#verbeterde-marktondersteuning"><bdi class="secno">6.3.2 </bdi>Verbeterde marktondersteuning</a></li><li class="tocline"><a class="tocxref" href="#eu-edelivery-compliance"><bdi class="secno">6.3.3 </bdi>EU eDelivery-compliance</a></li><li class="tocline"><a class="tocxref" href="#flexibeler-configuratiemodel"><bdi class="secno">6.3.4 </bdi>Flexibeler configuratiemodel</a></li><li class="tocline"><a class="tocxref" href="#light-client-profiel"><bdi class="secno">6.3.5 </bdi>Light Client-profiel</a></li><li class="tocline"><a class="tocxref" href="#behoud-van-reliable-messaging"><bdi class="secno">6.3.6 </bdi>Behoud van reliable messaging</a></li></ol></li><li class="tocline"><a class="tocxref" href="#wat-ebms3-as4-niet-oplost"><bdi class="secno">6.4 </bdi>Wat ebMS3/AS4 niet oplost</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#de-noodzaak-van-msh-middleware"><bdi class="secno">6.4.1 </bdi>De noodzaak van MSH-middleware</a></li><li class="tocline"><a class="tocxref" href="#competentieschaarste"><bdi class="secno">6.4.2 </bdi>Competentieschaarste</a></li><li class="tocline"><a class="tocxref" href="#msh-scheiding-blijft-bestaan"><bdi class="secno">6.4.3 </bdi>MSH-scheiding blijft bestaan</a></li><li class="tocline"><a class="tocxref" href="#stuf-en-berichtsemantiek"><bdi class="secno">6.4.4 </bdi>StUF en berichtsemantiek</a></li><li class="tocline"><a class="tocxref" href="#volgordeproblemen"><bdi class="secno">6.4.5 </bdi>Volgordeproblemen</a></li><li class="tocline"><a class="tocxref" href="#foutafhandeling-en-terugkoppeling"><bdi class="secno">6.4.6 </bdi>Foutafhandeling en terugkoppeling</a></li><li class="tocline"><a class="tocxref" href="#syncreply-synchrone-acknowledgements"><bdi class="secno">6.4.7 </bdi>SyncReply: synchrone acknowledgements</a></li><li class="tocline"><a class="tocxref" href="#volledig-synchrone-verwerking"><bdi class="secno">6.4.8 </bdi>Volledig synchrone verwerking</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-migratielast"><bdi class="secno">6.5 </bdi>De migratielast</a></li><li class="tocline"><a class="tocxref" href="#samenvatting-ebms3-as4"><bdi class="secno">6.6 </bdi>Samenvatting ebMS3/AS4</a></li></ol></li><li class="tocline"><a class="tocxref" href="#het-rest-perspectief"><bdi class="secno">7. </bdi>Het REST-perspectief</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#het-digikoppeling-rest-api-profiel"><bdi class="secno">7.1 </bdi>Het Digikoppeling REST API profiel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kernkenmerken"><bdi class="secno">7.1.1 </bdi>Kernkenmerken</a></li><li class="tocline"><a class="tocxref" href="#functioneel-toepassingsgebied"><bdi class="secno">7.1.2 </bdi>Functioneel toepassingsgebied</a></li></ol></li><li class="tocline"><a class="tocxref" href="#vergelijking-met-msh-gebaseerde-protocollen"><bdi class="secno">7.2 </bdi>Vergelijking met MSH-gebaseerde protocollen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#authenticatie-en-identificatie"><bdi class="secno">7.2.1 </bdi>Authenticatie en identificatie</a></li><li class="tocline"><a class="tocxref" href="#berichtondertekening-en-versleuteling"><bdi class="secno">7.2.2 </bdi>Berichtondertekening en versleuteling</a></li><li class="tocline"><a class="tocxref" href="#logging-en-verantwoording"><bdi class="secno">7.2.3 </bdi>Logging en verantwoording</a></li><li class="tocline"><a class="tocxref" href="#toegangsbeheer"><bdi class="secno">7.2.4 </bdi>Toegangsbeheer</a></li><li class="tocline"><a class="tocxref" href="#reliable-messaging"><bdi class="secno">7.2.5 </bdi>Reliable messaging</a></li></ol></li><li class="tocline"><a class="tocxref" href="#wat-niet-is-gestandaardiseerd"><bdi class="secno">7.3 </bdi>Wat niet is gestandaardiseerd</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#betrouwbaarheid"><bdi class="secno">7.3.1 </bdi>Betrouwbaarheid</a></li><li class="tocline"><a class="tocxref" href="#capaciteitsbeheersing-en-backpressure"><bdi class="secno">7.3.2 </bdi>Capaciteitsbeheersing en backpressure</a></li><li class="tocline"><a class="tocxref" href="#asynchrone-verwerking"><bdi class="secno">7.3.3 </bdi>Asynchrone verwerking</a></li><li class="tocline"><a class="tocxref" href="#volgorde-afhandeling"><bdi class="secno">7.3.4 </bdi>Volgorde-afhandeling</a></li><li class="tocline"><a class="tocxref" href="#correctie-semantiek-en-bitemporele-historie"><bdi class="secno">7.3.5 </bdi>Correctie-semantiek en bitemporele historie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-rol-van-fsc"><bdi class="secno">7.4 </bdi>De rol van FSC</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#functionaliteit"><bdi class="secno">7.4.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#scope-afbakening"><bdi class="secno">7.4.2 </bdi>Scope-afbakening</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-transitie-uitdaging"><bdi class="secno">7.5 </bdi>De transitie-uitdaging</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wat-verloren-gaat"><bdi class="secno">7.5.1 </bdi>Wat verloren gaat</a></li><li class="tocline"><a class="tocxref" href="#wat-moet-worden-gestandaardiseerd"><bdi class="secno">7.5.2 </bdi>Wat moet worden gestandaardiseerd</a></li><li class="tocline"><a class="tocxref" href="#resources-volgen-de-handeling-niet-het-informatiemodel"><bdi class="secno">7.5.3 </bdi>Resources volgen de handeling, niet het informatiemodel</a></li><li class="tocline"><a class="tocxref" href="#installed-base-en-adoptie"><bdi class="secno">7.5.4 </bdi>Installed base en adoptie</a></li><li class="tocline"><a class="tocxref" href="#verantwoording-van-de-standaardkeuze"><bdi class="secno">7.5.5 </bdi>Verantwoording van de standaardkeuze</a></li><li class="tocline"><a class="tocxref" href="#uitbesteding-bij-rest"><bdi class="secno">7.5.6 </bdi>Uitbesteding bij REST</a></li></ol></li><li class="tocline"><a class="tocxref" href="#samenvatting-rest"><bdi class="secno">7.6 </bdi>Samenvatting REST</a></li></ol></li><li class="tocline"><a class="tocxref" href="#relevante-ontwikkelingen"><bdi class="secno">8. </bdi>Relevante ontwikkelingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#uit-betrouwbare-bron"><bdi class="secno">8.1 </bdi>Uit Betrouwbare Bron</a></li><li class="tocline"><a class="tocxref" href="#common-ground"><bdi class="secno">8.2 </bdi>Common Ground</a></li><li class="tocline"><a class="tocxref" href="#smart-endpoints-dumb-pipes"><bdi class="secno">8.3 </bdi>Smart Endpoints, Dumb Pipes</a></li><li class="tocline"><a class="tocxref" href="#werkgroep-historie"><bdi class="secno">8.4 </bdi>Werkgroep Historie</a></li><li class="tocline"><a class="tocxref" href="#informatiemodel-woz"><bdi class="secno">8.5 </bdi>Informatiemodel WOZ</a></li><li class="tocline"><a class="tocxref" href="#bevragings-api-s-rond-de-woz"><bdi class="secno">8.6 </bdi>Bevragings-API's rond de WOZ</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#haal-centraal-woz-bevragen-api"><bdi class="secno">8.6.1 </bdi>Haal Centraal WOZ Bevragen API</a></li><li class="tocline"><a class="tocxref" href="#binnengemeentelijke-woz-api-s"><bdi class="secno">8.6.2 </bdi>Binnengemeentelijke WOZ-API's</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#oplossingsrichtingen"><bdi class="secno">9. </bdi>Oplossingsrichtingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#leveren-en-overeenstemmen"><bdi class="secno">9.1 </bdi>Leveren en overeenstemmen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding-0"><bdi class="secno">9.1.1 </bdi>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#wettelijke-basis"><bdi class="secno">9.1.2 </bdi>Wettelijke basis</a></li><li class="tocline"><a class="tocxref" href="#voorgesteld-model-leveren-vastleggen-overeenstemmen"><bdi class="secno">9.1.3 </bdi>Voorgesteld model: leveren, vastleggen, overeenstemmen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x1-leveren-als-gebeurtenis-met-enkel-de-nieuwe-toestand"><bdi class="secno">9.1.3.1 </bdi>1. Leveren als gebeurtenis met enkel de nieuwe toestand</a></li><li class="tocline"><a class="tocxref" href="#x2-vastleggen-als-stapel-leveringen"><bdi class="secno">9.1.3.2 </bdi>2. Vastleggen als stapel leveringen</a></li><li class="tocline"><a class="tocxref" href="#x3-overeenstemmen-via-projecties"><bdi class="secno">9.1.3.3 </bdi>3. Overeenstemmen via projecties</a></li></ol></li><li class="tocline"><a class="tocxref" href="#verantwoordelijkheid-en-uitvoering-van-kwaliteitscontrole"><bdi class="secno">9.1.4 </bdi>Verantwoordelijkheid en uitvoering van kwaliteitscontrole</a></li><li class="tocline"><a class="tocxref" href="#welke-knelpunten-dit-deels-oplost"><bdi class="secno">9.1.5 </bdi>Welke knelpunten dit (deels) oplost</a></li></ol></li><li class="tocline"><a class="tocxref" href="#synchroon-aanleveren-en-verwerken"><bdi class="secno">9.2 </bdi>Synchroon aanleveren en verwerken</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding-1"><bdi class="secno">9.2.1 </bdi>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#voorgesteld-model-een-synchrone-uitwisseling"><bdi class="secno">9.2.2 </bdi>Voorgesteld model: één synchrone uitwisseling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x1-een-uitwisseling-een-antwoord"><bdi class="secno">9.2.2.1 </bdi>1. Eén uitwisseling, één antwoord</a></li><li class="tocline"><a class="tocxref" href="#x2-asynchroniteit-bij-de-bronhouder"><bdi class="secno">9.2.2.2 </bdi>2. Asynchroniteit bij de bronhouder</a></li><li class="tocline"><a class="tocxref" href="#x3-idempotentie"><bdi class="secno">9.2.2.3 </bdi>3. Idempotentie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#capaciteitsbeheersing"><bdi class="secno">9.2.3 </bdi>Capaciteitsbeheersing</a></li><li class="tocline"><a class="tocxref" href="#verantwoordelijkheid-en-herstel"><bdi class="secno">9.2.4 </bdi>Verantwoordelijkheid en herstel</a></li><li class="tocline"><a class="tocxref" href="#batchaanlevering-als-optimalisatie"><bdi class="secno">9.2.5 </bdi>Batchaanlevering als optimalisatie</a></li><li class="tocline"><a class="tocxref" href="#welke-knelpunten-dit-deels-oplost-0"><bdi class="secno">9.2.6 </bdi>Welke knelpunten dit (deels) oplost</a></li></ol></li><li class="tocline"><a class="tocxref" href="#validatiestrategie"><bdi class="secno">9.3 </bdi>Validatiestrategie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#spectrum-afkeuren-versus-signaleren"><bdi class="secno">9.3.1 </bdi>Spectrum: afkeuren versus signaleren</a></li><li class="tocline"><a class="tocxref" href="#waar-ligt-de-grens"><bdi class="secno">9.3.2 </bdi>Waar ligt de grens</a></li><li class="tocline"><a class="tocxref" href="#doorwerking-naar-terugmelden"><bdi class="secno">9.3.3 </bdi>Doorwerking naar terugmelden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#notificatiestrategie"><bdi class="secno">9.4 </bdi>Notificatiestrategie</a></li><li class="tocline"><a class="tocxref" href="#kopiegegevens-en-verwijzingen"><bdi class="secno">9.5 </bdi>Kopiegegevens en verwijzingen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#index"><bdi class="secno">A. </bdi>Index</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#index-defined-here"><bdi class="secno">A.1 </bdi>Termen gedefinieerd door deze specificatie</a></li><li class="tocline"><a class="tocxref" href="#index-defined-elsewhere"><bdi class="secno">A.2 </bdi>Termen gedefinieerd door verwijzing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">B. </bdi>Referenties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informatieve-referenties"><bdi class="secno">B.1 </bdi>Informatieve referenties</a></li></ol></li></ol></nav>
     
 
     <section id="inleiding"><div class="header-wrapper"><h2 id="x1-inleiding"><bdi class="secno">1. </bdi>Inleiding</h2><a class="self-link" href="#inleiding" aria-label="Permalink for Section 1."></a></div>
 <p>Binnen de Nederlandse overheid zijn diverse basisregistraties voor hun gegevensuitwisseling
 gebaseerd op <a href="#def-ebms2" id="ref-for-def-ebms2-1">ebMS2</a> en <a href="#def-stuf" id="ref-for-def-stuf-1">StUF</a>. Beide standaarden worden niet langer
-doorontwikkeld en recente beleidsbesluiten stellen eisen aan gegevensuitwisseling waaraan de huidige
-inrichting niet voldoet. De transitie naar moderne alternatieven speelt daarmee bij elke registratie
-die op deze standaarden leunt. Dit document analyseert die transitie aan de hand van één concrete
-keten: de WOZ. De combinatie van hoog volume, complexe bitemporele semantiek, een breed
-intermediairlandschap en seizoensgebonden piekbelasting maakt dat de knelpunten hier in
-geconcentreerde vorm zichtbaar worden. De analyse en ontwerpuitgangspunten zijn echter breder
-toepasbaar.</p>
+doorontwikkeld, en binnen <a href="#def-digikoppeling" id="ref-for-def-digikoppeling-1">Digikoppeling</a> zijn moderne API-standaarden opgenomen
+die een alternatief bieden voor koppelvlakken die nu op deze standaarden zijn gebaseerd. De
+transitie naar moderne alternatieven speelt daarmee bij elke registratie die op deze standaarden
+leunt. Dit document analyseert die transitie aan de hand van één concrete keten: de WOZ. De
+combinatie van hoog volume, complexe bitemporele semantiek, een breed intermediairlandschap en
+seizoensgebonden piekbelasting maakt dat de knelpunten hier in geconcentreerde vorm zichtbaar
+worden. De analyse en ontwerpuitgangspunten zijn echter breder toepasbaar.</p>
 <p>Tegen deze achtergrond is het project <em>Kennisborging en implementatieondersteuning</em> van Geonovum, in
 opdracht van het Ministerie van BZK, gevraagd om een ontwerpverkenning uit te voeren en advies op te
 stellen over de modernisering van de gegevensaanlevering aan de <a href="#def-lv-woz" id="ref-for-def-lv-woz-1">LV-WOZ</a>. Dit advies
@@ -1783,6 +1791,20 @@ en spreekt een voorkeur uit voor de richting waarin het koppelvlak zich zou moet
 die transitie betekent aan migratielast en fasering komt aan de orde; planning, prioritering en
 financiering vallen erbuiten. Dat zijn bestuurlijke afwegingen die op basis van dit advies kunnen
 worden gemaakt, niet erin.</p>
+</section><section id="status-van-dit-advies"><div class="header-wrapper"><h3 id="x1-2-status-van-dit-advies"><bdi class="secno">1.2 </bdi>Status van dit advies</h3><a class="self-link" href="#status-van-dit-advies" aria-label="Permalink for Section 1.2"></a></div>
+<p>Dit document is een implementatie-advies aan de partijen die erom hebben gevraagd: Kadaster, VNG en
+Waarderingskamer. Het benoemt de knelpunten in de huidige inrichting en de oplossingsrichtingen die
+daarvoor in beeld zijn. Het is een bouwsteen voor het vervolg en geen besluit: de vertaling naar een
+concreet plan vraagt keuzes over planning en financiering die niet los van de inhoud te zien zijn,
+en die de betrokken partijen in het vervolgtraject maken.</p>
+<p>De consultatieversie heeft tot en met 3 november 2026 ter publieke consultatie voorgelegen. Er zijn
+zes reacties ontvangen, alle vanuit beleid en standaardisatie. Bronhouders, softwareleveranciers en
+afnemers hebben tot nu toe niet via de consultatie gereageerd. De reacties hebben geleid tot
+aanscherpingen van de tekst, niet tot wijziging van de hoofdlijn. De reacties en de terugkoppeling
+daarop zijn openbaar en terug te vinden in de
+<a href="https://github.com/Geonovum/KBI-WOZ-advies/issues?q=is%3Aissue+label%3Aconsultatie">GitHub-repository</a>
+van dit document. Deze versie ligt, na verwerking van de reacties, ter vaststelling voor bij de
+betrokken partijen.</p>
 </section></section>
     <section id="terminologie"><div class="header-wrapper"><h2 id="x2-terminologie"><bdi class="secno">2. </bdi>Terminologie</h2><a class="self-link" href="#terminologie" aria-label="Permalink for Section 2."></a></div>
 <p>In deze paragraaf worden de in dit document gebruikte termen en hun betekenis beschreven.</p>
@@ -1793,8 +1815,9 @@ het betrouwbaar en veilig uitwisselen van elektronische berichten tussen organis
 <p>ebMS 3.0 is de opvolger van ebMS2, gepubliceerd door OASIS in 2007. Het AS4-profiel (Applicability
 Statement 4) is een vereenvoudigd profiel van ebMS 3.0 dat in 2013 een OASIS-standaard werd en in
 2020 een ISO-standaard. AS4 is de basis van de EU eDelivery-standaard voor grensoverschrijdende
-gegevensuitwisseling. Binnen Digikoppeling is het profiel sinds 2024 opgenomen in de
-standaarddocumentatie, als opvolger van ebMS2.</p>
+gegevensuitwisseling. De invoering van een ebMS3/AS4-profiel als opvolger van ebMS2 staat sinds 2024
+op de Digikoppeling-roadmap [<cite><a class="bibref" data-link-type="biblio" href="#bib-dk-roadmap" title="Digikoppeling Roadmap 2024-2025">DK-ROADMAP</a></cite>], maar over adoptie binnen Digikoppeling is tot op heden
+(november 2026) geen besluit genomen. ebMS3/AS4 maakt daarmee geen deel uit van Digikoppeling.</p>
 <p><dfn id="def-pmode" tabindex="0" aria-haspopup="dialog">PMode</dfn></p>
 <p>Een Processing Mode (PMode) is de configuratie-eenheid in ebMS3/AS4 die bepaalt hoe berichten worden
 verwerkt. In tegenstelling tot de bilaterale CPA's in ebMS2 zijn PModes unilateraal: elke partij
@@ -1826,13 +1849,13 @@ toegestane berichttypen, beveiligingsprofielen, endpoints en parameters voor ret
 <p><dfn id="def-digikoppeling" tabindex="0" aria-haspopup="dialog">Digikoppeling</dfn></p>
 <p>Digikoppeling [<cite><a class="bibref" data-link-type="biblio" href="#bib-dk-arch" title="Digikoppeling Architectuur">DK-ARCH</a></cite>] is het stelsel van afspraken en koppelvlakstandaarden van Logius voor
 gestandaardiseerde gegevensuitwisseling tussen overheidsorganisaties. Het omvat onder meer de
-koppelvlakstandaarden ebMS2 [<cite><a class="bibref" data-link-type="biblio" href="#bib-dk-ebms2" title="Digikoppeling Koppelvlakstandaard ebMS2">DK-EBMS2</a></cite>], ebMS3/AS4 en REST-API [<cite><a class="bibref" data-link-type="biblio" href="#bib-dk-restapi" title="Digikoppeling Koppelvlakstandaard REST-API">DK-RESTAPI</a></cite>], en heeft de status
-'pas toe of leg uit'. Aansluiten op de ebMS-koppelvlakstandaarden gebeurt via een <a href="#def-msh" id="ref-for-def-msh-1">MSH</a>.</p>
+koppelvlakstandaarden ebMS2 [<cite><a class="bibref" data-link-type="biblio" href="#bib-dk-ebms2" title="Digikoppeling Koppelvlakstandaard ebMS2">DK-EBMS2</a></cite>] en REST-API [<cite><a class="bibref" data-link-type="biblio" href="#bib-dk-restapi" title="Digikoppeling Koppelvlakstandaard REST-API">DK-RESTAPI</a></cite>], en heeft de status 'pas toe of
+leg uit'. Aansluiten op de koppelvlakstandaard ebMS2 gebeurt via een <a href="#def-msh" id="ref-for-def-msh-1">MSH</a>.</p>
 <p><dfn id="def-msh" tabindex="0" aria-haspopup="dialog">MSH</dfn></p>
 <p>De Message Service Handler (MSH) is het softwarecomponent dat de ebMS-protocollogica afhandelt. De
 MSH verzorgt het verzenden en ontvangen van berichten, het verwerken van acknowledgements, het
 uitvoeren van retries en de duplicaat-eliminatie. De MSH vormt de aansluiting op de
-ebMS-koppelvlakstandaarden van <a href="#def-digikoppeling" id="ref-for-def-digikoppeling-1">Digikoppeling</a> en wordt daarom ook wel
+koppelvlakstandaard ebMS2 van <a href="#def-digikoppeling" id="ref-for-def-digikoppeling-2">Digikoppeling</a> en wordt daarom ook wel
 Digikoppelingsadapter genoemd; het beheer ervan kan worden uitbesteed aan een
 <a href="#def-intermediair" id="ref-for-def-intermediair-1">intermediair</a>.</p>
 <p><dfn id="def-oin" tabindex="0" aria-haspopup="dialog">OIN</dfn></p>
@@ -1841,7 +1864,7 @@ overheid worden geïdentificeerd in het Digikoppeling-stelsel. Het OIN is opgeno
 PKIoverheid-certificaten en wordt gebruikt in CPA's en berichtheaders.</p>
 <p><dfn id="def-intermediair" tabindex="0" aria-haspopup="dialog">Intermediair</dfn></p>
 <p>Een intermediair is een organisatie die namens andere organisaties de aansluiting op
-<a href="#def-digikoppeling" id="ref-for-def-digikoppeling-2">Digikoppeling</a> beheert. In de WOZ-keten betreft dit doorgaans het beheer van de
+<a href="#def-digikoppeling" id="ref-for-def-digikoppeling-3">Digikoppeling</a> beheert. In de WOZ-keten betreft dit doorgaans het beheer van de
 <a href="#def-msh" id="ref-for-def-msh-2">MSH</a>.</p>
 <p><dfn id="def-bitemporeel" tabindex="0" aria-haspopup="dialog">Bitemporele historie</dfn></p>
 <p>Een historiemodel dat twee tijdsdimensies combineert: de materiële historie (wanneer was iets geldig
@@ -2143,14 +2166,14 @@ betekenis hiervan voor het vervolg.</p>
 </section><section id="technische-inrichting"><div class="header-wrapper"><h3 id="x4-3-technische-inrichting"><bdi class="secno">4.3 </bdi>Technische inrichting</h3><a class="self-link" href="#technische-inrichting" aria-label="Permalink for Section 4.3"></a></div>
 <p>De gegevensuitwisseling tussen bronhouders en de <a href="#def-lv-woz" id="ref-for-def-lv-woz-2">LV-WOZ</a> is gebaseerd op twee
 standaarden: <a href="#def-ebms2" id="ref-for-def-ebms2-2">ebMS2</a> als transportprotocol en <a href="#def-stuf" id="ref-for-def-stuf-2">StUF</a> als berichtenstandaard.
-Deze combinatie is onderdeel van het Digikoppeling-stelsel en is ontworpen om betrouwbare,
-beveiligde en onweerlegbare gegevensuitwisseling mogelijk te maken.</p>
-<p>Beide standaarden staan op de 'Pas toe of leg uit'-lijst van
+ebMS2 is als koppelvlakstandaard onderdeel van <a href="#def-digikoppeling" id="ref-for-def-digikoppeling-4">Digikoppeling</a>; StUF is een
+afzonderlijke standaard. De combinatie is ontworpen om betrouwbare, beveiligde en onweerlegbare
+gegevensuitwisseling mogelijk te maken.</p>
+<p>StUF en Digikoppeling staan beide op de 'Pas toe of leg uit'-lijst van
 <a href="https://www.forumstandaardisatie.nl/">Forum Standaardisatie</a>. Dit betekent dat
 overheidsorganisaties verplicht zijn deze standaarden te gebruiken tenzij zij kunnen uitleggen
 waarom een alternatief beter past. StUF staat sinds 2008 op deze lijst en wordt beheerd door VNG
-Realisatie [<cite><a class="bibref" data-link-type="biblio" href="#bib-forum-stuf" title="StUF - Open Standaarden">FORUM-STUF</a></cite>]. Digikoppeling, waarvan de koppelvlakstandaard ebMS2 een onderdeel is,
-heeft eveneens de status 'Pas toe of leg uit' en wordt beheerd door Logius.</p>
+Realisatie [<cite><a class="bibref" data-link-type="biblio" href="#bib-forum-stuf" title="StUF - Open Standaarden">FORUM-STUF</a></cite>]; Digikoppeling wordt beheerd door Logius.</p>
 <section id="ebms2-als-transportprotocol"><div class="header-wrapper"><h4 id="x4-3-1-ebms2-als-transportprotocol"><bdi class="secno">4.3.1 </bdi>ebMS2 als transportprotocol</h4><a class="self-link" href="#ebms2-als-transportprotocol" aria-label="Permalink for Section 4.3.1"></a></div>
 <p>Het ebMS2-protocol biedt functionaliteit die standaard HTTP en eenvoudige SOAP-webservices niet
 bieden:</p>
@@ -2282,8 +2305,9 @@ onderliggende standaarden worden vervangen door moderne alternatieven.</p>
 <p>De technische standaarden waarop de huidige keten is gebaseerd, bevinden zich in verschillende fasen
 van hun levenscyclus:</p>
 <ul>
-<li><p><strong>ebMS2</strong> wordt niet langer doorontwikkeld. Logius bereidt een transitie voor naar
-<a href="#def-ebms3" id="ref-for-def-ebms3-1">ebMS3/AS4</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-dk-roadmap" title="Digikoppeling Roadmap 2024-2025">DK-ROADMAP</a></cite>]. De analyse van dit moderniseringspad en wat het in
+<li><p><strong>ebMS2</strong> wordt niet langer doorontwikkeld. De invoering van <a href="#def-ebms3" id="ref-for-def-ebms3-1">ebMS3/AS4</a> als opvolger
+staat sinds 2024 op de Digikoppeling-roadmap [<cite><a class="bibref" data-link-type="biblio" href="#bib-dk-roadmap" title="Digikoppeling Roadmap 2024-2025">DK-ROADMAP</a></cite>], maar over adoptie binnen
+Digikoppeling is nog geen besluit genomen. De analyse van dit moderniseringspad en wat het in
 potentie wel en niet oplost voor de WOZ-keten wordt behandeld in het hoofdstuk
 <a href="#het-ebms3-as4-perspectief">Het ebMS3/AS4-perspectief</a>.</p>
 </li>
@@ -2291,10 +2315,12 @@ potentie wel en niet oplost voor de WOZ-keten wordt behandeld in het hoofdstuk
 worden verwerkt, maar er is geen doorontwikkelingsagenda. Forum Standaardisatie heeft in
 evaluaties vastgesteld dat de huidige scope niet langer passend is [<cite><a class="bibref" data-link-type="biblio" href="#bib-forum-stuf-eval" title="Evaluatie StUF - Domein Uitwisselingsfundament">FORUM-STUF-EVAL</a></cite>].</p>
 </li>
-<li><p><strong>Digilevering</strong>, de dienst van Logius waarop de huidige doorlevering aan afnemers is gebaseerd,
-wordt in de toekomst gestaakt. Forum Standaardisatie heeft CloudEvents als verplichte standaard
-vastgesteld voor notificatiediensten. Dit betekent dat de doorlevering aan afnemers hoe dan ook
-opnieuw moet worden ingericht.</p>
+<li><p><strong>Digilevering</strong> is de voorziening van Logius waarop de huidige doorlevering aan afnemers is
+gebaseerd. Er vindt onderzoek plaats naar de toekomst van Digilevering; een besluit daarover is
+niet genomen. Los van de status van deze voorziening staat de functionele vraag hoe afnemers over
+wijzigingen geïnformeerd willen worden. Die vraag hoort thuis in een traject met de afnemers aan
+tafel. Forum Standaardisatie heeft het NL GOV-profiel voor CloudEvents als verplichte standaard
+vastgesteld voor notificatiediensten; bij een herinrichting van de doorlevering is dat het kader.</p>
 </li>
 </ul>
 <p>Het onderzoeken van mogelijke alternatieven voor ebMS2 en voor StUF speelt niet alleen bij de WOZ
@@ -2598,15 +2624,27 @@ altijd eenduidig welke relatie-instantie wordt bedoeld.</p>
 </section><section id="kopiegegevens-en-synchronisatielast"><div class="header-wrapper"><h4 id="x5-4-3-kopiegegevens-en-synchronisatielast"><bdi class="secno">5.4.3 </bdi>Kopiegegevens en synchronisatielast</h4><a class="self-link" href="#kopiegegevens-en-synchronisatielast" aria-label="Permalink for Section 5.4.3"></a></div>
 <p>Het koppelvlak draagt naast identificatoren ook kopiegegevens over van authentieke bronregistraties
 (naam en adres uit de BRP, vestigingsgegevens uit het Handelsregister), naast gegevens die eigen
-zijn aan de WOZ (zoals het correspondentieadres voor een specifiek WOZ-object). De aanwezigheid van
-kopiegegevens brengt operationele last met zich mee: wanneer gegevens in een bronregistratie
-wijzigen, is het de verantwoordelijkheid van de bronhouder om de kopiegegevens in de LV-WOZ bij te
-werken. Tegenover die last staat een functioneel voordeel: doordat naamgegevens in de LV aanwezig
-zijn, is zoeken op de naam van een subject mogelijk zonder bevraging van een andere registratie. De
-LV-WOZ houdt subjectgegevens per bronhouder bij; er vindt geen de-duplicatie over bronhouders heen
-plaats. Dezelfde persoon kan daardoor door meerdere gemeenten met verschillende gegevens zijn
-geregistreerd. Voor niet-ingezetenen is de WOZ soms de enige plek waar deze gegevens zijn
-vastgelegd, waardoor de kopiegegevens daar niet redundant zijn.</p>
+zijn aan de WOZ (zoals het correspondentieadres voor een specifiek WOZ-object).</p>
+<p>Dit staat op gespannen voet met het principe data bij de bron, dat het
+<a href="#def-fds" id="ref-for-def-fds-1">Federatief Datastelsel</a> heeft omarmd en heeft uitgewerkt in de Handreiking data bij de
+bron [<cite><a class="bibref" data-link-type="biblio" href="#bib-handreiking-dbdb" title="Handreiking data bij de bron">HANDREIKING-DBDB</a></cite>]: gegevens worden in de bron beheerd en daar verkregen op het moment dat ze
+nodig zijn, en verwijzen naar een bron heeft de voorkeur boven het maken van een kopie. De
+handreiking noemt als argumenten onder meer de juistheid en actualiteit van de gegevens,
+dataminimalisatie en de controle op toegang bij de bron. Vanuit dit principe is er een sterke
+voorkeur om subjectgegevens niet in de WOZ-administratie te kopiëren, maar alleen een verwijzing
+naar het subject op te nemen.</p>
+<p>De aanwezigheid van kopiegegevens brengt daarnaast operationele last met zich mee: wanneer gegevens
+in een bronregistratie wijzigen, is het de verantwoordelijkheid van de bronhouder om de
+kopiegegevens in de LV-WOZ bij te werken. De LV-WOZ houdt subjectgegevens per bronhouder bij; er
+vindt geen de-duplicatie over bronhouders heen plaats. Dezelfde persoon kan daardoor door meerdere
+gemeenten met verschillende gegevens zijn geregistreerd.</p>
+<p>Dat de kopiegegevens in de huidige situatie worden meegeleverd, komt voort uit een tijdelijke
+functionele noodzaak. Zoeken op de naam van een subject is een functie die in de keten nodig is. Die
+functie is nu alleen te bieden doordat naamgegevens in de LV aanwezig zijn, omdat zoeken over
+registraties heen, op stelselniveau, nog niet is gerealiseerd. Zodra die functie beschikbaar is, kan
+het kopiëren van deze subjectgegevens vervallen. Voor niet-ingezetenen ligt dat anders: voor hen is
+de WOZ soms de enige plek waar deze gegevens zijn vastgelegd, waardoor de gegevens daar niet
+redundant zijn.</p>
 </section><section id="terugmeldingen"><div class="header-wrapper"><h4 id="x5-4-4-terugmeldingen"><bdi class="secno">5.4.4 </bdi>Terugmeldingen</h4><a class="self-link" href="#terugmeldingen" aria-label="Permalink for Section 5.4.4"></a></div>
 <p>De LV-WOZ beschikt over een terugmeldfaciliteit op basis van het DMKS-protocol (Digikoppeling,
 XML-gebaseerd). Er is geen gebruikersinterface aan de LV-kant; alle gebruikersinterfaces moeten bij
@@ -2723,12 +2761,19 @@ tijdlijn van onderzoeken en besluiten illustreert de zorgvuldige maar trage voor
 </tr>
 <tr>
 <td>2024-2025</td>
-<td>Opname van ebMS3/AS4-profiel in Digikoppeling-standaarddocumentatie; ondersteuning van organisaties bij migratie</td>
+<td>Invoering van een ebMS3/AS4-profiel staat op de Digikoppeling-roadmap, afhankelijk van besluitvorming in het MIDO</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>Over adoptie van ebMS3/AS4 binnen Digikoppeling is nog geen besluit genomen</td>
 </tr>
 </tbody></table>
-<p>Het eDelivery ebMS3/AS4-profiel [<cite><a class="bibref" data-link-type="biblio" href="#bib-edelivery-as4" title="eDelivery AS4 Profile">EDELIVERY-AS4</a></cite>] is bij de verkenning geschikt bevonden als basis
-voor een Digikoppeling-profiel. Dit profiel is tevens de Europese standaard voor
+<p>Het eDelivery ebMS3/AS4-profiel [<cite><a class="bibref" data-link-type="biblio" href="#bib-edelivery-as4" title="eDelivery AS4 Profile">EDELIVERY-AS4</a></cite>] is bij de verkenning in principe geschikt bevonden
+als basis voor een Digikoppeling-profiel. Dit profiel is tevens de Europese standaard voor
 grensoverschrijdende gegevensuitwisseling [<cite><a class="bibref" data-link-type="biblio" href="#bib-dk-roadmap" title="Digikoppeling Roadmap 2024-2025">DK-ROADMAP</a></cite>].</p>
+<p>Een besluit over adoptie is echter niet genomen. ebMS3/AS4 maakt tot op heden (november 2026) geen
+deel uit van Digikoppeling; ebMS2 wel. Dit hoofdstuk analyseert daarom een mogelijke route, niet een
+route die binnen Digikoppeling al beschikbaar is.</p>
 </section><section id="wat-is-ebms3-as4"><div class="header-wrapper"><h3 id="x6-2-wat-is-ebms3-as4"><bdi class="secno">6.2 </bdi>Wat is ebMS3/AS4?</h3><a class="self-link" href="#wat-is-ebms3-as4" aria-label="Permalink for Section 6.2"></a></div>
 <p>AS4 (Applicability Statement 4) [<cite><a class="bibref" data-link-type="biblio" href="#bib-as4-profile" title="AS4 Profile of ebMS 3.0 Version 1.0">AS4-PROFILE</a></cite>] is een profiel van de OASIS ebMS 3.0-specificatie.
 Het werd in 2013 een OASIS-standaard en in 2020 een ISO-standaard. AS4 is ontworpen als een
@@ -2798,18 +2843,18 @@ ervaring zit wel vooral bij de organisaties en bij de partijen die het MSH-behee
 minder bij de leveranciers van de WOZ-applicaties zelf; dat is juist de reden waarom veel
 bronhouders dat beheer uitbesteden (zie
 <a href="#ebms2-lifecycle-en-specialistische-kennis">ebMS2: lifecycle en specialistische kennis</a>).</p>
-<p>Voor ebMS3/AS4 ligt de vraag anders. Het profiel is sinds 2024 opgenomen in de
-Digikoppeling-standaarddocumentatie, maar dat zegt nog niets over het gebruik: voor welke
-binnenlandse toepassingen de standaard daadwerkelijk (verplicht) wordt ingezet, en hoeveel
-gemeentelijke leveranciers hem ondersteunen, is een vraag die vóór een keuze beantwoord moet worden.
-Het Europese gebruik via eDelivery staat daar los van en zegt weinig over de implementatiesnelheid
-in de Nederlandse keten. Hoe die vraag te beantwoorden, komt aan bod in
+<p>Voor ebMS3/AS4 ligt de vraag anders. De invoering van een profiel staat sinds 2024 op de
+Digikoppeling-roadmap, maar een besluit over adoptie is niet genomen en de standaard maakt geen deel
+uit van Digikoppeling. Voor welke binnenlandse toepassingen de standaard daadwerkelijk wordt
+ingezet, en hoeveel gemeentelijke leveranciers hem ondersteunen, is een vraag die vóór een keuze
+beantwoord moet worden. Het Europese gebruik via eDelivery staat daar los van en zegt weinig over de
+implementatiesnelheid in de Nederlandse keten. Hoe die vraag te beantwoorden, komt aan bod in
 <a href="#installed-base-en-adoptie">Installed base en adoptie</a>.</p>
 </section><section id="eu-edelivery-compliance"><div class="header-wrapper"><h4 id="x6-3-3-eu-edelivery-compliance"><bdi class="secno">6.3.3 </bdi>EU eDelivery-compliance</h4><a class="self-link" href="#eu-edelivery-compliance" aria-label="Permalink for Section 6.3.3"></a></div>
 <p>ebMS3/AS4 is de basis van de EU eDelivery-standaard voor grensoverschrijdende gegevensuitwisseling.
 <a href="https://www.rinis.nl/en/edelivery/">RINIS</a> fungeert als Nederlands National Access Point en
 verzorgt de conversie tussen Digikoppeling en eDelivery. Adoptie van ebMS3/AS4 binnen Digikoppeling
-verbetert de aansluiting op dit Europese stelsel.</p>
+zou de aansluiting op dit Europese stelsel verbeteren.</p>
 </section><section id="flexibeler-configuratiemodel"><div class="header-wrapper"><h4 id="x6-3-4-flexibeler-configuratiemodel"><bdi class="secno">6.3.4 </bdi>Flexibeler configuratiemodel</h4><a class="self-link" href="#flexibeler-configuratiemodel" aria-label="Permalink for Section 6.3.4"></a></div>
 <p>Een van de operationele lasten bij ebMS2 is het CPA-beheer. ebMS3/AS4 gebruikt een ander model:</p>
 <table>
@@ -2916,7 +2961,7 @@ moeten nog steeds hun weg vinden naar de juiste medewerker bij de bronhouder.</p
 </section><section id="volledig-synchrone-verwerking"><div class="header-wrapper"><h4 id="x6-4-8-volledig-synchrone-verwerking"><bdi class="secno">6.4.8 </bdi>Volledig synchrone verwerking</h4><a class="self-link" href="#volledig-synchrone-verwerking" aria-label="Permalink for Section 6.4.8"></a></div>
 <p>Een verdergaande optie is om niet alleen de acknowledgement maar ook de inhoudelijke validatie
 synchroon te maken. Zowel ebMS2 als ebMS3/AS4 ondersteunen dit technisch, maar het Digikoppeling
-profiel schrijft dit niet voor.</p>
+ebMS2 profiel schrijft dit niet voor.</p>
 <p>Volledige synchrone verwerking biedt:</p>
 <ul>
 <li><strong>Directe feedback</strong>: De bronhouder weet onmiddellijk of een bericht is geaccepteerd of afgewezen</li>
@@ -2949,9 +2994,9 @@ naar ebMS3/AS4-compatibele versies</li>
 overstappen als alle bronhouders ebMS3/AS4 ondersteunen</li>
 </ol>
 <p>Voor een keten met circa 340 ebMS-aansluitingen, verdeeld over ongeveer 150 aanleverende
-organisaties, is dit een substantiële operatie. De Digikoppeling-roadmap voorziet ondersteuning bij
-het migratieproces, maar de daadwerkelijke migratie moet door elke organisatie zelf worden
-uitgevoerd.</p>
+organisaties, is dit een substantiële operatie. De Digikoppeling-roadmap voorziet, na een positief
+besluit over de invoering, ondersteuning bij het migratieproces, maar de daadwerkelijke migratie
+moet door elke organisatie zelf worden uitgevoerd.</p>
 </section><section id="samenvatting-ebms3-as4"><div class="header-wrapper"><h3 id="x6-6-samenvatting-ebms3-as4"><bdi class="secno">6.6 </bdi>Samenvatting ebMS3/AS4</h3><a class="self-link" href="#samenvatting-ebms3-as4" aria-label="Permalink for Section 6.6"></a></div>
 <p>ebMS3/AS4 is een logische opvolger van ebMS2 en lost een aantal concrete problemen op: het gebrek
 aan doorontwikkeling, de krimpende leveranciersmarkt, en de aansluiting bij Europese standaarden. De
@@ -2966,9 +3011,10 @@ daarmee gepaard gaande verlies van end-to-end zicht</li>
 </ul>
 <p>De transitie naar ebMS3/AS4 is daarmee primair een <em>onderhoudstransitie</em>: het vervangt een niet
 langer onderhouden protocol door een actueel equivalent, zonder de architecturale vraagstukken
-fundamenteel te veranderen. Voor organisaties die investeren in MSH-infrastructuur is het een
-noodzakelijke stap. Voor de bredere vraag hoe ketens als de WOZ eenvoudiger, toegankelijker en
-robuuster kunnen worden ingericht, biedt het geen antwoord.</p>
+fundamenteel te veranderen. Voor organisaties die in MSH-infrastructuur blijven investeren is het de
+voor de hand liggende vervolgstap, al is over adoptie binnen Digikoppeling nog geen besluit genomen
+en maakt de route daar op dit moment geen deel van uit. Voor de bredere vraag hoe ketens als de WOZ
+eenvoudiger, toegankelijker en robuuster kunnen worden ingericht, biedt het geen antwoord.</p>
 <p>Dit plaatst registraties die op ebMS2 zijn gebaseerd voor een strategische keuze: investeren in de
 MSH-route (ebMS3/AS4) met behoud van de huidige ketenstructuur, of investeren in een REST-gebaseerde
 architectuur die de ketenstructuur fundamenteel kan veranderen.</p>
@@ -2990,8 +3036,10 @@ Digikoppeling-ecosysteem.</p>
 <section id="kernkenmerken"><div class="header-wrapper"><h4 id="x7-1-1-kernkenmerken"><bdi class="secno">7.1.1 </bdi>Kernkenmerken</h4><a class="self-link" href="#kernkenmerken" aria-label="Permalink for Section 7.1.1"></a></div>
 <p>Het REST API profiel schrijft voor:</p>
 <ul>
-<li><strong>Conformiteit aan de REST API Design Rules</strong>: Volledige naleving van de ADR 2.0-standaard met
-regels voor naamgeving, URL-structuur, HTTP-methoden, foutafhandeling en versionering.</li>
+<li><strong>Conformiteit aan de REST API Design Rules</strong>: Volledige naleving van het normatieve deel van de
+REST API Design Rules [<cite><a class="bibref" data-link-type="biblio" href="#bib-adr" title="REST API Design Rules">ADR</a></cite>], met regels voor naamgeving, URL-structuur, HTTP-methoden,
+foutafhandeling en versionering. Het profiel verwijst niet naar een vaste versie van de Design
+Rules.</li>
 <li><strong>Tweezijdige TLS</strong>: Authenticatie via PKIoverheid-certificaten met OIN-gebaseerde identificatie
 van organisaties.</li>
 <li><strong>FSC-standaard</strong>: Sinds versie 2.0 is <a href="#def-fsc" id="ref-for-def-fsc-1">Federated Service Connectivity (FSC)</a> verplicht
@@ -3010,11 +3058,12 @@ voor het profiel zoals het nu luidt, maar ook een inbreng in de richting waarin 
 </section></section><section id="vergelijking-met-msh-gebaseerde-protocollen"><div class="header-wrapper"><h3 id="x7-2-vergelijking-met-msh-gebaseerde-protocollen"><bdi class="secno">7.2 </bdi>Vergelijking met MSH-gebaseerde protocollen</h3><a class="self-link" href="#vergelijking-met-msh-gebaseerde-protocollen" aria-label="Permalink for Section 7.2"></a></div>
 <p>Op een aantal vlakken bieden het REST API profiel en de MSH-gebaseerde protocollen (ebMS2 en
 ebMS3/AS4) vergelijkbare functionaliteit. Voor de vergelijking is het relevant om zowel ebMS2 (de
-huidige standaard bij veel registraties) als ebMS3/AS4 (de opvolger van ebMS2 binnen Digikoppeling)
-te beschouwen.</p>
+huidige standaard bij veel registraties) als ebMS3/AS4 (de mogelijke opvolger van ebMS2, waarover
+binnen Digikoppeling nog geen besluit is genomen) te beschouwen.</p>
 <section id="authenticatie-en-identificatie"><div class="header-wrapper"><h4 id="x7-2-1-authenticatie-en-identificatie"><bdi class="secno">7.2.1 </bdi>Authenticatie en identificatie</h4><a class="self-link" href="#authenticatie-en-identificatie" aria-label="Permalink for Section 7.2.1"></a></div>
-<p>Alle drie de profielen gebruiken PKIoverheid-certificaten en OIN-gebaseerde identificatie. De
-cryptografische basis voor het vaststellen van de identiteit van organisaties is vergelijkbaar:</p>
+<p>Het REST API profiel en het ebMS2-profiel van Digikoppeling gebruiken PKIoverheid-certificaten en
+OIN-gebaseerde identificatie; bij ebMS3/AS4 is dezelfde basis toepasbaar. De cryptografische basis
+voor het vaststellen van de identiteit van organisaties is vergelijkbaar:</p>
 <ul>
 <li><strong>REST API</strong>: Tweezijdige TLS (mTLS) met PKIoverheid-certificaten</li>
 <li><strong>ebMS2</strong>: TLS in combinatie met WS-Security</li>
@@ -3023,9 +3072,9 @@ authenticatie via SAML-tokens</li>
 </ul>
 </section><section id="berichtondertekening-en-versleuteling"><div class="header-wrapper"><h4 id="x7-2-2-berichtondertekening-en-versleuteling"><bdi class="secno">7.2.2 </bdi>Berichtondertekening en versleuteling</h4><a class="self-link" href="#berichtondertekening-en-versleuteling" aria-label="Permalink for Section 7.2.2"></a></div>
 <p>Het REST API profiel ondersteunt sinds versie 2.0 optionele ondertekening en versleuteling van
-berichten. ebMS2 en ebMS3/AS4 bieden vergelijkbare functionaliteit via WS-Security. Bij alle drie de
-profielen is het gebruik configureerbaar; ebMS3/AS4 biedt meer flexibiliteit dan ebMS2 via MSH
-Profile Management.</p>
+berichten. ebMS2 en ebMS3/AS4 bieden vergelijkbare functionaliteit via WS-Security. Bij alle drie is
+het gebruik configureerbaar; ebMS3/AS4 biedt meer flexibiliteit dan ebMS2 via MSH Profile
+Management.</p>
 </section><section id="logging-en-verantwoording"><div class="header-wrapper"><h4 id="x7-2-3-logging-en-verantwoording"><bdi class="secno">7.2.3 </bdi>Logging en verantwoording</h4><a class="self-link" href="#logging-en-verantwoording" aria-label="Permalink for Section 7.2.3"></a></div>
 <p>FSC schrijft transactielogging voor met UUID v7-gebaseerde transactie-ID's. Dit biedt een
 gestandaardiseerde manier om te traceren welke gegevens wanneer zijn uitgewisseld. Bij
@@ -3047,7 +3096,7 @@ Nederlandse overheid meeweegt bij de vraag wat de standaard in de praktijk oplev
 WOZ-keten kan deze standaard een gestructureerde manier bieden om te verantwoorden welke
 WOZ-gegevens aan welke afnemers zijn verstrekt.</p>
 </section><section id="toegangsbeheer"><div class="header-wrapper"><h4 id="x7-2-4-toegangsbeheer"><bdi class="secno">7.2.4 </bdi>Toegangsbeheer</h4><a class="self-link" href="#toegangsbeheer" aria-label="Permalink for Section 7.2.4"></a></div>
-<p>De drie profielen hanteren verschillende modellen voor toegangsbeheer:</p>
+<p>De drie varianten hanteren verschillende modellen voor toegangsbeheer:</p>
 <ul>
 <li><strong>ebMS2</strong>: Bilaterale Collaboration Protocol Agreements (CPA's) die per partijcombinatie worden
 afgesloten en beheerd</li>
@@ -3056,8 +3105,17 @@ coördinatie vereisen</li>
 <li><strong>REST API met FSC</strong>: Contracts en Grants via een gedistribueerd model met centrale Directory</li>
 </ul>
 <p>FSC Contracts zijn conceptueel vergelijkbaar met CPA's en PModes, maar met een moderner, meer
-gedistribueerd beheermodel. De FSC Directory biedt service discovery functionaliteit die bij ebMS2
-en ebMS3 niet gestandaardiseerd is.</p>
+gedistribueerd beheermodel.</p>
+<p>Een verschil zit in het vinden van diensten. Bij FSC is dat onderdeel van de standaard zelf: in de
+Directory vinden organisaties welke partijen en welke services binnen een FSC-groep beschikbaar
+zijn, en waar zij een contract kunnen aanvragen. Het ebMS2-profiel van Digikoppeling kent geen
+vergelijkbare functie; het CPA-register ondersteunt het opstellen van CPA's, niet het vinden van
+diensten. Binnen het Europese eDelivery is het dynamisch vinden van deelnemers en hun mogelijkheden
+wel gestandaardiseerd, in afzonderlijke specificaties naast het AS4-profiel: SMP voor het publiceren
+van de gegevens van een deelnemer, en BDXL voor het vinden van de juiste SMP (de voorziening
+daarvoor heet SML). Beide zijn gebaseerd op OASIS-standaarden. Het eDelivery AS4-profiel
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-edelivery-as4" title="eDelivery AS4 Profile">EDELIVERY-AS4</a></cite>] kent dynamisch zenden en ontvangen als optionele uitbreidingen en schrijft
+daarvoor geen specifieke voorziening voor. Deze specificaties maken geen deel uit van Digikoppeling.</p>
 </section><section id="reliable-messaging"><div class="header-wrapper"><h4 id="x7-2-5-reliable-messaging"><bdi class="secno">7.2.5 </bdi>Reliable messaging</h4><a class="self-link" href="#reliable-messaging" aria-label="Permalink for Section 7.2.5"></a></div>
 <p>Dit is het gebied waar de protocollen fundamenteel verschillen:</p>
 <table>
@@ -3090,8 +3148,8 @@ en ebMS3 niet gestandaardiseerd is.</p>
 </tbody></table>
 <p>ebMS3/AS4 biedt dezelfde reliable messaging functionaliteit als ebMS2, maar met een modernere
 technische basis en betere aansluiting bij actuele WS-* standaarden. Voor scenario's waar
-gegarandeerde aflevering essentieel is, blijft een MSH-gebaseerd protocol (ebMS2 of ebMS3/AS4) de
-gestandaardiseerde keuze binnen Digikoppeling.</p>
+gegarandeerde aflevering essentieel is, blijft ebMS2 de gestandaardiseerde keuze binnen
+Digikoppeling; ebMS3/AS4 biedt dezelfde garanties, maar maakt geen deel uit van Digikoppeling.</p>
 </section></section><section id="wat-niet-is-gestandaardiseerd"><div class="header-wrapper"><h3 id="x7-3-wat-niet-is-gestandaardiseerd"><bdi class="secno">7.3 </bdi>Wat niet is gestandaardiseerd</h3><a class="self-link" href="#wat-niet-is-gestandaardiseerd" aria-label="Permalink for Section 7.3"></a></div>
 <p>De fundamentele verschillen tussen het REST API profiel en ebMS2/StUF betreffen niet zozeer
 technische onmogelijkheden, maar het ontbreken van standaardisatie. REST en HTTP bieden de
@@ -3193,8 +3251,9 @@ uitdagingen:</p>
 <li>Retry-gedrag bij onbereikbaarheid van de client is niet gestandaardiseerd</li>
 <li>De volgorde van webhook-notificaties is niet gegarandeerd</li>
 </ul>
-<p>Binnen de NL GOV API-strategie wordt gewerkt aan standaardisatie van notificaties via Cloudevents,
-maar deze standaard is nog niet breed geadopteerd.</p>
+<p>Voor het berichtformaat van notificaties heeft Forum Standaardisatie het NL GOV-profiel voor
+CloudEvents als verplichte standaard ('pas toe of leg uit') vastgesteld, maar deze standaard is nog
+niet breed geadopteerd.</p>
 <p>ebMS2 standaardiseert dit: acknowledgements worden asynchroon verstuurd naar een vooraf afgesproken
 endpoint, met gedefinieerde timeouts en retry-gedrag. Bij REST moet dit per API worden
 gespecificeerd.</p>
@@ -3251,8 +3310,8 @@ gedistribueerd model waarin de Directory als centraal register fungeert.</p>
 domeinspecifieke datamodellen vallen buiten de scope van FSC. Niet omdat FSC tekortschiet, maar
 omdat dit andere vraagstukken zijn die op andere lagen moeten worden geadresseerd:</p>
 <ul>
-<li><strong>Betrouwbaarheid</strong>: Een applicatie-niveau verantwoordelijkheid of een keuze voor een ander
-protocol (ebMS3/AS4)</li>
+<li><strong>Betrouwbaarheid</strong>: Een applicatie-niveau verantwoordelijkheid of een keuze voor een
+MSH-gebaseerd protocol</li>
 <li><strong>Berichtsemantiek</strong>: Een domeinspecifieke standaardisatie-opgave (vergelijkbaar met StUF-WOZ)</li>
 <li><strong>Bitemporele modellering</strong>: Een informatiemodel-vraagstuk (MIM, IMWOZ)</li>
 </ul>
@@ -3340,19 +3399,57 @@ de Monitor Open Standaarden van Forum Standaardisatie [<cite><a class="bibref" d
 leveranciers van gemeentelijke WOZ-applicaties voor andere registraties al ondersteunen, en
 onafhankelijke bronnen over het gebruik van de standaard buiten Nederland.</p>
 </section><section id="verantwoording-van-de-standaardkeuze"><div class="header-wrapper"><h4 id="x7-5-5-verantwoording-van-de-standaardkeuze"><bdi class="secno">7.5.5 </bdi>Verantwoording van de standaardkeuze</h4><a class="self-link" href="#verantwoording-van-de-standaardkeuze" aria-label="Permalink for Section 7.5.5"></a></div>
-<p>Zowel de ebMS-koppelvlakstandaarden als het REST API profiel maken deel uit van Digikoppeling, dat
-de status 'pas toe of leg uit' heeft. Met beide routes wordt dus aan die verplichting voldaan, en de
-formele uitlegplicht komt niet in beeld.</p>
-<p>Dat maakt de keuze niet vrijblijvend. Wie voor de ene route kiest, kiest de andere niet, en die
-keuze werkt door bij elke partij die op beide moet kunnen aansluiten. Wat Forum Standaardisatie over
-de betrokken standaarden vaststelt, in het bijzonder over hun adoptie, is daarom onderdeel van de
-onderbouwing die bij het besluit hoort.</p>
+<p>Digikoppeling heeft de status 'pas toe of leg uit' en omvat zowel de koppelvlakstandaard ebMS2 als
+het REST API profiel. Een overstap naar het REST API profiel blijft daarmee binnen Digikoppeling, en
+de formele uitlegplicht komt niet in beeld. Voor ebMS3/AS4 ligt dat anders: zolang over adoptie
+binnen Digikoppeling geen besluit is genomen (zie
+<a href="#achtergrond-en-besluitvorming">Achtergrond en besluitvorming</a>), is die route geen
+koppelvlakstandaard van Digikoppeling en hangt haar formele status af van besluitvorming die nog
+moet plaatsvinden.</p>
+<p>Vrijblijvend is de keuze in geen van beide gevallen. Wie voor de ene route kiest, kiest de andere
+niet, en die keuze werkt door bij elke partij die op beide moet kunnen aansluiten. Wat Forum
+Standaardisatie over de betrokken standaarden vaststelt, in het bijzonder over hun adoptie, is
+daarom onderdeel van de onderbouwing die bij het besluit hoort.</p>
 </section><section id="uitbesteding-bij-rest"><div class="header-wrapper"><h4 id="x7-5-6-uitbesteding-bij-rest"><bdi class="secno">7.5.6 </bdi>Uitbesteding bij REST</h4><a class="self-link" href="#uitbesteding-bij-rest" aria-label="Permalink for Section 7.5.6"></a></div>
 <p>Bij een REST-architectuur vervalt de noodzaak van een MSH als apart component. De WOZ-applicatie
 communiceert rechtstreeks via HTTP met de LV-WOZ (of via lichtgewicht tussenliggende componenten).
 Daarmee verdwijnt de architecturele scheiding die in
 <a href="#de-msh-als-gescheiden-component">De MSH als gescheiden component</a> is beschreven als bron van
 verlies van end-to-end zicht.</p>
+<p>Dat de MSH als component vervalt, betekent niet dat alles wat de MSH doet overbodig wordt. De
+functies krijgen een andere plek:</p>
+<ul>
+<li><strong>Beveiliging, toegangsbeheer en logging</strong> worden ingevuld door het REST API profiel met FSC (zie
+<a href="#vergelijking-met-msh-gebaseerde-protocollen">Vergelijking met MSH-gebaseerde protocollen</a>).</li>
+<li><strong>Ontvangstbevestiging en duplicaat-eliminatie</strong> worden in het voorgestelde model onderdeel van
+het koppelvlak zelf: de HTTP-respons is de bevestiging, en een idempotente inrichting maakt
+opnieuw aanbieden veilig (zie
+<a href="#synchroon-aanleveren-en-verwerken">Synchroon aanleveren en verwerken</a>).</li>
+<li><strong>Herhalen en bufferen</strong> van leveringen, wanneer de LV niet bereikbaar is of haar
+capaciteitslimiet heeft bereikt, komt bij de bronhouder te liggen.</li>
+<li><strong>Bewaking en foutafhandeling</strong> blijven bij de bronhouder nodig: vaststellen of leveringen zijn
+aangekomen en verwerkt, en handelen wanneer dat niet zo is.</li>
+</ul>
+<p>Voor de laatste twee is geen apart, gestandaardiseerd component nodig, al blijft een afzonderlijk
+component wel een optie. De functionaliteit is met gangbare frameworks en bibliotheken in de
+WOZ-applicatie zelf in te bouwen; bij ebMS wordt de protocollogica in de praktijk in een apart
+component ondergebracht. Dat inbouwen vraagt wel werk van bronhouders en hun leveranciers, en is
+voor kleine bronhouders een wezenlijke verschuiving. Een afzonderlijk of gedeeld component kan dat
+werk beperken en voorkomen dat elke leverancier dezelfde functionaliteit zelf bouwt. Daar staat
+tegenover dat het de scheiding kan terugbrengen die hierboven als bron van verlies van end-to-end
+zicht is genoemd. Wie de functionaliteit in een afzonderlijk component onderbrengt, bijvoorbeeld
+omdat het technisch beheer is uitbesteed, kan dat doen. Dat is een ontwerpoverweging voor
+bronhouders en hun leveranciers, geen eis die het koppelvlak stelt; zo houden partijen
+implementatievrijheid. Bij synchrone aanlevering is naar verwachting bovendien minder nodig: tussen
+aanlevering en verwerking treden dan minder fouten op, zodat er minder behoefte is aan een
+voorziening die foutmeldingen ontvangt en bewaart tot iemand ze oppakt.</p>
+<p>Wat wel om afspraken vraagt, is het gedrag aan het koppelvlak. In de HTTP-semantiek betekent een
+4xx-respons dat de fout bij de aanroepende partij ligt; het is dan aan de bronhouder om daarop te
+handelen. De actuele versie van de REST API Design Rules [<cite><a class="bibref" data-link-type="biblio" href="#bib-adr" title="REST API Design Rules">ADR</a></cite>] schrijft voor dat foutresponsen de
+vorm van <em>problem details</em> hebben, met naast de statuscode een leesbare toelichting. Aanvullend
+daarop zijn twee dingen denkbaar: een WOZ-specifiek profiel met eigen foutmeldingen, en minimumeisen
+aan de bewakingsfunctie bij bronhouders, zodat een afgewezen levering bij de bronhouder zelf
+terechtkomt, ook wanneer het technisch beheer is uitbesteed.</p>
 <p>De organisatorische behoefte aan uitbesteding blijft wel bestaan: bronhouders willen op diverse
 vlakken ontzorgd worden. De complexiteitsdrempel verschuift (REST API's zijn toegankelijker dan
 ebMS/StUF), maar uitbesteding van hosting, beheer of connectiviteit blijft een gangbaar patroon. Het
@@ -3402,7 +3499,8 @@ te gebruiken gegevensbron.</p>
 <p>Kernprincipes uit dit onderzoek zijn breed relevant:</p>
 <ul>
 <li><strong>Data bij de bron</strong>: In een federatief stelsel blijft informatie bij de oorspronkelijke eigenaar.
-Afnemers bevragen de bron in plaats van kopieën te ontvangen en zelf bij te houden.</li>
+Afnemers bevragen de bron in plaats van kopieën te ontvangen en zelf bij te houden. Het Federatief
+Datastelsel heeft dit principe uitgewerkt in de Handreiking data bij de bron [<cite><a class="bibref" data-link-type="biblio" href="#bib-handreiking-dbdb" title="Handreiking data bij de bron">HANDREIKING-DBDB</a></cite>].</li>
 <li><strong>Capabele registers</strong>: Bronnen moeten in staat zijn om vragen te beantwoorden over de historie
 van gegevens en over de aanleiding van registraties. Dit vereist dat registers zelf hun temporele
 model op orde hebben.</li>
@@ -3869,16 +3967,18 @@ veroorzaken.</li>
 </section></section><section id="capaciteitsbeheersing"><div class="header-wrapper"><h4 id="x9-2-3-capaciteitsbeheersing"><bdi class="secno">9.2.3 </bdi>Capaciteitsbeheersing</h4><a class="self-link" href="#capaciteitsbeheersing" aria-label="Permalink for Section 9.2.3"></a></div>
 <p>De LV beheerst capaciteit via standaard HTTP-mechanismen.</p>
 <ul>
-<li>Limieten worden per aansluiting gedefinieerd en gecommuniceerd via HTTP-headers, conform de NL API
-Design Rules [<cite><a class="bibref" data-link-type="biblio" href="#bib-adr" title="REST API Design Rules">ADR</a></cite>] en de geldende RFC's voor rate limiting.</li>
+<li>Limieten worden per aansluiting gedefinieerd en gecommuniceerd via HTTP-headers. De REST API
+Design Rules [<cite><a class="bibref" data-link-type="biblio" href="#bib-adr" title="REST API Design Rules">ADR</a></cite>] bevatten hierover geen regel, en een vastgestelde standaard voor het
+communiceren van limieten is er nog niet: de RateLimit-headers waaraan de IETF werkt hebben de
+status van concept. Welke headers de LV gebruikt, moet daarom in het koppelvlak worden vastgelegd.</li>
 <li>Bij overschrijding wordt het bericht afgewezen met statuscode <code>429 Too Many Requests</code>. Bij
 geplande onbeschikbaarheid kan de LV een <code>503 Service Unavailable</code> retourneren met een
-<code>Retry-After</code>-header.</li>
+<code>Retry-After</code>-header. Deze statuscodes en deze header zijn onderdeel van de HTTP-standaarden.</li>
 <li>De bronhouder gebruikt de respons-headers om het verzendtempo te dempen, in plaats van blind te
 herhalen na een netwerkfout.</li>
 </ul>
 <p>Dit past binnen het Digikoppeling REST-profiel [<cite><a class="bibref" data-link-type="biblio" href="#bib-dk-restapi" title="Digikoppeling Koppelvlakstandaard REST-API">DK-RESTAPI</a></cite>] en vervangt WOZ-specifieke afspraken
-over piekverwerking door breed toegepaste standaarden.</p>
+over piekverwerking door breed toegepaste HTTP-mechanismen.</p>
 </section><section id="verantwoordelijkheid-en-herstel"><div class="header-wrapper"><h4 id="x9-2-4-verantwoordelijkheid-en-herstel"><bdi class="secno">9.2.4 </bdi>Verantwoordelijkheid en herstel</h4><a class="self-link" href="#verantwoordelijkheid-en-herstel" aria-label="Permalink for Section 9.2.4"></a></div>
 <p>De verantwoordelijkheidsverdeling is in dit model expliciet:</p>
 <ul>
@@ -3948,13 +4048,15 @@ HTTP-koppelvlak vervalt de noodzaak voor een aparte MSH met eigen levenscyclus e
 betrouwbaarheidsgaranties. De afleveringsstatus volgt direct uit de HTTP-respons. Daarmee
 verdwijnt ook de identificatiemismatch tussen ebMS-Message-ID en StUF-referentienummer die in de
 huidige keten lastig te koppelen is; één identificatie per levering, doorgegeven en teruggekoppeld
-in HTTP-headers, volstaat.</li>
+in HTTP-headers, volstaat. Herhalen, bufferen, bewaking en foutafhandeling blijven aan de kant van
+de bronhouder nodig, maar vragen geen apart component (zie
+<a href="#uitbesteding-bij-rest">Uitbesteding bij REST</a>).</li>
 <li><strong><a href="#asynchrone-communicatie">Asynchrone communicatie</a></strong>: ontvangstbevestiging en
 verwerkingsresultaat worden samengevoegd. De maximale wachttermijn voor het uitblijven van
 foutmeldingen vervalt; de keten kent geen impliciete acceptatie meer.</li>
-<li><strong><a href="#piekbelasting-en-berichtgranulariteit">Piekbelasting en berichtgranulariteit</a></strong>: standaard
-rate limiting biedt vooraf zicht op verwerkingscapaciteit. Retries worden gestuurd door
-HTTP-headers in plaats van door blinde herhaling.</li>
+<li><strong><a href="#piekbelasting-en-berichtgranulariteit">Piekbelasting en berichtgranulariteit</a></strong>: rate limiting
+met standaard HTTP-mechanismen biedt vooraf zicht op verwerkingscapaciteit. Retries worden
+gestuurd door HTTP-headers in plaats van door blinde herhaling.</li>
 <li><strong><a href="#recovery-en-ketenrisico">Recovery en ketenrisico</a></strong>: de hoeveelheid gegevens-in-transit neemt
 af doordat ontvangstbevestiging en verwerking samenvallen. Het herstelvraagstuk concentreert zich
 aan één zijde van de keten in plaats van verdeeld over MSH-administraties bij meerdere partijen.</li>
@@ -4027,10 +4129,16 @@ om later ook alleen notificaties met identificatie te sturen, zonder dat dit een
 aan de kant van de afnemer.</p>
 </section><section id="kopiegegevens-en-verwijzingen"><div class="header-wrapper"><h3 id="x9-5-kopiegegevens-en-verwijzingen"><bdi class="secno">9.5 </bdi>Kopiegegevens en verwijzingen</h3><a class="self-link" href="#kopiegegevens-en-verwijzingen" aria-label="Permalink for Section 9.5"></a></div>
 <p>Het knelpunt rond <a href="#kopiegegevens-en-synchronisatielast">kopiegegevens en synchronisatielast</a> raakt
-zowel het informatiemodel als het koppelvlak. De ontwerpvraag is of subjectgegevens (BRP,
-Handelsregister) als referentie naar de bronregistratie worden meegestuurd in plaats van als kopie.
-Voor niet-ingezetenen, waarvoor de WOZ soms de enige plek is waar subjectgegevens zijn vastgelegd,
-blijft kopie-vastlegging vooralsnog noodzakelijk.</p>
+zowel het informatiemodel als het koppelvlak. Het principe data bij de bron [<cite><a class="bibref" data-link-type="biblio" href="#bib-handreiking-dbdb" title="Handreiking data bij de bron">HANDREIKING-DBDB</a></cite>]
+geeft hier de richting: subjectgegevens (BRP, Handelsregister) worden bij voorkeur als verwijzing
+naar de bronregistratie meegestuurd en niet als kopie. De ontwerpvraag is onder welke voorwaarden
+die overstap kan worden gemaakt.</p>
+<p>De belangrijkste voorwaarde is dat de functie waarvoor de kopie nu nodig is, zoeken op de naam van
+een subject, op stelselniveau beschikbaar is. Zodra dat het geval is, kan het kopiëren vervallen.
+Ter vergelijking: bij verwijzingen naar de BAG is dit eenvoudiger, omdat de BAG open data is en een
+identificatie volstaat om de actuele gegevens op te halen. Voor niet-ingezetenen, waarvoor de WOZ
+soms de enige plek is waar subjectgegevens zijn vastgelegd, blijft kopie-vastlegging vooralsnog
+noodzakelijk.</p>
 <p>De keuzes hangen samen met identificatie-vraagstukken (vervanging van sofinummer door BSN/RSIN,
 modellering van "communiceert via") en zijn in deze basis nog niet uitgewerkt.</p>
 </section></section>
@@ -4136,6 +4244,8 @@ modellering van "communiceert via") en zijn in deze basis nog niet uitgewerkt.</
       <a href="https://gitdocumentatie.logius.nl/publicatie/fsc/core/"><cite>FSC - Core</cite></a>.  Logius. URL: <a href="https://gitdocumentatie.logius.nl/publicatie/fsc/core/">https://gitdocumentatie.logius.nl/publicatie/fsc/core/</a>
     </dd><dt id="bib-gemma">[GEMMA]</dt><dd>
       <a href="https://www.gemmaonline.nl/"><cite>Gemeentelijke Model Architectuur</cite></a>.  VNG Realisatie. URL: <a href="https://www.gemmaonline.nl/">https://www.gemmaonline.nl/</a>
+    </dd><dt id="bib-handreiking-dbdb">[HANDREIKING-DBDB]</dt><dd>
+      <a href="https://www.noraonline.nl/wiki/Handreiking_data_bij_de_bron"><cite>Handreiking data bij de bron</cite></a>.  Federatief Datastelsel. URL: <a href="https://www.noraonline.nl/wiki/Handreiking_data_bij_de_bron">https://www.noraonline.nl/wiki/Handreiking_data_bij_de_bron</a>
     </dd><dt id="bib-imwoz-bevragingen">[IMWOZ-BEVRAGINGEN]</dt><dd>
       <a href="https://vng-realisatie.github.io/IMWOZ-bevragingen/"><cite>Binnengemeentelijke IMWOZ-bevragingen API's</cite></a>.  VNG Realisatie. URL: <a href="https://vng-realisatie.github.io/IMWOZ-bevragingen/">https://vng-realisatie.github.io/IMWOZ-bevragingen/</a>
     </dd><dt id="bib-kadaster-woz-api">[KADASTER-WOZ-API]</dt><dd>
@@ -4279,7 +4389,11 @@ modellering van "communiceert via") en zijn in deze basis nog niet uitgewerkt.</
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-def-digikoppeling-1" title="§ 2. Terminologie">§ 2. Terminologie</a> <a href="#ref-for-def-digikoppeling-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-def-digikoppeling-1" title="§ 1. Inleiding">§ 1. Inleiding</a> 
+    </li><li>
+      <a href="#ref-for-def-digikoppeling-2" title="§ 2. Terminologie">§ 2. Terminologie</a> <a href="#ref-for-def-digikoppeling-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-def-digikoppeling-4" title="§ 4.3 Technische inrichting">§ 4.3 Technische inrichting</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-def-msh" aria-label="Links in this document to definition: MSH">
@@ -4354,8 +4468,10 @@ modellering van "communiceert via") en zijn in deze basis nog niet uitgewerkt.</
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
+    <li>
+      <a href="#ref-for-def-fds-1" title="§ 5.4.3 Kopiegegevens en synchronisatielast">§ 5.4.3 Kopiegegevens en synchronisatielast</a> 
+    </li>
+  </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-def-haal-centraal" aria-label="Links in this document to definition: Haal Centraal">
       <span class="caret"></span>
       <div>
@@ -4715,4 +4831,4 @@ function hidePanel(panel) {
   panel.hidden = true;
   panel.classList.remove("docked");
 }
-})()</script><div class="sidelabel">Geonovum Handreiking - Consultatieversie</div><script src="https://gitdocumentatie.logius.nl/publicatie/respec/fixup.js"></script></body></html>
+})()</script><div class="sidelabel">Geonovum Handreiking - Versie ter vaststelling</div><script src="https://gitdocumentatie.logius.nl/publicatie/respec/fixup.js"></script></body></html>

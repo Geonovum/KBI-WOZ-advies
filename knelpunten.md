@@ -339,15 +339,30 @@ altijd eenduidig welke relatie-instantie wordt bedoeld.
 
 Het koppelvlak draagt naast identificatoren ook kopiegegevens over van authentieke bronregistraties
 (naam en adres uit de BRP, vestigingsgegevens uit het Handelsregister), naast gegevens die eigen
-zijn aan de WOZ (zoals het correspondentieadres voor een specifiek WOZ-object). De aanwezigheid van
-kopiegegevens brengt operationele last met zich mee: wanneer gegevens in een bronregistratie
-wijzigen, is het de verantwoordelijkheid van de bronhouder om de kopiegegevens in de LV-WOZ bij te
-werken. Tegenover die last staat een functioneel voordeel: doordat naamgegevens in de LV aanwezig
-zijn, is zoeken op de naam van een subject mogelijk zonder bevraging van een andere registratie. De
-LV-WOZ houdt subjectgegevens per bronhouder bij; er vindt geen de-duplicatie over bronhouders heen
-plaats. Dezelfde persoon kan daardoor door meerdere gemeenten met verschillende gegevens zijn
-geregistreerd. Voor niet-ingezetenen is de WOZ soms de enige plek waar deze gegevens zijn
-vastgelegd, waardoor de kopiegegevens daar niet redundant zijn.
+zijn aan de WOZ (zoals het correspondentieadres voor een specifiek WOZ-object).
+
+Dit staat op gespannen voet met het principe data bij de bron, dat het
+[Federatief Datastelsel](#def-fds) heeft omarmd en heeft uitgewerkt in de Handreiking data bij de
+bron [[HANDREIKING-DBDB]]: gegevens worden in de bron beheerd en daar verkregen op het moment dat ze
+nodig zijn, en verwijzen naar een bron heeft de voorkeur boven het maken van een kopie. De
+handreiking noemt als argumenten onder meer de juistheid en actualiteit van de gegevens,
+dataminimalisatie en de controle op toegang bij de bron. Vanuit dit principe is er een sterke
+voorkeur om subjectgegevens niet in de WOZ-administratie te kopiëren, maar alleen een verwijzing
+naar het subject op te nemen.
+
+De aanwezigheid van kopiegegevens brengt daarnaast operationele last met zich mee: wanneer gegevens
+in een bronregistratie wijzigen, is het de verantwoordelijkheid van de bronhouder om de
+kopiegegevens in de LV-WOZ bij te werken. De LV-WOZ houdt subjectgegevens per bronhouder bij; er
+vindt geen de-duplicatie over bronhouders heen plaats. Dezelfde persoon kan daardoor door meerdere
+gemeenten met verschillende gegevens zijn geregistreerd.
+
+Dat de kopiegegevens in de huidige situatie worden meegeleverd, komt voort uit een tijdelijke
+functionele noodzaak. Zoeken op de naam van een subject is een functie die in de keten nodig is. Die
+functie is nu alleen te bieden doordat naamgegevens in de LV aanwezig zijn, omdat zoeken over
+registraties heen, op stelselniveau, nog niet is gerealiseerd. Zodra die functie beschikbaar is, kan
+het kopiëren van deze subjectgegevens vervallen. Voor niet-ingezetenen ligt dat anders: voor hen is
+de WOZ soms de enige plek waar deze gegevens zijn vastgelegd, waardoor de gegevens daar niet
+redundant zijn.
 
 ### Terugmeldingen
 

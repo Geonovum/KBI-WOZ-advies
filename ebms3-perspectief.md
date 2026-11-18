@@ -15,11 +15,16 @@ tijdlijn van onderzoeken en besluiten illustreert de zorgvuldige maar trage voor
 | 2020      | Technisch Overleg besluit ebMS2 nog niet te vervangen, maar marktondersteuning te monitoren en ebMS3-profielen te verkennen      |
 | 2021-2022 | Binnen het TO wordt aangegeven dat actieve vervanging wenselijk is gezien de teruglopende ondersteuning van ebMS2 in de markt    |
 | 2023      | MIDO start een impact-analyse voor de transitie naar ebMS3/AS4                                                                   |
-| 2024-2025 | Opname van ebMS3/AS4-profiel in Digikoppeling-standaarddocumentatie; ondersteuning van organisaties bij migratie                 |
+| 2024-2025 | Invoering van een ebMS3/AS4-profiel staat op de Digikoppeling-roadmap, afhankelijk van besluitvorming in het MIDO                |
+| 2026      | Over adoptie van ebMS3/AS4 binnen Digikoppeling is nog geen besluit genomen                                                      |
 
-Het eDelivery ebMS3/AS4-profiel [[EDELIVERY-AS4]] is bij de verkenning geschikt bevonden als basis
-voor een Digikoppeling-profiel. Dit profiel is tevens de Europese standaard voor
+Het eDelivery ebMS3/AS4-profiel [[EDELIVERY-AS4]] is bij de verkenning in principe geschikt bevonden
+als basis voor een Digikoppeling-profiel. Dit profiel is tevens de Europese standaard voor
 grensoverschrijdende gegevensuitwisseling [[DK-ROADMAP]].
+
+Een besluit over adoptie is echter niet genomen. ebMS3/AS4 maakt tot op heden (november 2026) geen
+deel uit van Digikoppeling; ebMS2 wel. Dit hoofdstuk analyseert daarom een mogelijke route, niet een
+route die binnen Digikoppeling al beschikbaar is.
 
 ## Wat is ebMS3/AS4?
 
@@ -78,12 +83,12 @@ minder bij de leveranciers van de WOZ-applicaties zelf; dat is juist de reden wa
 bronhouders dat beheer uitbesteden (zie
 [ebMS2: lifecycle en specialistische kennis](#ebms2-lifecycle-en-specialistische-kennis)).
 
-Voor ebMS3/AS4 ligt de vraag anders. Het profiel is sinds 2024 opgenomen in de
-Digikoppeling-standaarddocumentatie, maar dat zegt nog niets over het gebruik: voor welke
-binnenlandse toepassingen de standaard daadwerkelijk (verplicht) wordt ingezet, en hoeveel
-gemeentelijke leveranciers hem ondersteunen, is een vraag die vóór een keuze beantwoord moet worden.
-Het Europese gebruik via eDelivery staat daar los van en zegt weinig over de implementatiesnelheid
-in de Nederlandse keten. Hoe die vraag te beantwoorden, komt aan bod in
+Voor ebMS3/AS4 ligt de vraag anders. De invoering van een profiel staat sinds 2024 op de
+Digikoppeling-roadmap, maar een besluit over adoptie is niet genomen en de standaard maakt geen deel
+uit van Digikoppeling. Voor welke binnenlandse toepassingen de standaard daadwerkelijk wordt
+ingezet, en hoeveel gemeentelijke leveranciers hem ondersteunen, is een vraag die vóór een keuze
+beantwoord moet worden. Het Europese gebruik via eDelivery staat daar los van en zegt weinig over de
+implementatiesnelheid in de Nederlandse keten. Hoe die vraag te beantwoorden, komt aan bod in
 [Installed base en adoptie](#installed-base-en-adoptie).
 
 ### EU eDelivery-compliance
@@ -91,7 +96,7 @@ in de Nederlandse keten. Hoe die vraag te beantwoorden, komt aan bod in
 ebMS3/AS4 is de basis van de EU eDelivery-standaard voor grensoverschrijdende gegevensuitwisseling.
 [RINIS](https://www.rinis.nl/en/edelivery/) fungeert als Nederlands National Access Point en
 verzorgt de conversie tussen Digikoppeling en eDelivery. Adoptie van ebMS3/AS4 binnen Digikoppeling
-verbetert de aansluiting op dit Europese stelsel.
+zou de aansluiting op dit Europese stelsel verbeteren.
 
 ### Flexibeler configuratiemodel
 
@@ -203,7 +208,7 @@ moeten nog steeds hun weg vinden naar de juiste medewerker bij de bronhouder.
 
 Een verdergaande optie is om niet alleen de acknowledgement maar ook de inhoudelijke validatie
 synchroon te maken. Zowel ebMS2 als ebMS3/AS4 ondersteunen dit technisch, maar het Digikoppeling
-profiel schrijft dit niet voor.
+ebMS2 profiel schrijft dit niet voor.
 
 Volledige synchrone verwerking biedt:
 
@@ -239,9 +244,9 @@ vereist:
    overstappen als alle bronhouders ebMS3/AS4 ondersteunen
 
 Voor een keten met circa 340 ebMS-aansluitingen, verdeeld over ongeveer 150 aanleverende
-organisaties, is dit een substantiële operatie. De Digikoppeling-roadmap voorziet ondersteuning bij
-het migratieproces, maar de daadwerkelijke migratie moet door elke organisatie zelf worden
-uitgevoerd.
+organisaties, is dit een substantiële operatie. De Digikoppeling-roadmap voorziet, na een positief
+besluit over de invoering, ondersteuning bij het migratieproces, maar de daadwerkelijke migratie
+moet door elke organisatie zelf worden uitgevoerd.
 
 ## Samenvatting ebMS3/AS4
 
@@ -259,9 +264,10 @@ zijn gebaseerd:
 
 De transitie naar ebMS3/AS4 is daarmee primair een _onderhoudstransitie_: het vervangt een niet
 langer onderhouden protocol door een actueel equivalent, zonder de architecturale vraagstukken
-fundamenteel te veranderen. Voor organisaties die investeren in MSH-infrastructuur is het een
-noodzakelijke stap. Voor de bredere vraag hoe ketens als de WOZ eenvoudiger, toegankelijker en
-robuuster kunnen worden ingericht, biedt het geen antwoord.
+fundamenteel te veranderen. Voor organisaties die in MSH-infrastructuur blijven investeren is het de
+voor de hand liggende vervolgstap, al is over adoptie binnen Digikoppeling nog geen besluit genomen
+en maakt de route daar op dit moment geen deel van uit. Voor de bredere vraag hoe ketens als de WOZ
+eenvoudiger, toegankelijker en robuuster kunnen worden ingericht, biedt het geen antwoord.
 
 Dit plaatst registraties die op ebMS2 zijn gebaseerd voor een strategische keuze: investeren in de
 MSH-route (ebMS3/AS4) met behoud van de huidige ketenstructuur, of investeren in een REST-gebaseerde

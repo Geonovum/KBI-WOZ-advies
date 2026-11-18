@@ -6,8 +6,8 @@ let respecConfig = {
   title: "Implementatie-advies modernisering gegevensaanlevering LV-WOZ",
   //-- specStatus is verplicht! (activeer 1 van de volgende)
   //specStatus: "wv",               // Werkversie
-  specStatus: "cv", // Consultatieversie
-  //specStatus: "vv",               // Versie ter vaststelling
+  //specStatus: "cv",               // Consultatieversie
+  specStatus: "vv", // Versie ter vaststelling
   //specStatus: "def",              // Vastgestelde versie
   //specStatus: "basis",            // Basis Document
 
@@ -40,14 +40,14 @@ let respecConfig = {
 
   //-- publishDate is verplicht. Als je werkversie gekozen hebt  dan pakt Respec
   //-- de pushdate maar de publishDate is nog steeds verplicht.
-  publishDate: "2026-09-02",
+  publishDate: "2026-11-18",
 
   //-- publishVersion is verplicht. Hij mag wel leeg zijn [], maar niet de lege string zijn "".
   publishVersion: [],
 
   //-- Voor dit blok geldt: alleen als er eerdere versies zijn en altijd beide aan/uit!
-  //previousPublishDate: "2014-05-01",
-  //previousMaturity: "CV",
+  previousPublishDate: "2026-09-02",
+  previousMaturity: "CV",
 
   //-- Deze gebruiken we niet binnen Geonovum
   //prevVersion: "0.0.1",
@@ -273,6 +273,12 @@ let respecConfig = {
       title: "Catalogus Basisregistratie WOZ, versie 1.8",
       href: "https://www.waarderingskamer.nl/uploads/documents/03.-Voor-gemeenten/04.-Gegevensbeheer/Catalogus-Basisregistratie-WOZ-versie-1.8.pdf",
       publisher: "Waarderingskamer",
+    },
+    "HANDREIKING-DBDB": {
+      id: "HANDREIKING-DBDB",
+      title: "Handreiking data bij de bron",
+      href: "https://www.noraonline.nl/wiki/Handreiking_data_bij_de_bron",
+      publisher: "Federatief Datastelsel",
     },
     "SMART-ENDPOINTS": {
       id: "SMART-ENDPOINTS",

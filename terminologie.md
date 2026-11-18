@@ -12,8 +12,9 @@ het betrouwbaar en veilig uitwisselen van elektronische berichten tussen organis
 ebMS 3.0 is de opvolger van ebMS2, gepubliceerd door OASIS in 2007. Het AS4-profiel (Applicability
 Statement 4) is een vereenvoudigd profiel van ebMS 3.0 dat in 2013 een OASIS-standaard werd en in
 2020 een ISO-standaard. AS4 is de basis van de EU eDelivery-standaard voor grensoverschrijdende
-gegevensuitwisseling. Binnen Digikoppeling is het profiel sinds 2024 opgenomen in de
-standaarddocumentatie, als opvolger van ebMS2.
+gegevensuitwisseling. De invoering van een ebMS3/AS4-profiel als opvolger van ebMS2 staat sinds 2024
+op de Digikoppeling-roadmap [[DK-ROADMAP]], maar over adoptie binnen Digikoppeling is tot op heden
+(november 2026) geen besluit genomen. ebMS3/AS4 maakt daarmee geen deel uit van Digikoppeling.
 
 <dfn id="def-pmode">PMode</dfn>
 
@@ -59,15 +60,15 @@ toegestane berichttypen, beveiligingsprofielen, endpoints en parameters voor ret
 
 Digikoppeling [[DK-ARCH]] is het stelsel van afspraken en koppelvlakstandaarden van Logius voor
 gestandaardiseerde gegevensuitwisseling tussen overheidsorganisaties. Het omvat onder meer de
-koppelvlakstandaarden ebMS2 [[DK-EBMS2]], ebMS3/AS4 en REST-API [[DK-RESTAPI]], en heeft de status
-'pas toe of leg uit'. Aansluiten op de ebMS-koppelvlakstandaarden gebeurt via een [MSH](#def-msh).
+koppelvlakstandaarden ebMS2 [[DK-EBMS2]] en REST-API [[DK-RESTAPI]], en heeft de status 'pas toe of
+leg uit'. Aansluiten op de koppelvlakstandaard ebMS2 gebeurt via een [MSH](#def-msh).
 
 <dfn id="def-msh">MSH</dfn>
 
 De Message Service Handler (MSH) is het softwarecomponent dat de ebMS-protocollogica afhandelt. De
 MSH verzorgt het verzenden en ontvangen van berichten, het verwerken van acknowledgements, het
 uitvoeren van retries en de duplicaat-eliminatie. De MSH vormt de aansluiting op de
-ebMS-koppelvlakstandaarden van [Digikoppeling](#def-digikoppeling) en wordt daarom ook wel
+koppelvlakstandaard ebMS2 van [Digikoppeling](#def-digikoppeling) en wordt daarom ook wel
 Digikoppelingsadapter genoemd; het beheer ervan kan worden uitbesteed aan een
 [intermediair](#def-intermediair).
 

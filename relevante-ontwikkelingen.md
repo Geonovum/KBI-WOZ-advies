@@ -18,7 +18,8 @@ te gebruiken gegevensbron.
 Kernprincipes uit dit onderzoek zijn breed relevant:
 
 - **Data bij de bron**: In een federatief stelsel blijft informatie bij de oorspronkelijke eigenaar.
-  Afnemers bevragen de bron in plaats van kopieën te ontvangen en zelf bij te houden.
+  Afnemers bevragen de bron in plaats van kopieën te ontvangen en zelf bij te houden. Het Federatief
+  Datastelsel heeft dit principe uitgewerkt in de Handreiking data bij de bron [[HANDREIKING-DBDB]].
 - **Capabele registers**: Bronnen moeten in staat zijn om vragen te beantwoorden over de historie
   van gegevens en over de aanleiding van registraties. Dit vereist dat registers zelf hun temporele
   model op orde hebben.

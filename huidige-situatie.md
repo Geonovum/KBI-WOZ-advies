@@ -28,15 +28,15 @@ betekenis hiervan voor het vervolg.
 
 De gegevensuitwisseling tussen bronhouders en de [LV-WOZ](#def-lv-woz) is gebaseerd op twee
 standaarden: [ebMS2](#def-ebms2) als transportprotocol en [StUF](#def-stuf) als berichtenstandaard.
-Deze combinatie is onderdeel van het Digikoppeling-stelsel en is ontworpen om betrouwbare,
-beveiligde en onweerlegbare gegevensuitwisseling mogelijk te maken.
+ebMS2 is als koppelvlakstandaard onderdeel van [Digikoppeling](#def-digikoppeling); StUF is een
+afzonderlijke standaard. De combinatie is ontworpen om betrouwbare, beveiligde en onweerlegbare
+gegevensuitwisseling mogelijk te maken.
 
-Beide standaarden staan op de 'Pas toe of leg uit'-lijst van
+StUF en Digikoppeling staan beide op de 'Pas toe of leg uit'-lijst van
 [Forum Standaardisatie](https://www.forumstandaardisatie.nl/). Dit betekent dat
 overheidsorganisaties verplicht zijn deze standaarden te gebruiken tenzij zij kunnen uitleggen
 waarom een alternatief beter past. StUF staat sinds 2008 op deze lijst en wordt beheerd door VNG
-Realisatie [[FORUM-STUF]]. Digikoppeling, waarvan de koppelvlakstandaard ebMS2 een onderdeel is,
-heeft eveneens de status 'Pas toe of leg uit' en wordt beheerd door Logius.
+Realisatie [[FORUM-STUF]]; Digikoppeling wordt beheerd door Logius.
 
 ### ebMS2 als transportprotocol
 
@@ -197,8 +197,9 @@ onderliggende standaarden worden vervangen door moderne alternatieven.
 De technische standaarden waarop de huidige keten is gebaseerd, bevinden zich in verschillende fasen
 van hun levenscyclus:
 
-- **ebMS2** wordt niet langer doorontwikkeld. Logius bereidt een transitie voor naar
-  [ebMS3/AS4](#def-ebms3) [[DK-ROADMAP]]. De analyse van dit moderniseringspad en wat het in
+- **ebMS2** wordt niet langer doorontwikkeld. De invoering van [ebMS3/AS4](#def-ebms3) als opvolger
+  staat sinds 2024 op de Digikoppeling-roadmap [[DK-ROADMAP]], maar over adoptie binnen
+  Digikoppeling is nog geen besluit genomen. De analyse van dit moderniseringspad en wat het in
   potentie wel en niet oplost voor de WOZ-keten wordt behandeld in het hoofdstuk
   [Het ebMS3/AS4-perspectief](#het-ebms3-as4-perspectief).
 
@@ -206,10 +207,12 @@ van hun levenscyclus:
   worden verwerkt, maar er is geen doorontwikkelingsagenda. Forum Standaardisatie heeft in
   evaluaties vastgesteld dat de huidige scope niet langer passend is [[FORUM-STUF-EVAL]].
 
-- **Digilevering**, de dienst van Logius waarop de huidige doorlevering aan afnemers is gebaseerd,
-  wordt in de toekomst gestaakt. Forum Standaardisatie heeft CloudEvents als verplichte standaard
-  vastgesteld voor notificatiediensten. Dit betekent dat de doorlevering aan afnemers hoe dan ook
-  opnieuw moet worden ingericht.
+- **Digilevering** is de voorziening van Logius waarop de huidige doorlevering aan afnemers is
+  gebaseerd. Er vindt onderzoek plaats naar de toekomst van Digilevering; een besluit daarover is
+  niet genomen. Los van de status van deze voorziening staat de functionele vraag hoe afnemers over
+  wijzigingen geïnformeerd willen worden. Die vraag hoort thuis in een traject met de afnemers aan
+  tafel. Forum Standaardisatie heeft het NL GOV-profiel voor CloudEvents als verplichte standaard
+  vastgesteld voor notificatiediensten; bij een herinrichting van de doorlevering is dat het kader.
 
 Het onderzoeken van mogelijke alternatieven voor ebMS2 en voor StUF speelt niet alleen bij de WOZ
 maar bij elke registratie die op deze standaarden is gebaseerd.

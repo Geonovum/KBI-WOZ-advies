@@ -7,7 +7,8 @@ gemeenten aan de Landelijke Voorziening WOZ (LV-WOZ). Het document is opgesteld 
 [Kennisborging en implementatieondersteuning](https://developer.overheid.nl/implementatie-ondersteuning)
 van [Geonovum](https://www.geonovum.nl), in opdracht van het Ministerie van BZK.
 
-Consultatieversie: https://docs.geostandaarden.nl/kbi/cv-hr-woz-advies-20260902/ 
+Consultatieversie (2 september 2026): https://docs.geostandaarden.nl/kbi/cv-hr-woz-advies-20260902/
+
 Werkversie: https://geonovum.github.io/KBI-WOZ-advies/
 
 ## Over dit document
@@ -21,12 +22,10 @@ voorziening. De bevindingen zijn breder toepasbaar op registraties die dezelfde 
 
 ## Consultatie
 
-Dit document is in publieke consultatie tot en met 3 november 2026. Reacties zijn welkom via
-[het consultatieformulier](https://github.com/Geonovum/KBI-WOZ-advies/issues/new?template=consultatiereactie.yml).
-
-Dien per onderwerp een aparte reactie in en kijk eerst of uw punt al is
-[ingediend door een ander](https://github.com/Geonovum/KBI-WOZ-advies/issues?q=is%3Aissue+label%3Aconsultatie).
-Reacties zijn openbaar. Alle reacties worden verwerkt en van een terugkoppeling voorzien.
+Dit document heeft tot en met 3 november 2026 ter publieke consultatie voorgelegen. De reacties en
+de terugkoppeling daarop zijn openbaar en staan bij de
+[issues met het label consultatie](https://github.com/Geonovum/KBI-WOZ-advies/issues?q=is%3Aissue+label%3Aconsultatie).
+De reacties zijn verwerkt in de versie ter vaststelling.
 
 ## Contact
 

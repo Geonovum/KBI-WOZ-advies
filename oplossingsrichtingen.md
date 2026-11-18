@@ -312,16 +312,18 @@ koppelvlak is daarom idempotent ingericht.
 
 De LV beheerst capaciteit via standaard HTTP-mechanismen.
 
-- Limieten worden per aansluiting gedefinieerd en gecommuniceerd via HTTP-headers, conform de NL API
-  Design Rules [[ADR]] en de geldende RFC's voor rate limiting.
+- Limieten worden per aansluiting gedefinieerd en gecommuniceerd via HTTP-headers. De REST API
+  Design Rules [[ADR]] bevatten hierover geen regel, en een vastgestelde standaard voor het
+  communiceren van limieten is er nog niet: de RateLimit-headers waaraan de IETF werkt hebben de
+  status van concept. Welke headers de LV gebruikt, moet daarom in het koppelvlak worden vastgelegd.
 - Bij overschrijding wordt het bericht afgewezen met statuscode `429 Too Many Requests`. Bij
   geplande onbeschikbaarheid kan de LV een `503 Service Unavailable` retourneren met een
-  `Retry-After`-header.
+  `Retry-After`-header. Deze statuscodes en deze header zijn onderdeel van de HTTP-standaarden.
 - De bronhouder gebruikt de respons-headers om het verzendtempo te dempen, in plaats van blind te
   herhalen na een netwerkfout.
 
 Dit past binnen het Digikoppeling REST-profiel [[DK-RESTAPI]] en vervangt WOZ-specifieke afspraken
-over piekverwerking door breed toegepaste standaarden.
+over piekverwerking door breed toegepaste HTTP-mechanismen.
 
 ### Verantwoordelijkheid en herstel
 
@@ -399,13 +401,15 @@ zijn.
   betrouwbaarheidsgaranties. De afleveringsstatus volgt direct uit de HTTP-respons. Daarmee
   verdwijnt ook de identificatiemismatch tussen ebMS-Message-ID en StUF-referentienummer die in de
   huidige keten lastig te koppelen is; één identificatie per levering, doorgegeven en teruggekoppeld
-  in HTTP-headers, volstaat.
+  in HTTP-headers, volstaat. Herhalen, bufferen, bewaking en foutafhandeling blijven aan de kant van
+  de bronhouder nodig, maar vragen geen apart component (zie
+  [Uitbesteding bij REST](#uitbesteding-bij-rest)).
 - **[Asynchrone communicatie](#asynchrone-communicatie)**: ontvangstbevestiging en
   verwerkingsresultaat worden samengevoegd. De maximale wachttermijn voor het uitblijven van
   foutmeldingen vervalt; de keten kent geen impliciete acceptatie meer.
-- **[Piekbelasting en berichtgranulariteit](#piekbelasting-en-berichtgranulariteit)**: standaard
-  rate limiting biedt vooraf zicht op verwerkingscapaciteit. Retries worden gestuurd door
-  HTTP-headers in plaats van door blinde herhaling.
+- **[Piekbelasting en berichtgranulariteit](#piekbelasting-en-berichtgranulariteit)**: rate limiting
+  met standaard HTTP-mechanismen biedt vooraf zicht op verwerkingscapaciteit. Retries worden
+  gestuurd door HTTP-headers in plaats van door blinde herhaling.
 - **[Recovery en ketenrisico](#recovery-en-ketenrisico)**: de hoeveelheid gegevens-in-transit neemt
   af doordat ontvangstbevestiging en verwerking samenvallen. Het herstelvraagstuk concentreert zich
   aan één zijde van de keten in plaats van verdeeld over MSH-administraties bij meerdere partijen.
@@ -494,10 +498,17 @@ aan de kant van de afnemer.
 ## Kopiegegevens en verwijzingen
 
 Het knelpunt rond [kopiegegevens en synchronisatielast](#kopiegegevens-en-synchronisatielast) raakt
-zowel het informatiemodel als het koppelvlak. De ontwerpvraag is of subjectgegevens (BRP,
-Handelsregister) als referentie naar de bronregistratie worden meegestuurd in plaats van als kopie.
-Voor niet-ingezetenen, waarvoor de WOZ soms de enige plek is waar subjectgegevens zijn vastgelegd,
-blijft kopie-vastlegging vooralsnog noodzakelijk.
+zowel het informatiemodel als het koppelvlak. Het principe data bij de bron [[HANDREIKING-DBDB]]
+geeft hier de richting: subjectgegevens (BRP, Handelsregister) worden bij voorkeur als verwijzing
+naar de bronregistratie meegestuurd en niet als kopie. De ontwerpvraag is onder welke voorwaarden
+die overstap kan worden gemaakt.
+
+De belangrijkste voorwaarde is dat de functie waarvoor de kopie nu nodig is, zoeken op de naam van
+een subject, op stelselniveau beschikbaar is. Zodra dat het geval is, kan het kopiëren vervallen.
+Ter vergelijking: bij verwijzingen naar de BAG is dit eenvoudiger, omdat de BAG open data is en een
+identificatie volstaat om de actuele gegevens op te halen. Voor niet-ingezetenen, waarvoor de WOZ
+soms de enige plek is waar subjectgegevens zijn vastgelegd, blijft kopie-vastlegging vooralsnog
+noodzakelijk.
 
 De keuzes hangen samen met identificatie-vraagstukken (vervanging van sofinummer door BSN/RSIN,
 modellering van "communiceert via") en zijn in deze basis nog niet uitgewerkt.

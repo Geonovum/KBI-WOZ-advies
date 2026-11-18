@@ -11,9 +11,9 @@ bewegen.
 Veel basisregistraties bij de Nederlandse overheid wisselen gegevens uit via twee standaarden die
 aan het einde van hun levenscyclus zijn: StUF voor de inhoud van berichten en ebMS2 voor het
 transport. Beide worden niet of nauwelijks doorontwikkeld en de kennis ervan in de markt neemt af.
-Tegelijk heeft de overheid moderne API-standaarden verplicht gesteld waaraan de huidige inrichting
-niet voldoet, en wordt de generieke dienst waarmee afnemers nu worden beleverd (Digilevering) op
-termijn gestaakt.
+Tegelijk zijn binnen Digikoppeling moderne API-standaarden opgenomen, die een alternatief bieden
+voor koppelvlakken die nu op StUF en ebMS2 zijn gebaseerd. Naar de toekomst van Digilevering, de
+generieke voorziening waarmee afnemers nu worden beleverd, vindt onderzoek plaats.
 
 Dit advies analyseert de transitie aan de hand van de WOZ-keten, omdat die keten hoog volume,
 complexe historie met meerdere tijdlijnen, een breed intermediairlandschap en een sterke
@@ -72,16 +72,16 @@ zes jaar die buiten haar belastingtermijn vallen.
 ## Twee routes voor het transport
 
 Voor de transportlaag zijn er twee routes. ebMS3/AS4 is de actief onderhouden opvolger van ebMS2 en
-onderdeel van de Europese eDelivery-standaard. Het lost het onderhoudsprobleem op en verbetert de
-marktondersteuning. Het behoudt de architectuur met een aparte adapter (MSH), de behoefte aan
-specialistische kennis, en laat de inhoud van de berichten (StUF) ongemoeid. Het is in de kern een
-onderhoudstransitie.
+onderdeel van de Europese eDelivery-standaard; over adoptie binnen Digikoppeling is nog geen besluit
+genomen. Het lost het onderhoudsprobleem op en verbetert de marktondersteuning. Het behoudt de
+architectuur met een aparte adapter (MSH), de behoefte aan specialistische kennis, en laat de inhoud
+van de berichten (StUF) ongemoeid. Het is in de kern een onderhoudstransitie.
 
 Een REST-gebaseerde architectuur neemt de aparte adapter (MSH) weg; de WOZ-applicatie communiceert
-rechtstreeks met de LV. Deze route sluit aan op de inmiddels verplichte standaarden. REST
-standaardiseert betrouwbaarheid, beheersing van piekbelasting, aanlevering van historie en het
-verwerken van correcties niet uit zichzelf; die moeten per domein worden vastgelegd. Dat is
-technisch mogelijk en vraagt om standaardisatie.
+rechtstreeks met de LV. Deze route sluit aan op de API-standaarden die binnen Digikoppeling zijn
+opgenomen. REST standaardiseert betrouwbaarheid, beheersing van piekbelasting, aanlevering van
+historie en het verwerken van correcties niet uit zichzelf; die moeten per domein worden vastgelegd.
+Dat is technisch mogelijk en vraagt om standaardisatie.
 
 De afweging is strategisch: investeren in de adapterroute (MSH) met de huidige ketenstructuur, of
 investeren in een REST-architectuur die de ketenstructuur kan veranderen. Dit advies concludeert dat
@@ -145,8 +145,8 @@ wat de LV toezegt, en raakt daarmee werkprocessen, niet alleen koppelvlakken.
 
 Ook de nieuwe inrichting kent een levenscyclus. Over een reeks jaren ligt er opnieuw een
 vernieuwingsvraag. De winst zit niet in een besparing op korte termijn, maar in onderhoudbaarheid,
-in aansluiting op de standaarden die inmiddels verplicht zijn, en in minder dubbele interpretatie in
-de keten.
+in aansluiting op de API-standaarden die binnen Digikoppeling zijn opgenomen, en in minder dubbele
+interpretatie in de keten.
 
 ## Waarom dit verder reikt dan de WOZ
 
